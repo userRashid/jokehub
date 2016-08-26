@@ -20,7 +20,7 @@ $app->post('/itinerary/:id', function ($id) use ($app) {
 });
 
 $app->delete('/itinerary/:id', function ($id) {
-    deleteItinerary($id);
+    deleteItinerary($id); 
 });
 /*
 // Status
