@@ -3,7 +3,7 @@
 function getItinerary($id = null){
     $dbCon = getConnection();
     try {
-        if($id){
+        if($id){ 
             $sql_query_node = "select * FROM  wa_category C, wa_node N where C.n_id = N.n_id and N.n_id = $id";
             $stmt_node   = $dbCon->query($sql_query_node);
             $category_node  = $stmt_node->fetchAll(PDO::FETCH_OBJ);
