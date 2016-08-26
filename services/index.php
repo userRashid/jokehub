@@ -18,7 +18,7 @@ $app->post('/itinerary', function () use ($app) {
 $app->post('/itinerary/:id', function ($id) use ($app) {
     updateItinerary($id,$app);
 });
-
+ //,m,mn,dmf,dmng,mndf,mg
 $app->delete('/itinerary/:id', function ($id) {
     deleteItinerary($id); 
 });
