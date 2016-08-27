@@ -7,10 +7,12 @@
         .controller('LoginController', LoginController);
 
     /** @ngInject */
-    function LoginController(Session,Login) {
+    function LoginController(Session,Login,$state) {
         var vm = this;
         vm.Login = function(login){
-          Login.login(login);
+          Login.login(login).then(function(){
+            $state.go('app.home');
+          });
         }
     }
 
