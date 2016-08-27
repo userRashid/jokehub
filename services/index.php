@@ -6,7 +6,7 @@ require 'login.php';
 
 $app = new \Slim\Slim();
 
-$app->get('/itinerary/:id', function ($id) {
+/*$app->get('/itinerary/:id', function ($id) {
     getItinerary($id);
 });
 $app->get('/itinerary', function () {
@@ -22,6 +22,7 @@ $app->post('/itinerary/:id', function ($id) use ($app) {
 $app->delete('/itinerary/:id', function ($id) {
     deleteItinerary($id); 
 });
+*/
 /*
 // Status
 $app->get('/status/:id', function ($id) {

@@ -17,7 +17,7 @@ function getLogin($app,$login_request){
     $password   = $data[1];
 
 
-    $user_query = "select * from mij_user WHERE u_mail='".$user_name."' and u_pwd = '".md5($password)."'";
+    $user_query = "select * from jh_user WHERE u_mail='".$user_name."' and u_pwd = '".md5($password)."'";
     echo '<pre>';
     $dbCon = getConnection();
     $stmt_user  = $dbCon->query($user_query);
@@ -29,7 +29,7 @@ function getLogin($app,$login_request){
 
     function getPrivilege($id){
     	$dbCon = getConnection();
-        $sql_privilege_query = "select * FROM  mij_privileges where u_id = ".$id;
+        $sql_privilege_query = "select * FROM  jh_user_privileges where u_id = ".$id;
         $privilege_query_r = $dbCon->query($sql_privilege_query);
         $privilege_node = null;
         while($row = $privilege_query_r->fetch(PDO::FETCH_ASSOC)) {
@@ -59,7 +59,7 @@ function authenticate($app){
         $is_login = getLogin($app,true);
         if($is_login->is_login){
             $u_id = $is_login->u_id;
-            $_user_query  = "select * from mij_user D WHERE u_id = '".$u_id."'";
+            $_user_query  = "select * from jh_user D WHERE u_id = '".$u_id."'";
             $_stmt_user   = $dbCon->query($_user_query);
             $_user_data   = $_stmt_user->fetchAll(PDO::FETCH_OBJ);
             $is_active    = $is_login->status;
