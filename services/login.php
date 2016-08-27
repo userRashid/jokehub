@@ -3,6 +3,7 @@
 
 function getLogin($app,$login_request){
 
+
     $auth = $app->request()->headers()->get('Authorization');
     $last_login_time = null;
     if($login_request){
@@ -17,8 +18,7 @@ function getLogin($app,$login_request){
     $password   = $data[1];
 
 
-    $user_query = "select * from jh_user WHERE u_mail='".$user_name."' and u_pwd = '".md5($password)."'";
-    echo '<pre>';
+    $user_query = "select * from jh_user WHERE u_email='".$user_name."' and u_pwd = '".$password."'";
     $dbCon = getConnection();
     $stmt_user  = $dbCon->query($user_query);
     $login_data = $stmt_user->fetchAll(PDO::FETCH_NUM);
@@ -29,11 +29,11 @@ function getLogin($app,$login_request){
 
     function getPrivilege($id){
     	$dbCon = getConnection();
-        $sql_privilege_query = "select * FROM  jh_user_privileges where u_id = ".$id;
+        $sql_privilege_query = "select * FROM  jh_user_privilege where u_id = ".$id;
         $privilege_query_r = $dbCon->query($sql_privilege_query);
         $privilege_node = null;
         while($row = $privilege_query_r->fetch(PDO::FETCH_ASSOC)) {
-            $privilege_node = $row['u_p_privileges'];
+            $privilege_node = $row['privilege'];
         }
         return $privilege_node;
     }

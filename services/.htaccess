@@ -2,7 +2,7 @@
     RewriteEngine On
 
 	#RewriteBase /services/
-	RewriteBase /JokeHub/services/
+	RewriteBase /jokehub/services/
 
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteRule ^ index.php [QSA,L]
