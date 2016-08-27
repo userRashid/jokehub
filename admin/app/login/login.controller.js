@@ -1,5 +1,5 @@
 (function() {
-    
+     console.log('Login Called');
     'use strict';
 
     angular
@@ -7,10 +7,11 @@
         .controller('LoginController', LoginController);
 
     /** @ngInject */
-    function LoginController() {
-
+    function LoginController(Session,Login) {
         var vm = this;
-        
+        vm.Login = function(login){
+          Login.login(login);
+        }
     }
 
 })();

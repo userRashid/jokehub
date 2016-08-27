@@ -1,0 +1,1 @@
+var pre_url = '/MIJ/services/';
