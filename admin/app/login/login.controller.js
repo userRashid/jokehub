@@ -10,9 +10,7 @@
     function LoginController(Session,Login,$state) {
         var vm = this;
         vm.Login = function(login){
-          Login.login(login).then(function(){
-            $state.go('app.home');
-          });
+          Login.login(login)
         }
     }
 
