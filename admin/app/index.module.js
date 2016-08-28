@@ -16,6 +16,7 @@
             'app.login',
             'app.register',
             'app.home',
+            'app.category',
             'app.components'
 
         ]);
