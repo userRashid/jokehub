@@ -7,10 +7,11 @@
         .controller('TopbarController', TopbarController);
 
     /** @ngInject */
-    function TopbarController() {
+    function TopbarController(Session) {
 
         var vm = this;
-        
+        vm.userName = Session.get('name');
+
     }
 
 })();

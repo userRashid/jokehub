@@ -1,5 +1,5 @@
 (function() {
-     console.log('Login Called');
+
     'use strict';
 
     angular
