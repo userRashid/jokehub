@@ -28,22 +28,27 @@ function getLogin($app,$login_request){
     $is_login = new stdClass();
 
     function getPrivilege($id){
-    	$dbCon = getConnection();
-        $sql_privilege_query = "select * FROM  jh_user_privilege where u_id = ".$id;
+    	$user_data = new stdClass();
+        $dbCon = getConnection();
+        $sql_privilege_query = "select * FROM  jh_user_privilege p, jh_user_detail u where p.u_id = u.u_id".$id;
+        print($sql_privilege_query);
         $privilege_query_r = $dbCon->query($sql_privilege_query);
         $privilege_node = null;
         while($row = $privilege_query_r->fetch(PDO::FETCH_ASSOC)) {
-            $privilege_node = $row['privilege'];
+            $user_data->privilege = $row['privilege'];
+            $user_data->u_name = $row['u_name'];
         }
-        return $privilege_node;
+        return $user_data;
     }
 
     if($login_data){
+        $user_data = getPrivilege($u_id);
         $u_id = $login_data[0][0];
         $is_login->is_login = true;
         $is_login->u_id = $u_id;
         $is_login->status = $login_data[0][3];
-        $is_login->privilege = getPrivilege($u_id);
+        $is_login->privilege = $user_data->privilege;
+        $is_login->name = $user_data->u_name;
         $is_login->token = base64_encode($user_name.$separator.$password.$separator.$current_time);
     } else {
         $is_login->is_login = false;
