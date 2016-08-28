@@ -30,8 +30,7 @@ function getLogin($app,$login_request){
     function getPrivilege($id){
     	$user_data = new stdClass();
         $dbCon = getConnection();
-        $sql_privilege_query = "select * FROM  jh_user_privilege p, jh_user_detail u where p.u_id = u.u_id".$id;
-        print($sql_privilege_query);
+        $sql_privilege_query = "select * FROM jh_user_privilege P, jh_user_detail U where P.u_id = U.u_id and U.u_id = ".$id;
         $privilege_query_r = $dbCon->query($sql_privilege_query);
         $privilege_node = null;
         while($row = $privilege_query_r->fetch(PDO::FETCH_ASSOC)) {
@@ -42,8 +41,8 @@ function getLogin($app,$login_request){
     }
 
     if($login_data){
-        $user_data = getPrivilege($u_id);
         $u_id = $login_data[0][0];
+        $user_data = getPrivilege($u_id);
         $is_login->is_login = true;
         $is_login->u_id = $u_id;
         $is_login->status = $login_data[0][3];
@@ -70,6 +69,7 @@ function authenticate($app){
             $is_active    = $is_login->status;
             $_user_data[0]->token       = $is_login->token;
             $_user_data[0]->privilege   = $is_login->privilege;
+            $_user_data[0]->name		= $is_login->name;
             if($is_active) {
                 echo json_encode($_user_data);
             } else {
