@@ -2,6 +2,7 @@
 require 'Slim/Slim.php';
 require 'connection.php';
 require 'login.php';
+require 'user.php';
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();

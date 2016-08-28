@@ -10,7 +10,7 @@
 
         var vm = this;
         vm.Register = function(registerData){
-          API._post('register',registerData).then(function(){
+          API._post('user',registerData).then(function(){
 
           });
         }

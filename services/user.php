@@ -3,53 +3,55 @@
 function createUser($app){
     $request    = $app->request();
     $body       = json_decode($request->getBody());
-    $login_data     = $body[0]->login;
-    $detail_data    = $body[1]->detail;
-    $privilege_data = $body[2]->privilege;
-    $u_email    = $login_data[0]->value;
-    $u_pwd      = $login_data[1]->value;
-    $login_query = "INSERT INTO wa_user set
-			u_email			=	'".$u_email."',
-			u_pwd			=	'".$u_pwd."',
-			u_create_date   =   now(),
-			u_status    	=	'0',
-			u_alias			=	''
-		 ";
-    $dbCon = getConnection();
-    $dbCon->query($login_query);
-    $u_id = $dbCon->lastInsertId();
-    $privilege  =   serialize($privilege_data[0]->value);
-    $privilege_query = "INSERT INTO wa_user_privilege set
-			u_id			=	'".$u_id."',
-			privilege		=	'".$privilege."'
-		 ";
-    $dbCon->query($privilege_query);
-    $u_name      = $detail_data[0]->value;
-    $ud_country  = $detail_data[1]->value;
-    $ud_sex      = $detail_data[2]->value;
-    $ud_about    = $detail_data[3]->value;
-    $ud_dob      = $detail_data[4]->value;
-    $ud_title    = $detail_data[5]->value;
-    $ud_image    = '';
-    $ud_address  = $detail_data[7]->value;
-    $ud_phone    = $detail_data[8]->value;
-    $detail_query = "INSERT INTO wa_user_detail set
-			u_id            =   '".$u_id."',
-			u_name			=	'".$u_name."',
-			ud_country		=	'".$ud_country."',
-			ud_sex          =   '".$ud_sex."',
-			ud_about    	=	'".$ud_about."',
-			ud_dob			=	'".$ud_dob."',
-			ud_title		=	'".$ud_title."',
-			ud_image		=	'".$ud_image."',
-			ud_address		=	'".$ud_address."',
-			ud_phone		=	'".$ud_phone."'
-		 ";
-    $dbCon->query($detail_query);
-    $u_alias    = $url_alias = strtolower (str_replace(" ","-",$u_name));
-    $u_alias    .= $u_alias."-".$u_id;
-    $login_query_update = 'UPDATE wa_user SET u_alias="'.$u_alias.'" WHERE u_id='.$u_id;
-    $dbCon->query($login_query_update);
+    if($body->pwd === $body->pwd_cnf) {
+        $u_email    = $body->email;
+        $u_pwd      = $body->pwd;
+        $login_query = "INSERT INTO jh_user set
+    			u_email			=	'".$u_email."',
+    			u_pwd			=	'".$u_pwd."',
+    			u_create_date   =   now(),
+    			u_status    	=	'0',
+    			u_alias			=	''
+    		 ";
+        $dbCon = getConnection();
+        $dbCon->query($login_query);
+        $u_id = $dbCon->lastInsertId();
+        $privilege  =   serialize([0]);
+        $privilege_query = "INSERT INTO jh_user_privilege set
+    			u_id			=	'".$u_id."',
+    			privilege		=	'".$privilege."'
+    		 ";
+             echo  $privilege_query;
+        $dbCon->query($privilege_query);
+        $u_name      = $body->name;
+        $ud_country  = '';//$detail_data[1]->value;
+        $ud_sex      = '';//$detail_data[2]->value;
+        $ud_about    = '';//$detail_data[3]->value;
+        $ud_dob      = '';//$detail_data[4]->value;
+        $ud_title    = '';//$detail_data[5]->value;
+        $ud_image    = '';
+        $ud_address  = '';//$detail_data[7]->value;
+        $ud_phone    = $body->phone;
+        $detail_query = "INSERT INTO jh_user_detail set
+    			u_id            =   '".$u_id."',
+    			u_name			=	'".$u_name."',
+    			ud_country		=	'".$ud_country."',
+    			ud_sex          =   '".$ud_sex."',
+    			ud_about    	=	'".$ud_about."',
+    			ud_dob			=	'".$ud_dob."',
+    			ud_title		=	'".$ud_title."',
+    			ud_image		=	'".$ud_image."',
+    			ud_address		=	'".$ud_address."',
+    			ud_phone		=	'".$ud_phone."'
+    		 ";
+        $dbCon->query($detail_query);
+        $u_alias    = $url_alias = strtolower (str_replace(" ","-",$u_name));
+        $u_alias    .= $u_alias."-".$u_id;
+        $login_query_update = 'UPDATE jh_user SET u_alias="'.$u_alias.'" WHERE u_id='.$u_id;
+        $dbCon->query($login_query_update);
+    } else {
+       echo "Password Missmatched";
+    }
 }
 
 
