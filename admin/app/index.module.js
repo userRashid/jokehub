@@ -18,6 +18,7 @@
             'app.home',
             'app.category',
             'app.components'
+            ,'app.component'
 
         ]);
 })();
