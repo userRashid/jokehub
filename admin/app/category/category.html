@@ -5,7 +5,23 @@
 	<div class="box-body">
 		<div class="row">
 			<div class="col-sm-12">
-				<p>Category create form goes here</p>
+				<form>
+          <div class="form-group">
+            <label for="categoryName">Name</label>
+            <input type="text" class="form-control" ng-model="category.name" id="categoryName" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" ng-model="category.description" placeholder="Description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control-file" ng-model="category.image" id="image">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success" ng-click="vm.Create(category)">Create</button>
+          </div>
+        </form>
 			</div>
 		</div>
 	</div>
