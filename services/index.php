@@ -3,6 +3,7 @@ require 'Slim/Slim.php';
 require 'connection.php';
 require 'login.php';
 require 'user.php';
+require 'category.php';
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
@@ -46,6 +47,12 @@ $app->post('/update-status/:id', function ($id) use ($app) {
 });
 
 */
+//Category
+$app->post('/category', function () use ($app){
+    createCategory($app);
+});
+
+
 // Login
 
 $app->get('/authenticate', function () use ($app){
