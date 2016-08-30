@@ -52,6 +52,10 @@ $app->post('/update-status/:id', function ($id) use ($app) {
 $app->post('/category', function () use ($app){
     createCategory($app);
 });
+//Get category
+$app->get('/category', function () use ($app){
+    getCategory($app);
+});
 
 
 // Login
