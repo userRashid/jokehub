@@ -24,7 +24,9 @@
         </form>
 			</div>
       <div class="col-sm-12">
-        {{category}}
+        <ul>
+          <li ng-repeat="item in vm.category">{{item.id}} ******* {{item.title}}</li>
+        </ul>
       </div>
 		</div>
 	</div>

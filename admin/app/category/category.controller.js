@@ -17,7 +17,7 @@
           });
         }
         API._get('category').then(function(response){
-          vm.category = response.data
+          vm.category = response.data;
         });
 
     }

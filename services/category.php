@@ -42,24 +42,27 @@ function createCategory($app){
     } 
  }
 
- function getCategory(){
- 
-        $sql_query = "select * from jh_node N, jh_category C where N.n_id = C.n_id";
-        $dbCon = getConnection();
+ function getCategory($id = null){
+ 	try {
+	 	if($id){
+	 		$sql_query = "select * from jh_node N, jh_category C where N.n_id = C.n_id where N.n_id = ".$id;
+	 	} else {
+	 		$sql_query = "select * from jh_node N, jh_category C where N.n_id = C.n_id";
+	 	}
+	 	$dbCon = getConnection();
         $stmt   = $dbCon->query($sql_query);
     	$catdata =array();
-    	 while ( $row= $stmt->fetch(PDO::FETCH_ASSOC)) {
+    	while ( $row= $stmt->fetch(PDO::FETCH_ASSOC)) {
 	    	$obj = new stdClass();
-    		$obj->n_id = $row['n_id'];
-    		$obj->n_title = $row['n_title'];
+    		$obj->id 	= $row['n_id'];
+    		$obj->title = $row['n_title'];
     		$catdata[]=$obj;
-    	 
-    	 }
-    	
-           echo json_encode($catdata);
-       
-       
+    	}
+        echo json_encode($catdata);
+ 	}
+ 	catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }      
  }
-
 
 ?>
