@@ -30,9 +30,28 @@ function createCategory($app){
     		 ";    		
         // echo $cat_data_query;
         $dbCon->query($cat_data_query);
+ }
+
+ function getCategory(){
+ 
+        $sql_query = "select * from jh_node N, jh_category C where N.n_id = C.n_id";
+        $dbCon = getConnection();
+        $stmt   = $dbCon->query($sql_query);
+    	$catdata =array();
+    	 while ( $row= $stmt->fetch(PDO::FETCH_ASSOC)) {
+	    	$obj = new stdClass();
+    		$obj->n_id = $row['n_id'];
+    		$obj->n_title = $row['n_title'];
+    		$catdata[]=$obj;
+    	 
+    	 }
+    	
+           echo json_encode($catdata);
        
-            
-}
+       
+  
+
+ }
 
 
 ?>
