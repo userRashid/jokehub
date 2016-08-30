@@ -19,11 +19,11 @@
     function login(LoginModel){
       var headers = { Authorization: (btoa(LoginModel.userName + ':' + LoginModel.pwd))};
       API._get('authenticate',headers).then(function(response){
-        sessionStorage.setItem('ticket',response.data[0].u_create_date);
-        sessionStorage.setItem('name',response.data[0].name);
-        sessionStorage.setItem('user_id',response.data[0].u_id);
-        sessionStorage.setItem('Authorization',response.data[0].token);
-        sessionStorage.setItem('privilege',JSON.stringify(response.data[0].privilege));
+        sessionStorage.setItem('ticket',response.data.token);
+        sessionStorage.setItem('name',response.data.name);
+        sessionStorage.setItem('user_id',response.data.u_id);
+        sessionStorage.setItem('Authorization',response.data.token);
+        sessionStorage.setItem('privilege',JSON.stringify(response.data.privilege));
         $state.go('app.home');
       },function(error){
         toastr.error(error.data);

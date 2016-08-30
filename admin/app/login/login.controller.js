@@ -10,7 +10,7 @@
     function LoginController(Session,Login,$state) {
         var vm = this;
         vm.Login = function(login){
-          Login.login(login)
+          Login.login(login);
         }
     }
 

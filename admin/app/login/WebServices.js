@@ -5,7 +5,7 @@
         .module('app.login')
         .factory('API', API);
 
-    function API($http) {
+    function API($http,Session) {
         return {
             _get    : _get
             ,_post  : _post
@@ -54,7 +54,7 @@
             if(headers === 'undefined' || !angular.isObject(headers)) {
                 headers = {};
             }
-            //headers = injectHeader(headers);
+            headers = injectHeader(headers);
 
             var request = {
                 method: method,

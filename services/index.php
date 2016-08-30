@@ -1,6 +1,7 @@
 <?php
 require 'Slim/Slim.php';
 require 'connection.php';
+require 'authenticate.php';
 require 'login.php';
 require 'user.php';
 require 'category.php';
