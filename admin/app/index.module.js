@@ -19,6 +19,7 @@
             'app.category',
             'app.components'
             ,'app.component'
+            ,'app.joke'
 
         ]);
 })();

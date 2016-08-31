@@ -1,0 +1,33 @@
+<div class="box">
+	<div class="box-header">
+		<h2>Rin</h2>
+	</div>
+	<div class="box-body">
+		<div class="row">
+			<div class="col-sm-12">
+
+        <form>
+          <div class="form-group">
+            <label for="jokeName">Name</label>
+            <input type="text" class="form-control" ng-model="joke.name" id="jokeName" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="categoryName">Name</label>
+            <select class="form-control" ng-model="joke.category" id="categoryName">
+              <option value="1">Cat One</option>
+              <option value="2">Cat Two</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" ng-model="joke.description" placeholder="Description"></textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success" ng-click="vm.Create(joke)">Create</button>
+          </div>
+        </form>
+			</div>
+		</div>
+	</div>
+</div>
+

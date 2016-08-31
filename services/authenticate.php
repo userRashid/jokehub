@@ -40,7 +40,7 @@
         	$header = $object->request()->headers()->get('Authorization');
         	
         	if($from_login) {
-        		$login_info = preg_split("/~/",base64_decode($header));
+        		$login_info = preg_split("/:/",base64_decode($header));
         		$user_name  = $login_info[0];
     			$password   = $login_info[1];
         	} else {
