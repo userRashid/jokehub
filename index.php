@@ -1,183 +1,243 @@
-  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-        <html xmlns="http://www.w3.org/1999/xhtml">
-        <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <title>Login Page</title>
-        <style>
-        /* Basics */
-        html, body {
-            width: 100%;
-            height: 100%;
-            font-family: "Helvetica Neue", Helvetica, sans-serif;
-            color: #444;
-            -webkit-font-smoothing: antialiased;
-            background: #f0f0f0;
-        }
-        #container {
-            position: fixed;
-            width: 340px;
-            height: 280px;
-            top: 50%;
-            left: 50%;
-            margin-top: -140px;
-            margin-left: -170px;
-            background: #fff;
-            border-radius: 3px;
-            border: 1px solid #ccc;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+<!DOCTYPE html>
+<html lang="en">
 
-        }
-        form {
-            margin: 0 auto;
-            margin-top: 20px;
-        }
-        label {
-            color: #555;
-            display: inline-block;
-            margin-left: 18px;
-            padding-top: 10px;
-            font-size: 14px;
-        }
-        p a {
-            font-size: 11px;
-            color: #aaa;
-            float: right;
-            margin-top: -13px;
-            margin-right: 20px;
-         -webkit-transition: all .4s ease;
-            -moz-transition: all .4s ease;
-            transition: all .4s ease;
-        }
-        p a:hover {
-            color: #555;
-        }
-        input {
-            font-family: "Helvetica Neue", Helvetica, sans-serif;
-            font-size: 12px;
-            outline: none;
-        }
-        input[type=text],
-        input[type=password] ,input[type=time]{
-            color: #777;
-            padding-left: 10px;
-            margin: 10px;
-            margin-top: 12px;
-            margin-left: 18px;
-            width: 290px;
-            height: 35px;
-            border: 1px solid #c7d0d2;
-            border-radius: 2px;
-            box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
-            -webkit-transition: all .4s ease;
-            -moz-transition: all .4s ease;
-            transition: all .4s ease;
-            }
-        input[type=text]:hover,
-        input[type=password]:hover,input[type=time]:hover {
-            border: 1px solid #b6bfc0;
-            box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
-        }
-        input[type=text]:focus,
-        input[type=password]:focus,input[type=time]:focus {
-            border: 1px solid #a8c9e4;
-            box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
-        }
-        #lower {
-            background: #ecf2f5;
-            width: 100%;
-            height: 69px;
-            margin-top: 20px;
-              box-shadow: inset 0 1px 1px #fff;
-            border-top: 1px solid #ccc;
-            border-bottom-right-radius: 3px;
-            border-bottom-left-radius: 3px;
-        }
-        input[type=checkbox] {
-            margin-left: 20px;
-            margin-top: 30px;
-        }
-        .check {
-            margin-left: 3px;
-            font-size: 11px;
-            color: #444;
-            text-shadow: 0 1px 0 #fff;
-        }
-        input[type=submit] {
-            float: right;
-            margin-right: 20px;
-            margin-top: 20px;
-            width: 80px;
-            height: 30px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #acd6ef; /*IE fallback*/
-            background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
-            background-image: -moz-linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
-            background-image: linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
-            border-radius: 30px;
-            border: 1px solid #66add6;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
-            cursor: pointer;
-        }
-        input[type=submit]:hover {
-            background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
-            background-image: -moz-linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
-            background-image: linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
-        }
-        input[type=submit]:active {
-            background-image: -webkit-gradient(linear, left top, left bottom, from(#6ec2e8), to(#b6e2ff));
-            background-image: -moz-linear-gradient(top left 90deg, #6ec2e8 0%, #b6e2ff 100%);
-            background-image: linear-gradient(top left 90deg, #6ec2e8 0%, #b6e2ff 100%);
-        }
-        </style>
+<head>
 
-        </head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <body>
+    <title>Blog Post - Start Bootstrap Template</title>
 
-            <!-- Begin Page Content -->
-            <div id="container">
-                
-                    <label for="loginmsg" style="color:hsla(0,100%,50%,0.5); font-family:"Helvetica Neue",Helvetica,sans-serif;"><?php  echo @$_GET['msg'];?></label>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password">
-                    <div id="lower">
-                        <button id="submit">Login</button>
-                    </div><!--/ lower-->
-                
-            </div><!--/ container-->
-            <!-- End Page Content -->
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <script type="text/javascript">
-    $(function() {
-    $('#submit').click(function() {
-        var username = $('#username').val();
-        var password = $('#password').val();
-        var _header = btoa(username + ':' + password)
+    <!-- Custom CSS -->
+    <link href="css/blog-post.css" rel="stylesheet">
 
-        console.log('----- ',_header);
-//Authorization
-        
-     console.log('sdfkshdkfhksdjhf');
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-        $.ajax({
-            type: 'GET',
-            url: '/jokehub/services/authenticate',
-             headers: { 'Authorization': _header },
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
-           
-            error: function(error) {
-                console.log(error);
-            }
-        });
-    });
-});
+</head>
 
-            </script>
-        </body>
-        </html>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Start Bootstrap</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Blog Post -->
+
+                <!-- Title -->
+                <h1>Blog Post Title</h1>
+
+                <!-- Author -->
+                <p class="lead">
+                    by <a href="#">Start Bootstrap</a>
+                </p>
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+
+                <hr>
+
+                <!-- Post Content -->
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+
+                <hr>
+
+                <!-- Blog Comments -->
+
+                <!-- Comments Form -->
+                <div class="well">
+                    <h4>Leave a Comment:</h4>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <hr>
+
+                <!-- Posted Comments -->
+
+                <!-- Comment -->
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">Start Bootstrap
+                            <small>August 25, 2014 at 9:30 PM</small>
+                        </h4>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                </div>
+
+                <!-- Comment -->
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">Start Bootstrap
+                            <small>August 25, 2014 at 9:30 PM</small>
+                        </h4>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <!-- Nested Comment -->
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="http://placehold.it/64x64" alt="">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Nested Start Bootstrap
+                                    <small>August 25, 2014 at 9:30 PM</small>
+                                </h4>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            </div>
+                        </div>
+                        <!-- End Nested Comment -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
