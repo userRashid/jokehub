@@ -23,7 +23,7 @@ $app->get('/category/:id', function ($id) use ($app){
 });
 // Jokes
 $app->post('/jokes', function () use ($app){
-    createJokes();
+    createJokes($app);
 });
 // Login
 $app->get('/authenticate', function () use ($app){
