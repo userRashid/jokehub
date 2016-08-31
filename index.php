@@ -1,3 +1,7 @@
+<?php 
+	include('include/auth.php'); // call db.class.php
+	$bdd = new db(); // create a new object, class db()
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Post - Start Bootstrap Template</title>
+    <title>Joke Hub</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +43,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">Joke Hub</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -75,13 +79,13 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">Start Bootstrap</a>
+                    by <a href="#">Admin</a>
                 </p>
 
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on August 31, 2016 at 6:00 AM</p>
 
                 <hr>
 
@@ -178,28 +182,14 @@
                 <div class="well">
                     <h4>Blog Categories</h4>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
+                            	<?php 
+                            		$cat = $bdd->getAll("select * from jh_category C, jh_node N where N.n_id = C.n_id and N.n_status = 1");
+									foreach ($cat as $value) {
+									    echo '<li><h4><a href="category.php?id='.$value['n_id'].'">'.$value['n_title'].'</a></h4></li>';
+									}
+                            	?>
                             </ul>
                         </div>
                     </div>
