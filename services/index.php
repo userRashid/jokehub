@@ -5,6 +5,7 @@ require 'authenticate.php';
 require 'login.php';
 require 'user.php';
 require 'category.php';
+require 'contentModify.php';
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
@@ -41,7 +42,14 @@ $app->get('/destination',function () use ($app){
 $app->get('/user/:id',function ($id) use ($app){
     getUser($id);
 });
-
+ 
+// Content Modify
+$app->get('/publish/:id',function ($id) use ($app){
+    makePublish($id);
+});
+$app->get('/unpublish/:id',function ($id) use ($app){
+    makeUnpublish($id);
+});
 $app->run();
 
 ?>
