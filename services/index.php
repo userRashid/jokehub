@@ -5,6 +5,7 @@ require 'authenticate.php';
 require 'login.php';
 require 'user.php';
 require 'category.php';
+require 'jokes.php';
 require 'contentModify.php';
 \Slim\Slim::registerAutoloader();
 
@@ -20,7 +21,10 @@ $app->get('/category', function () use ($app){
 $app->get('/category/:id', function ($id) use ($app){
     getCategory($id);
 });
-
+// Jokes
+$app->post('/jokes', function () use ($app){
+    createJokes();
+});
 // Login
 $app->get('/authenticate', function () use ($app){
     authenticate($app);
