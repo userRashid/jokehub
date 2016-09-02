@@ -2,9 +2,11 @@
 require 'Slim/Slim.php';
 require 'connection.php';
 require 'authenticate.php';
+require 'function.php';
 require 'login.php';
 require 'user.php';
 require 'category.php';
+require 'main-category.php';
 require 'jokes.php';
 require 'contentModify.php';
 \Slim\Slim::registerAutoloader();
@@ -12,6 +14,10 @@ require 'contentModify.php';
 $app = new \Slim\Slim();
 
 //Category
+$app->post('/main-category', function () use ($app){
+    createMainCategory($app);
+});
+
 $app->post('/category', function () use ($app){
     createCategory($app);
 });

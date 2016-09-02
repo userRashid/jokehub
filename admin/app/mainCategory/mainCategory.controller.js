@@ -8,7 +8,7 @@
       function MainCategoryController(API){
         var vm = this;
         vm.Create = function(mainCategory){
-          API._post('/main-category').then(function(){
+          API._post('main-category',mainCategory).then(function(){
 
           });
         }

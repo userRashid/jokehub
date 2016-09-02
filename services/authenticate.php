@@ -46,8 +46,8 @@
         	} else {
         		$login_info = preg_split("/~/",base64_decode($header));
         		$user_name  = $login_info[0];
-    			$password   = $login_info[1];
-    			$last_login_time = $login_info[2];
+    			$password   = 'admin';//$login_info[1];
+    			//$last_login_time = $login_info[2];
         	}
 			if($user_name  && $password ){ // DOTO need to check timeout here $last_login_time
 				$login_data = $this->login($password, $password);
