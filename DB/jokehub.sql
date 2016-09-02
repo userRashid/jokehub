@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2016 at 09:22 PM
+-- Generation Time: Sep 02, 2016 at 10:37 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `jh_category` (
   `img_id` int(11) NOT NULL,
   `c_description` text NOT NULL,
   PRIMARY KEY (`c_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `jh_category`
@@ -100,7 +100,9 @@ INSERT INTO `jh_category` (`c_id`, `n_id`, `se_id`, `img_id`, `c_description`) V
 (15, 38, 13, 0, 'gsdfgsdf'),
 (16, 54, 2, 85, 'echo $cat_data_query; echo $cat_data_query; echo $cat_data_query;'),
 (17, 55, 0, 0, 'jokess santa banta'),
-(18, 56, 0, 0, 'santa banta jokes');
+(18, 56, 0, 0, 'santa banta jokes'),
+(19, 64, 0, 0, 'fsdfh'),
+(20, 65, 0, 0, 'isaqisaqisaq');
 
 -- --------------------------------------------------------
 
@@ -148,6 +150,26 @@ INSERT INTO `jh_jokes` (`j_id`, `n_id`, `c_id`, `j_content`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jh_main_category`
+--
+
+CREATE TABLE IF NOT EXISTS `jh_main_category` (
+  `mc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `n_id` int(11) NOT NULL,
+  `c_description` text NOT NULL,
+  PRIMARY KEY (`mc_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `jh_main_category`
+--
+
+INSERT INTO `jh_main_category` (`mc_id`, `n_id`, `c_description`) VALUES
+(1, 66, 'aliaaaaaaliaaaaa');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jh_node`
 --
 
@@ -161,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `jh_node` (
   `n_upadate` timestamp NOT NULL,
   `n_alias` text NOT NULL,
   PRIMARY KEY (`n_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=62 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=67 ;
 
 --
 -- Dumping data for table `jh_node`
@@ -227,7 +249,12 @@ INSERT INTO `jh_node` (`n_id`, `n_type`, `n_title`, `u_id`, `n_status`, `n_creat
 (58, '', 'joke', 0, 1, '2016-08-31 18:40:56', '0000-00-00 00:00:00', ''),
 (59, 'joke', 'joke', 0, 1, '2016-08-31 18:51:34', '0000-00-00 00:00:00', ''),
 (60, 'joke', 'joke', 1, 1, '2016-08-31 19:19:46', '0000-00-00 00:00:00', 'joke'),
-(61, 'joke', 'joke funny fun AAA', 1, 1, '2016-08-31 19:21:24', '0000-00-00 00:00:00', 'joke-funny-fun-aaa');
+(61, 'joke', 'joke funny fun AAA', 1, 1, '2016-08-31 19:21:24', '0000-00-00 00:00:00', 'joke-funny-fun-aaa'),
+(62, '', 'Alia jokes', 5, 1, '2016-09-02 19:21:32', '0000-00-00 00:00:00', ''),
+(63, '', 'Alia jokes', 5, 1, '2016-09-02 19:32:24', '0000-00-00 00:00:00', ''),
+(64, '', 'Alia jokes', 5, 1, '2016-09-02 20:08:54', '0000-00-00 00:00:00', 'alia-jokes'),
+(65, '', 'isaq', 5, 1, '2016-09-02 20:24:00', '0000-00-00 00:00:00', 'isaq'),
+(66, '', 'aliaaaaa', 5, 1, '2016-09-02 20:33:44', '0000-00-00 00:00:00', 'aliaaaaa');
 
 -- --------------------------------------------------------
 
@@ -280,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `jh_user` (
   `u_create_date` int(11) NOT NULL,
   `u_alias` varchar(50) NOT NULL,
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `jh_user`
@@ -309,7 +336,15 @@ INSERT INTO `jh_user` (`u_id`, `u_email`, `u_pwd`, `u_status`, `u_create_date`, 
 (20, '', '', 0, 2147483647, 'sadfsadfasdfsadf-sdfs-ewrdvsadfsadfasdfsadf-sdfs-e'),
 (21, 'imranmit007@gmail.com', '1234', 0, 2147483647, ''),
 (22, 'imranmit007@gmail.com', '123', 0, 2147483647, ''),
-(23, 'imranmit007@gmail.com', '1234', 0, 2147483647, 'sdsdsdsd-23');
+(23, 'imranmit007@gmail.com', '1234', 0, 2147483647, 'sdsdsdsd-23'),
+(24, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-24'),
+(25, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-25'),
+(26, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-26'),
+(27, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-27'),
+(28, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-28'),
+(29, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-29'),
+(30, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-30'),
+(31, 'admin@gmail.com', '1234', 0, 2147483647, 'imranimran-31');
 
 -- --------------------------------------------------------
 
@@ -349,7 +384,15 @@ INSERT INTO `jh_user_detail` (`u_id`, `u_name`, `ud_country`, `ud_sex`, `ud_abou
 (18, 'asdf', 0, 0, 'asdf', 'asdf', 'asdf', '', 'asdf', 'asdfasdf'),
 (19, 'Faheem', 0, 1, 'This is name and you can save something here', 'asdf', 'asdf', '', 'asdf', 'asdf'),
 (20, 'sadfsadfasdfsadf sdfs ewrdv', 0, 0, '', '', '', '', '', ''),
-(23, 'sdsd', 0, 0, '', '', '', '', '', 'sdfsd');
+(23, 'sdsd', 0, 0, '', '', '', '', '', 'sdfsd'),
+(24, 'sCFAS', 0, 0, '', '', '', '', '', 'ASDa'),
+(25, 'sCFAS', 0, 0, '', '', '', '', '', 'ASDa'),
+(26, 'sCFAS', 0, 0, '', '', '', '', '', 'ASDa'),
+(27, 'sCFAS', 0, 0, '', '', '', '', '', 'ASDa'),
+(28, 'sCFAS', 0, 0, '', '', '', '', '', 'ASDa'),
+(29, 'sCFAS', 0, 0, '', '', '', '', '', 'ASDa'),
+(30, 'sCFAS', 0, 0, '', '', '', '', '', 'ASDa'),
+(31, 'imran', 0, 0, '', '', '', '', '', '89898898');
 
 -- --------------------------------------------------------
 
@@ -373,7 +416,15 @@ INSERT INTO `jh_user_privilege` (`u_id`, `privilege`) VALUES
 (3, 'a:3:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"3";}'),
 (19, 'a:3:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"3";}'),
 (20, 'a:3:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"3";}'),
-(23, 'a:1:{i:0;i:0;}');
+(23, 'a:1:{i:0;i:0;}'),
+(24, 'a:1:{i:0;i:0;}'),
+(25, 'a:1:{i:0;i:0;}'),
+(26, 'a:1:{i:0;i:0;}'),
+(27, 'a:1:{i:0;i:0;}'),
+(28, 'a:1:{i:0;i:0;}'),
+(29, 'a:1:{i:0;i:0;}'),
+(30, 'a:1:{i:0;i:0;}'),
+(31, 'a:1:{i:0;i:0;}');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
