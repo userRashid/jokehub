@@ -14,7 +14,7 @@ function createMainCategory($app){
 		    $c_desc    = $body->description;
 		    $n_type    = '';
 		    $u_id='5';
-		    $n_id 	= $node->CreateNode($c_text,$u_id);
+		    $n_id 	= $node->CreateNode($c_text,$u_id,'main-category');
 		    echo $n_id;
 		    $img_id	= 0;      
 		    $cat_data_query = "INSERT INTO jh_main_category set

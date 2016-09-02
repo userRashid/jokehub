@@ -15,9 +15,7 @@ function createCategory($app){
 		    $c_desc    = $body->description;
 		    $n_type    = '';
 		    $u_id='5';
-		     
-		   
-		    $n_id 	= $node->CreateNode($c_text,$u_id);
+		    $n_id 	= $node->CreateNode($c_text,$u_id,'category');
 		    $se_id	= 0;
 		    $img_id	= 0;      
 		    $cat_data_query = "INSERT INTO jh_category set
@@ -32,6 +30,7 @@ function createCategory($app){
             $app->response()->body(json_encode('Please enter valid user and password'));
         }
 	}
+
 	catch(PDOException $e) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     } 
