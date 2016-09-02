@@ -1,0 +1,24 @@
+<div class="box">
+  <div class="box-header">
+    <h2>Main Category</h2>
+  </div>
+  <div class="box-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <form>
+          <div class="form-group">
+            <label for="mainCategoryName">Name</label>
+            <input type="text" class="form-control" ng-model="mainCategory.name" id="mainCategoryName" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="mainCategoryDescription">Description</label>
+            <textarea class="form-control" id="mainCategoryDescription" ng-model="mainCategory.description" placeholder="Description"></textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success" ng-click="vm.Create(mainCategory)">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

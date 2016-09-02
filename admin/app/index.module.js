@@ -20,6 +20,7 @@
             'app.components'
             ,'app.component'
             ,'app.joke'
+            ,'app.mainCategory'
 
         ]);
 })();
