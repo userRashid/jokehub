@@ -23,7 +23,9 @@ $app->get('/main-category', function () use ($app){
 $app->get('/main-category/:id', function ($id) use ($app){
     getMainCategory($id);
 });
-
+$app->post('/main-category/:id', function ($id) use ($app){
+    updateMainCategory($id,$app);
+});
 //Category
 $app->post('/category', function () use ($app){
     createCategory($app);
@@ -34,6 +36,8 @@ $app->get('/category', function () use ($app){
 $app->get('/category/:id', function ($id) use ($app){
     getCategory($id);
 });
+
+
 
 // Jokes
 $app->post('/jokes', function () use ($app){

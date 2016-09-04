@@ -54,4 +54,31 @@ function createMainCategory($app){
     }      
  }
 
+ function updateMainCategory($id,$app) {
+ 	$request = $app->request();
+ 	$body = json_decode($request->getBody());
+ 	echo '<pre>';
+ 	print_r($body);
+    $dbCon = getConnection();
+    $n_title     = $body->name;
+    $n_desc = $body->description;   
+
+	try {
+	 	if($id){
+	 		$sql_query = "UPDATE jh_node N, jh_main_category M SET 
+	 		n_title ='".$n_title."',
+	 		c_description='".$n_desc."' where N.n_id = M.n_id and N.n_id = ".$id;
+	 	} else {
+	 		
+	 	}
+	 	$dbCon = getConnection();
+        $stmt   = $dbCon->query($sql_query);
+    	 
+ 	}
+ 	catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }    
+
+ }
+
 ?>
