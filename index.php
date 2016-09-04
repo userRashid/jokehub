@@ -48,15 +48,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+                    <?php 
+                        $cat = $bdd->getAll("select * from jh_main_category C, jh_node N where N.n_id = C.n_id and N.n_status = 1");
+                        foreach ($cat as $value) {
+                            echo '<li><h4><a href="mainCategory.php?id='.$value['n_id'].'">'.$value['n_title'].'</a></h4></li>';
+                                                   }
+                                                   
+                    ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
