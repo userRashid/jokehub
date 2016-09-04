@@ -64,10 +64,10 @@ $app->get('/user/:id',function ($id) use ($app){
  
 // Content Modify
 $app->get('/publish/:id',function ($id) use ($app){
-    makePublish($id);
+    makePublish($id,$app);
 });
 $app->get('/unpublish/:id',function ($id) use ($app){
-    makeUnpublish($id);
+    makeUnpublish($id,$app);
 });
 $app->run();
 

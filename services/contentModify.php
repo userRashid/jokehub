@@ -1,6 +1,6 @@
 <?php
 
-function makePublish($id){
+function makePublish($id,$app){
 	try {
 	    $dbCon = getConnection();
         $auth = new Authenticate();
@@ -23,7 +23,7 @@ function makePublish($id){
     } 
 }
 
-function makeUnpublish($id){
+function makeUnpublish($id,$app){
 	try {
 	    $dbCon = getConnection();
         $auth = new Authenticate();

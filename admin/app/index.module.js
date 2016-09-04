@@ -12,6 +12,9 @@
             'app.sidebar',
             'app.topbar',
 
+            //Comman
+            'app.comman',
+
             // Views
             'app.login',
             'app.register',

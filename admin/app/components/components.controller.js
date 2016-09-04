@@ -1,19 +1,19 @@
 (function() {
-	
+
 	'use strict';
-	
+
 	angular
 		.module('app.components')
 		.controller('ComponentsController', ComponentsController);
-	
+
 	/* @ngInject */
 	function ComponentsController(toastr) {
-		
+
 		var vm = this;
 
 		/* ANGULAR CHARTS
 		=============================== */
-		vm.lineLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+		  vm.lineLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   		vm.lineSeries = ['Series A', 'Series B'];
   		vm.lineColors = ['#2ecc71', '#9b59b6'];
   		vm.lineData = [
@@ -23,7 +23,7 @@
   		vm.lineOnClick = function (points, evt) {
   		  	 toastr.info(points, evt);
   		};
-  		
+
   		vm.radarLabels =['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
   		vm.radarColors = ['#3498db', '#f1c40f'];
   		vm.radarData = [

@@ -9,12 +9,20 @@
     /** @ngInject */
     function config($stateProvider) {
 
-        $stateProvider.state('app.category', {
-            url  : '/category',
+        $stateProvider.state('app.add-category', {
+            url  : '/add-category',
             views  : {
                 'content@app': {
-                    templateUrl: 'app/category/category.html',
+                    templateUrl: 'app/category/add-category.html',
                     controller : 'CategoryController as vm'
+                }
+            }
+        }).state('app.manage-category', {
+            url  : '/manage-category',
+            views  : {
+                'content@app': {
+                    templateUrl: 'app/category/manage-category.html',
+                    controller : 'ManageController as vm'
                 }
             }
         });

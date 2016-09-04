@@ -1,5 +1,4 @@
 (function() {
-    console.log('app.core');
     'use strict';
     angular
         .module('app.core')

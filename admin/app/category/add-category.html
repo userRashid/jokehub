@@ -1,7 +1,10 @@
 <div class="box">
-	<div class="box-header">
-		<h2>Category</h2>
-	</div>
+  <div class="box-header row">
+    <h2 class="col-sm-7">Category</h2>
+    <div class="col-sm-5 text-xs-right">
+      <a class="btn btn-success" ui-sref="app.manage-category">Manage</a>
+    </div>
+  </div>
 	<div class="box-body">
 		<div class="row">
 			<div class="col-sm-12">
@@ -28,11 +31,6 @@
           </div>
         </form>
 			</div>
-      <div class="col-sm-12">
-        <ul>
-          <li ng-repeat="item in vm.category">{{item.id}} ******* {{item.title}}</li>
-        </ul>
-      </div>
 		</div>
 	</div>
 </div>
