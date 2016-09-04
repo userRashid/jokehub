@@ -6,22 +6,22 @@ function createCategory($app){
 	    $dbCon = getConnection();
         $auth = new Authenticate();
 		$is_login = $auth->validateUser($app);
-
-		if(true){
-			$node = new Functions();	   
-			$request    = $app->request();
-		    $body       = json_decode($request->getBody());
-		    $c_text    = $body->name;
-		    $c_desc    = $body->description;
-		    $n_type    = '';
-		    $u_id='5';
+		if($is_login->is_login){
+			$node    = new Functions();	   
+			$request = $app->request();
+		    $body   = json_decode($request->getBody());
+		    $c_text = $body->name;
+		    $c_desc = $body->description;
+		    $u_id   = $is_login->u_id;
 		    $n_id 	= $node->CreateNode($c_text,$u_id,'category');
+		    $mc_id	= $body->mainCategory;
 		    $se_id	= 0;
 		    $img_id	= 0;      
 		    $cat_data_query = "INSERT INTO jh_category set
-		    	n_id		=	'".$n_id."',
-		    	se_id		=	'".$se_id."',
-		    	img_id      = '".$img_id."',
+		    	n_id		=  '".$n_id."',
+		    	mc_id       =  '".$mc_id."',
+		    	se_id		=  '".$se_id."',
+		    	img_id      =  '".$img_id."',
 		    	c_description = '".$c_desc."'
 		    ";    		
 		    $dbCon->query($cat_data_query);

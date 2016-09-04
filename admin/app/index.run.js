@@ -15,7 +15,7 @@
           var loggedIn = Session.get('ticket') !== '' && Session.get('ticket') !== null;
           if(!loggedIn) {
             $state.go('app.login',{});
-          } 
+          }
         })
       });
     }

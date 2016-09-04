@@ -13,11 +13,18 @@ require 'contentModify.php';
 
 $app = new \Slim\Slim();
 
-//Category
+//Main Category
 $app->post('/main-category', function () use ($app){
     createMainCategory($app);
 });
+$app->get('/main-category', function () use ($app){
+    getMainCategory();
+});
+$app->get('/main-category/:id', function ($id) use ($app){
+    getMainCategory($id);
+});
 
+//Category
 $app->post('/category', function () use ($app){
     createCategory($app);
 });
@@ -27,10 +34,12 @@ $app->get('/category', function () use ($app){
 $app->get('/category/:id', function ($id) use ($app){
     getCategory($id);
 });
+
 // Jokes
 $app->post('/jokes', function () use ($app){
     createJokes($app);
 });
+
 // Login
 $app->get('/authenticate', function () use ($app){
     authenticate($app);

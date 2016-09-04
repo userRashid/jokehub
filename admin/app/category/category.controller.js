@@ -7,15 +7,17 @@
         .controller('CategoryController', CategoryController);
 
     /** @ngInject */
-    function CategoryController(API,$state) {
+    function CategoryController(API,$state, CategoryService) {
 
         var vm = this;
         vm.Create = function(_data,_image){
-          console.log(' ***** ',_image.model);
           API._post('category',_data).then(function(){
-            $state.go('')
+            //$state.go('')
           });
         }
+        CategoryService.getMainCategories().then(function(response){
+          vm.mainCategory = response;
+        });
         API._get('category').then(function(response){
           vm.category = response.data;
         });
