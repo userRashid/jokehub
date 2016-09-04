@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2016 at 10:37 PM
+-- Generation Time: Sep 04, 2016 at 11:00 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -37,6 +37,9 @@ CREATE TABLE IF NOT EXISTS `jh_api_token` (
 --
 
 INSERT INTO `jh_api_token` (`u_id`, `token`, `duration`) VALUES
+(1, '', '0000-00-00 00:00:00'),
+(2, '', '0000-00-00 00:00:00'),
+(3, '1be2a52662223fb01872f08c0d928c5c', '2015-08-02 19:05:49'),
 (1, '', '0000-00-00 00:00:00'),
 (2, '', '0000-00-00 00:00:00'),
 (3, '1be2a52662223fb01872f08c0d928c5c', '2015-08-02 19:05:49');
@@ -76,33 +79,41 @@ INSERT INTO `jh_bank_detail` (`u_id`, `b_ac_name`, `b_ac_no`, `b_ifce`, `b_bank_
 CREATE TABLE IF NOT EXISTS `jh_category` (
   `c_id` int(10) NOT NULL AUTO_INCREMENT,
   `n_id` int(10) NOT NULL,
+  `mc_id` int(11) NOT NULL,
   `se_id` int(11) NOT NULL,
   `img_id` int(11) NOT NULL,
   `c_description` text NOT NULL,
   PRIMARY KEY (`c_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `jh_category`
 --
 
-INSERT INTO `jh_category` (`c_id`, `n_id`, `se_id`, `img_id`, `c_description`) VALUES
-(1, 1, 1, 0, 'Friendship is the most important part of our life , Show your love for friends with our most beautiful friendship whatsapp status .'),
-(4, 2, 2, 0, 'Show your Fun with the best and latest funny whatsapp status on this website.'),
-(5, 3, 1, 0, 'Love whatsapp status quotes and updates- Love Quotes, Sad Love One Liners and Romantic sayings for her, him, girlfriend, boyfriends, wife and couples.- Short Love Quotes to Share on Whatsapp'),
-(8, 4, 0, 0, 'Rain Status for whatsapp and fb provides you the most beautiful and cool rain status for whatsapp and facebook , rain quotes for whatsapp ,rain quotes tumblr ,rainy day status , rain quotes for fb in english , rain status for whatsapp in hindi , love rain quotes ,rainy days quotes tumblr and pinterest ,romantic rain status and lots more'),
-(9, 18, 7, 0, 'sdfsdfsd'),
-(10, 19, 8, 0, 'Updated'),
-(11, 20, 9, 0, 'This is Noida'),
-(12, 21, 10, 0, 'djdjff'),
-(13, 22, 11, 0, 'asdfj kashd kfasldkfha djfsdad lldfsakjf'),
-(14, 23, 12, 0, 'dfg'),
-(15, 38, 13, 0, 'gsdfgsdf'),
-(16, 54, 2, 85, 'echo $cat_data_query; echo $cat_data_query; echo $cat_data_query;'),
-(17, 55, 0, 0, 'jokess santa banta'),
-(18, 56, 0, 0, 'santa banta jokes'),
-(19, 64, 0, 0, 'fsdfh'),
-(20, 65, 0, 0, 'isaqisaqisaq');
+INSERT INTO `jh_category` (`c_id`, `n_id`, `mc_id`, `se_id`, `img_id`, `c_description`) VALUES
+(1, 1, 0, 1, 0, 'Friendship is the most important part of our life , Show your love for friends with our most beautiful friendship whatsapp status .'),
+(4, 2, 0, 2, 0, 'Show your Fun with the best and latest funny whatsapp status on this website.'),
+(5, 3, 0, 1, 0, 'Love whatsapp status quotes and updates- Love Quotes, Sad Love One Liners and Romantic sayings for her, him, girlfriend, boyfriends, wife and couples.- Short Love Quotes to Share on Whatsapp'),
+(8, 4, 0, 0, 0, 'Rain Status for whatsapp and fb provides you the most beautiful and cool rain status for whatsapp and facebook , rain quotes for whatsapp ,rain quotes tumblr ,rainy day status , rain quotes for fb in english , rain status for whatsapp in hindi , love rain quotes ,rainy days quotes tumblr and pinterest ,romantic rain status and lots more'),
+(9, 18, 0, 7, 0, 'sdfsdfsd'),
+(10, 19, 0, 8, 0, 'Updated'),
+(11, 20, 0, 9, 0, 'This is Noida'),
+(12, 21, 0, 10, 0, 'djdjff'),
+(13, 22, 0, 11, 0, 'asdfj kashd kfasldkfha djfsdad lldfsakjf'),
+(14, 23, 0, 12, 0, 'dfg'),
+(15, 38, 0, 13, 0, 'gsdfgsdf'),
+(16, 54, 0, 2, 85, 'echo $cat_data_query; echo $cat_data_query; echo $cat_data_query;'),
+(17, 55, 0, 0, 0, 'jokess santa banta'),
+(18, 56, 0, 0, 0, 'santa banta jokes'),
+(19, 64, 0, 0, 0, 'fsdfh'),
+(20, 65, 0, 0, 0, 'isaqisaqisaq'),
+(21, 70, 0, 0, 0, 'xasdfsdfdsf'),
+(22, 71, 0, 0, 0, 'Hello'),
+(23, 72, 0, 0, 0, 'Hello'),
+(24, 73, 0, 0, 0, 'Hello'),
+(25, 77, 76, 0, 0, 'sdfsdfsd'),
+(26, 78, 68, 0, 0, 'sdfsdfsdfdfd'),
+(27, 79, 2, 0, 0, 'SMS');
 
 -- --------------------------------------------------------
 
@@ -158,14 +169,20 @@ CREATE TABLE IF NOT EXISTS `jh_main_category` (
   `n_id` int(11) NOT NULL,
   `c_description` text NOT NULL,
   PRIMARY KEY (`mc_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `jh_main_category`
 --
 
 INSERT INTO `jh_main_category` (`mc_id`, `n_id`, `c_description`) VALUES
-(1, 66, 'aliaaaaaaliaaaaa');
+(1, 66, 'aliaaaaaaliaaaaa'),
+(2, 67, 'this is SMS'),
+(3, 68, 'This is Quotus'),
+(4, 69, 'dsfsdfsdfsdfds'),
+(5, 74, 'New Main Cat'),
+(6, 75, 'Hello'),
+(7, 76, 'Hello');
 
 -- --------------------------------------------------------
 
@@ -183,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `jh_node` (
   `n_upadate` timestamp NOT NULL,
   `n_alias` text NOT NULL,
   PRIMARY KEY (`n_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=67 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
 
 --
 -- Dumping data for table `jh_node`
@@ -254,7 +271,20 @@ INSERT INTO `jh_node` (`n_id`, `n_type`, `n_title`, `u_id`, `n_status`, `n_creat
 (63, '', 'Alia jokes', 5, 1, '2016-09-02 19:32:24', '0000-00-00 00:00:00', ''),
 (64, '', 'Alia jokes', 5, 1, '2016-09-02 20:08:54', '0000-00-00 00:00:00', 'alia-jokes'),
 (65, '', 'isaq', 5, 1, '2016-09-02 20:24:00', '0000-00-00 00:00:00', 'isaq'),
-(66, '', 'aliaaaaa', 5, 1, '2016-09-02 20:33:44', '0000-00-00 00:00:00', 'aliaaaaa');
+(66, '', 'aliaaaaa', 5, 1, '2016-09-02 20:33:44', '0000-00-00 00:00:00', 'aliaaaaa'),
+(67, '', 'SMS', 5, 1, '2016-09-02 20:42:51', '0000-00-00 00:00:00', 'sms'),
+(68, 'main-category', 'Quotus', 5, 0, '2016-09-02 20:50:38', '0000-00-00 00:00:00', 'quotus'),
+(69, 'main-category', 'Hindi Syari', 5, 0, '2016-09-02 20:51:24', '0000-00-00 00:00:00', 'hindi-syari'),
+(70, 'category', 'this is empty', 5, 0, '2016-09-02 20:52:12', '0000-00-00 00:00:00', 'this-is-empty'),
+(71, 'category', 'new Cat', 5, 0, '2016-09-04 07:59:44', '0000-00-00 00:00:00', 'new-cat'),
+(72, 'category', 'Name', 5, 0, '2016-09-04 08:03:26', '0000-00-00 00:00:00', 'name'),
+(73, 'category', 'Name One', 5, 0, '2016-09-04 08:03:46', '0000-00-00 00:00:00', 'name-one'),
+(74, 'main-category', 'Joke One', 5, 0, '2016-09-04 08:04:41', '0000-00-00 00:00:00', 'joke-one'),
+(75, 'main-category', 'Main Three', 1, 0, '2016-09-04 08:08:19', '0000-00-00 00:00:00', 'main-three'),
+(76, 'main-category', 'Main Three', 1, 0, '2016-09-04 08:10:49', '0000-00-00 00:00:00', 'main-three'),
+(77, 'category', 'sdfsdfs', 1, 0, '2016-09-04 08:51:10', '0000-00-00 00:00:00', 'sdfsdfs'),
+(78, 'category', 'Hello', 1, 0, '2016-09-04 08:52:28', '0000-00-00 00:00:00', 'hello'),
+(79, 'category', 'SMS', 1, 0, '2016-09-04 08:53:10', '0000-00-00 00:00:00', 'sms');
 
 -- --------------------------------------------------------
 
@@ -315,36 +345,8 @@ CREATE TABLE IF NOT EXISTS `jh_user` (
 
 INSERT INTO `jh_user` (`u_id`, `u_email`, `u_pwd`, `u_status`, `u_create_date`, `u_alias`) VALUES
 (1, 'admin', 'admin', 1, 1426698837, 'admin'),
-(2, 'rashid@gmail.com', 'info', 1, 0, 'rashid-one'),
-(3, 'abhinav@gmail.com', 'abhinav', 0, 0, 'abhinav'),
-(4, 'user.rashid@gmail.com', 'info121001', 0, 2147483647, ''),
-(5, 'asdfsadfsdfa', 'sdfsadfsdfsadfsad', 0, 2147483647, ''),
-(6, 'adf', 'asdf', 0, 2147483647, ''),
-(7, 'asd', 'aaaa', 0, 2147483647, ''),
-(8, 'asfd', 'asdf', 0, 2147483647, 'asdfasdf-8'),
-(9, 'adsf', 'asdf', 0, 2147483647, 'asdfasdf-9'),
-(10, 'asdf', 'asdf', 0, 2147483647, 'asdfasdf-10'),
-(11, 'asdf', 'adsf', 0, 2147483647, ''),
-(12, 'asdf', 'asdf', 0, 2147483647, ''),
-(13, 'asdf', 'asdfsad', 0, 2147483647, ''),
-(14, 'asdf', 'asdf', 0, 2147483647, ''),
-(15, 'dsfg', 'sdfg', 0, 2147483647, ''),
-(16, 'asdfasd', 'asdfsadf', 0, 2147483647, 'asdfasdf-16'),
-(17, 'sadf', 'sdf', 0, 2147483647, 'sadfsadf-17'),
-(18, 'asdf', 'asdf', 0, 2147483647, 'asdfasdf-18'),
-(19, 'asdf', 'asdf', 1, 2147483647, 'asdfasdf-19'),
-(20, '', '', 0, 2147483647, 'sadfsadfasdfsadf-sdfs-ewrdvsadfsadfasdfsadf-sdfs-e'),
-(21, 'imranmit007@gmail.com', '1234', 0, 2147483647, ''),
-(22, 'imranmit007@gmail.com', '123', 0, 2147483647, ''),
-(23, 'imranmit007@gmail.com', '1234', 0, 2147483647, 'sdsdsdsd-23'),
-(24, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-24'),
-(25, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-25'),
-(26, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-26'),
-(27, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-27'),
-(28, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-28'),
-(29, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-29'),
-(30, 'admin@123', 'admin', 0, 2147483647, 'scfasscfas-30'),
-(31, 'admin@gmail.com', '1234', 0, 2147483647, 'imranimran-31');
+(2, 'rashid', 'info', 1, 0, 'rashid-one'),
+(4, 'user', '123', 0, 2147483647, '');
 
 -- --------------------------------------------------------
 
