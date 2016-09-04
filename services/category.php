@@ -48,10 +48,11 @@ function createCategory($app){
     	$catdata =array();
     	while ( $row= $stmt->fetch(PDO::FETCH_ASSOC)) {
 	    	$obj = new stdClass();
-    		$obj->id 		= $row['n_id'];
-    		$obj->n_id 		= $row['n_id'];
-    		$obj->title 	= $row['n_title'];
-    		$obj->status 	= $row['n_status'];
+    		$obj->id 			= $row['n_id'];
+    		$obj->n_id 			= $row['n_id'];
+    		$obj->title 		= $row['n_title'];
+    		$obj->status 		= $row['n_status'];
+    		$obj->description 	= $row['c_description'];
     		$catdata[]=$obj;
     	}
         echo json_encode($catdata);

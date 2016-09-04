@@ -23,9 +23,9 @@
               <span ng-if="item.status == 0" ng-click="item.publish()" class="label label-warning">Unpublish</span>
             </td>
             <td>
-              <button class="btn label label-success">
+              <a href="#/manage-category/{{item.n_id}}" class="btn label label-success">
                 <i class="fa fa-edit"></i>
-              </button>
+              </a>
               <button class="btn label label-warning">
                 <i class="fa fa-trash"></i>
               </button>

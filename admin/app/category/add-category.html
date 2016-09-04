@@ -11,23 +11,24 @@
 				<form>
           <div class="form-group">
             <label for="mainCategoryName">Main Category Name</label>
-            <select class="form-control" ng-model="category.mainCategory" id="mainCategoryName" ng-options="item.value as item.name for item in vm.mainCategory">
+            <select class="form-control" ng-model="vm.category.mainCategory" id="mainCategoryName" ng-options="item.value as item.name for item in vm.mainCategory">
             </select>
           </div>
           <div class="form-group">
             <label for="categoryName">Name</label>
-            <input type="text" class="form-control" ng-model="category.name" id="categoryName" placeholder="Name">
+            <input type="text" class="form-control" ng-model="vm.category.name" id="categoryName" placeholder="Name">
           </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" id="description" ng-model="category.description" placeholder="Description"></textarea>
+            <textarea class="form-control" id="description" ng-model="vm.category.description" placeholder="Description"></textarea>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-if="vm.isCreate">
             <label>Image</label>
             <div data-jh-upload="image"></div>
           </div>
           <div class="form-group">
-            <button class="btn btn-success" ng-click="vm.Create(category,image)">Create</button>
+            <button class="btn btn-success" ng-if="vm.isCreate" ng-click="vm.Create(vm.category,image)">Create</button>
+            <button class="btn btn-success" ng-if="!vm.isCreate" ng-click="vm.Update(vm.category)">Update</button>
           </div>
         </form>
 			</div>

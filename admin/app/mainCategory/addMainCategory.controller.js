@@ -8,13 +8,15 @@
       function AddMainCategoryController(API, $state, $stateParams){
         var vm = this;
         vm.isCreate = false;
+        vm.mainCategory = {};
         if($stateParams.categoryId != undefined){
           vm.isCreate = true;
           API._get('main-category/'+$stateParams.categoryId).then(function(response){
-            console.log('response --- ',response);
+            vm.mainCategory.name        = response.data[0].title;
+            vm.mainCategory.description = response.data[0].description;
           });
         };
-        vm.Update = function(mainCategory,id){
+        vm.Update = function(mainCategory){
           API._post('main-category/'+$stateParams.categoryId,mainCategory).then(function(){
             $state.go('app.manage-main-category');
           });

@@ -25,6 +25,14 @@
                     controller : 'ManageController as vm'
                 }
             }
+        }).state('app.manage-category:id', {
+            url  : '/manage-category/:categoryId',
+            views  : {
+                'content@app': {
+                    templateUrl: 'app/category/add-category.html',
+                    controller : 'CategoryController as vm'
+                }
+            }
         });
     }
 })();

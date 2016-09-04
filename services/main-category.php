@@ -45,6 +45,7 @@ function createMainCategory($app){
     		$obj->n_id 	= $row['n_id'];
     		$obj->title = $row['n_title'];
     		$obj->status = $row['n_status'];
+    		$obj->description = $row['c_description'];
     		$catdata[]=$obj;
     	}
         echo json_encode($catdata);

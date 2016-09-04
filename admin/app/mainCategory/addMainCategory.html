@@ -11,15 +11,15 @@
         <form>
           <div class="form-group">
             <label for="mainCategoryName">Name</label>
-            <input type="text" class="form-control" ng-model="mainCategory.name" id="mainCategoryName" placeholder="Name">
+            <input type="text" class="form-control" ng-model="vm.mainCategory.name" id="mainCategoryName" placeholder="Name">
           </div>
           <div class="form-group">
             <label for="mainCategoryDescription">Description</label>
-            <textarea class="form-control" id="mainCategoryDescription" ng-model="mainCategory.description" placeholder="Description"></textarea>
+            <textarea class="form-control" id="mainCategoryDescription" ng-model="vm.mainCategory.description" placeholder="Description"></textarea>
           </div>
           <div class="form-group">
-            <button ng-if="!vm.isCreate" class="btn btn-success" ng-click="vm.Create(mainCategory)">Create</button>
-            <button ng-if="vm.isCreate" class="btn btn-success" ng-click="vm.Update(mainCategory)">Update</button>
+            <button ng-if="!vm.isCreate" class="btn btn-success" ng-click="vm.Create(vm.mainCategory)">Create</button>
+            <button ng-if="vm.isCreate" class="btn btn-success" ng-click="vm.Update(vm.mainCategory)">Update</button>
           </div>
         </form>
       </div>
