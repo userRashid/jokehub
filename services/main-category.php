@@ -32,7 +32,7 @@ function createMainCategory($app){
  function getMainCategory($id = null){
  	try {
 	 	if($id){
-	 		$sql_query = "select * from jh_node N, jh_main_category C where N.n_id = C.n_id where N.n_id = ".$id;
+	 		$sql_query = "select * from jh_node N, jh_main_category C where N.n_id = C.n_id and N.n_id = ".$id;
 	 	} else {
 	 		$sql_query = "select * from jh_node N, jh_main_category C where N.n_id = C.n_id";
 	 	}
@@ -42,7 +42,9 @@ function createMainCategory($app){
     	while ( $row= $stmt->fetch(PDO::FETCH_ASSOC)) {
 	    	$obj = new stdClass();
     		$obj->id 	= $row['mc_id'];
+    		$obj->n_id 	= $row['n_id'];
     		$obj->title = $row['n_title'];
+    		$obj->status = $row['n_status'];
     		$catdata[]=$obj;
     	}
         echo json_encode($catdata);

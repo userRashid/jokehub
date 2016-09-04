@@ -1,0 +1,38 @@
+<div class="box">
+  <div class="box-header row">
+    <h2 class="col-sm-7">Main Category</h2>
+    <div class="col-sm-5 text-xs-right">
+      <a class="btn btn-success" ui-sref="app.add-main-category">Add New</a>
+    </div>
+  </div>
+  <div class="box-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-striped">
+          <thead>
+          <th>#</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Action</th>
+          </thead>
+          <tr ng-repeat="item in vm.mainCategories">
+            <th>{{$index+1}}</th>
+            <td>{{item.title}}</td>
+            <td>
+              <span ng-if="item.status == 1" ng-click="item.unpublish()" class="label label-success">Publish</span>
+              <span ng-if="item.status == 0" ng-click="item.publish()" class="label label-warning">Unpublish</span>
+            </td>
+            <td>
+              <a class="btn label label-success" href="#/manage-main-category/{{item.n_id}}">
+                <i class="fa fa-edit"></i>
+              </a>
+              <button class="btn label label-warning">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

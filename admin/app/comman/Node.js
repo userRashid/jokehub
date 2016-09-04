@@ -11,13 +11,13 @@
     }
 
     function Publish(){
-      API._get('publish/'+this.id).then(function(){
+      API._get('publish/'+this.n_id).then(function(){
         this.status = 1;
       })
     }
 
     function Unpublish(){
-      API._get('unpublish/'+this.id).then(function(){
+      API._get('unpublish/'+this.n_id).then(function(){
         this.status = 0;
       })
     }

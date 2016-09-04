@@ -1,6 +1,9 @@
 <div class="box">
-  <div class="box-header">
-    <h2>Main Category</h2>
+  <div class="box-header row">
+    <h2 class="col-sm-7">Main Category</h2>
+    <div class="col-sm-5 text-xs-right">
+      <a class="btn btn-success" ui-sref="app.manage-main-category">Manage</a>
+    </div>
   </div>
   <div class="box-body">
     <div class="row">
@@ -15,7 +18,8 @@
             <textarea class="form-control" id="mainCategoryDescription" ng-model="mainCategory.description" placeholder="Description"></textarea>
           </div>
           <div class="form-group">
-            <button class="btn btn-success" ng-click="vm.Create(mainCategory)">Create</button>
+            <button ng-if="!vm.isCreate" class="btn btn-success" ng-click="vm.Create(mainCategory)">Create</button>
+            <button ng-if="vm.isCreate" class="btn btn-success" ng-click="vm.Update(mainCategory)">Update</button>
           </div>
         </form>
       </div>
