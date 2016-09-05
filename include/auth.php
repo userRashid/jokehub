@@ -84,9 +84,9 @@ class db {
 	function execute($query) {
 		if (!$response = $this->conn->exec($query)) {
 			echo 'PDO::errorInfo():';
-		   echo '<br />';
-		   echo 'error SQL: '.$query;
-		   die();
+		   	echo '<br />';
+		   	echo 'error SQL: '.$query;
+		   	die();
 		}
 		return $response;
 	}
