@@ -45,8 +45,8 @@
 
                 <?php
                     $id=$_GET['id'];
-                    $main_query = "select * from jh_main_category M, jh_node N where  M.n_id = N.n_id and 
-                        N.n_status = 1 and M.mc_id = ".$id;
+                    $main_query = "select * from jh_category C, jh_node N where  C.n_id = N.n_id and 
+                        N.n_status = 1 and C.n_id = ".$id;
                     $main_category = $bdd->getOne($main_query);
                     //echo '<pre>';
                     //print_r($main_category);
