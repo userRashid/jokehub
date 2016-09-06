@@ -63,7 +63,6 @@
                 <!-- Preview Image -->
                 <img class="img-responsive" src="http://placehold.it/900x300" alt="">
 
-	  					echo "<div class='col-sm-6'><h3><a href='jokes.php?id=".$value['n_id']."'>".$value['n_title']."</a></h3></div>";
                 <hr>
 
                 <!-- Post Content -->

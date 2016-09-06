@@ -7,7 +7,7 @@ require 'login.php';
 require 'user.php';
 require 'category.php';
 require 'main-category.php';
-require 'jokes.php';
+require 'contant.php';
 require 'contentModify.php';
 \Slim\Slim::registerAutoloader();
 
@@ -40,8 +40,8 @@ $app->get('/category/:id', function ($id) use ($app){
 
 
 // Jokes
-$app->post('/jokes', function () use ($app){
-    createJokes($app);
+$app->post('/contant', function () use ($app){
+    createContant($app);
 });
 
 // Login

@@ -1,6 +1,6 @@
 <?php
 
-function createJokes($app){
+function createContant($app){
 
     try {
 	    $dbCon = getConnection();
@@ -10,7 +10,7 @@ function createJokes($app){
 			$request    = $app->request();
 		    $body       = json_decode($request->getBody());
 		    $c_text    	= $body->name;
-		    $j_content  = $body->description;
+		    $co_content  = $body->description;
 		    $u_id		=$is_login->u_id;
 		  	$alias = strtolower (str_replace(" ","-",$c_text));
 		    $node_query = "INSERT INTO jh_node set
@@ -19,17 +19,17 @@ function createJokes($app){
 		    	n_create_date   =   now(),
 		    	n_status    	=	'1',
 		    	n_alias			=	'".$alias."',
-		    	n_type    		= 	'joke'
+		    	n_type    		= 	'contant'
 		    	";   
 		    $dbCon = getConnection();
 		    $dbCon->query($node_query);
 		    $n_id 	= $dbCon->lastInsertId();
-		    $c_id	= 0;
+		    $c_id	= $body->category;
 		    $img_id	= 0;      
-		    $cat_data_query = "INSERT INTO jh_jokes set
+		    $cat_data_query = "INSERT INTO jh_contant set
 		    	n_id		=	'".$n_id."',
-		    	C_id		=	'".$c_id."',
-		    	j_content = '".$j_content."'
+		    	c_id		=	'".$c_id."',
+		    	co_content = '".$co_content."'
 		    ";    		
 		    $dbCon->query($cat_data_query);
 		} else {
