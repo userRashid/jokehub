@@ -3,11 +3,11 @@
     'use strict';
 
     angular
-        .module('app.joke')
-        .factory('JokeService', JokeService);
+        .module('app.content')
+        .factory('ContentService', ContentService);
 
     /** @ngInject */
-    function JokeService(API, $q) {
+    function ContentService(API, $q) {
         return {
           getCategories : getCategories
         }

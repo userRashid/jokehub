@@ -1,0 +1,38 @@
+<style>
+  .m-y-20{margin:0 0.9375rem}
+  .m-b-20{margin-bottom:20px}
+</style>
+<div class="box">
+	<div class="box-header">
+		<h2>Content</h2>
+	</div>
+	<div class="box-body">
+		<div class="row">
+			<div class="col-sm-12">
+
+        <form>
+          <div class="row m-b-20">
+            <label ng-repeat="item in vm.mainCategory" class="btn btn-primary m-y-20" ng-model="vm.selectedMainCategory" uib-btn-radio="'{{item.id}}'">{{item.title}}</label>
+          </div>
+          <div class="form-group">
+            <label for="jokeName">Name</label>
+            <input type="text" class="form-control" ng-model="content.name" id="jokeName" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="categoryName">Category</label>
+            <select class="form-control" ng-model="content.category" id="categoryName" ng-options="item.value as item.name for item in vm.categories">
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" ng-model="content.description" placeholder="Description"></textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success" ng-click="vm.Create(content)">Create</button>
+          </div>
+        </form>
+			</div>
+		</div>
+	</div>
+</div>
+

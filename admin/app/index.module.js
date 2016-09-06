@@ -22,7 +22,7 @@
             'app.category',
             'app.components'
             ,'app.component'
-            ,'app.joke'
+            ,'app.content'
             ,'app.mainCategory'
 
         ]);
