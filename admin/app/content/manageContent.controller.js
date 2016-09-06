@@ -7,7 +7,7 @@
         .controller('ManageContentController', ManageContentController);
 
     /** @ngInject */
-    function ManageContentController(API) {
+    function ManageContentController(API, $scope) {
 
         var vm = this;
         API._get('main-category').then(function(response){
