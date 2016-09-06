@@ -22,6 +22,7 @@
             }
         );
         vm.Create = function(_data,_image){
+          _data.mainCategory = vm.selectedMainCategory;
           API._post('content',_data).then(function(){
           });
         }

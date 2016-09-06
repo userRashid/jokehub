@@ -29,7 +29,6 @@
         }
 
         function getCategoryById(id){
-          console.log(' **** ',_allCategory);
           var _q = $q.defer()
             ,_temp = new Array();
             _allCategory.forEach(function(category){
