@@ -1,6 +1,6 @@
 <?php
 
-function createContant($app){
+function createContent($app){
 
     try {
 	    $dbCon = getConnection();
@@ -19,14 +19,14 @@ function createContant($app){
 		    	n_create_date   =   now(),
 		    	n_status    	=	'1',
 		    	n_alias			=	'".$alias."',
-		    	n_type    		= 	'contant'
+		    	n_type    		= 	'content'
 		    	";   
 		    $dbCon = getConnection();
 		    $dbCon->query($node_query);
 		    $n_id 	= $dbCon->lastInsertId();
 		    $c_id	= $body->category;
 		    $img_id	= 0;      
-		    $cat_data_query = "INSERT INTO jh_contant set
+		    $cat_data_query = "INSERT INTO jh_content set
 		    	n_id		=	'".$n_id."',
 		    	c_id		=	'".$c_id."',
 		    	co_content = '".$co_content."'

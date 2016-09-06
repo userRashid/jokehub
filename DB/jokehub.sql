@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2016 at 11:00 AM
+-- Generation Time: Sep 06, 2016 at 09:02 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -84,79 +84,41 @@ CREATE TABLE IF NOT EXISTS `jh_category` (
   `img_id` int(11) NOT NULL,
   `c_description` text NOT NULL,
   PRIMARY KEY (`c_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `jh_category`
 --
 
 INSERT INTO `jh_category` (`c_id`, `n_id`, `mc_id`, `se_id`, `img_id`, `c_description`) VALUES
-(1, 1, 0, 1, 0, 'Friendship is the most important part of our life , Show your love for friends with our most beautiful friendship whatsapp status .'),
-(4, 2, 0, 2, 0, 'Show your Fun with the best and latest funny whatsapp status on this website.'),
-(5, 3, 0, 1, 0, 'Love whatsapp status quotes and updates- Love Quotes, Sad Love One Liners and Romantic sayings for her, him, girlfriend, boyfriends, wife and couples.- Short Love Quotes to Share on Whatsapp'),
-(8, 4, 0, 0, 0, 'Rain Status for whatsapp and fb provides you the most beautiful and cool rain status for whatsapp and facebook , rain quotes for whatsapp ,rain quotes tumblr ,rainy day status , rain quotes for fb in english , rain status for whatsapp in hindi , love rain quotes ,rainy days quotes tumblr and pinterest ,romantic rain status and lots more'),
-(9, 18, 0, 7, 0, 'sdfsdfsd'),
-(10, 19, 0, 8, 0, 'Updated'),
-(11, 20, 0, 9, 0, 'This is Noida'),
-(12, 21, 0, 10, 0, 'djdjff'),
-(13, 22, 0, 11, 0, 'asdfj kashd kfasldkfha djfsdad lldfsakjf'),
-(14, 23, 0, 12, 0, 'dfg'),
-(15, 38, 0, 13, 0, 'gsdfgsdf'),
-(16, 54, 0, 2, 85, 'echo $cat_data_query; echo $cat_data_query; echo $cat_data_query;'),
-(17, 55, 0, 0, 0, 'jokess santa banta'),
-(18, 56, 0, 0, 0, 'santa banta jokes'),
-(19, 64, 0, 0, 0, 'fsdfh'),
-(20, 65, 0, 0, 0, 'isaqisaqisaq'),
-(21, 70, 0, 0, 0, 'xasdfsdfdsf'),
-(22, 71, 0, 0, 0, 'Hello'),
-(23, 72, 0, 0, 0, 'Hello'),
-(24, 73, 0, 0, 0, 'Hello'),
-(25, 77, 76, 0, 0, 'sdfsdfsd'),
-(26, 78, 68, 0, 0, 'sdfsdfsdfdfd'),
-(27, 79, 2, 0, 0, 'SMS');
+(1, 3, 1, 0, 0, 'Love is like sunshine and Best Love Sms can be a true reflection of your feelings. Romantic Love Sms is the sweet way to express your deepest feelings to your lover, In this section weâ€™ve compiled Romantic Love Sms for Girlfriend, Send these magical words to your loved ones thatâ€™ll bring a golden glow on her face. Just pick up Romantic Sms for Girlfriend, Awesome Love Sms in Hindi, Heart Touching Love Shayari for Her, Pyaar Shayari, Hot Romantic Shayari for Wife, Beautiful Love Messages in Hindi'),
+(2, 4, 1, 0, 0, 'FUNNY SMSFUNNY SMSFUNNY SMSFUNNY SMSFUNNY SMSFUNNY SMS'),
+(3, 5, 2, 0, 0, 'SANTA BANTA JOKESSANTA BANTA JOKESSANTA BANTA JOKESSANTA BANTA JOKES');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jh_jokes`
+-- Table structure for table `jh_content`
 --
 
-CREATE TABLE IF NOT EXISTS `jh_jokes` (
-  `j_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `jh_content` (
+  `co_id` int(10) NOT NULL AUTO_INCREMENT,
   `n_id` int(10) NOT NULL,
   `c_id` int(10) NOT NULL,
-  `j_content` text NOT NULL,
-  PRIMARY KEY (`j_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+  `mc_id` int(10) NOT NULL,
+  `co_content` text NOT NULL,
+  PRIMARY KEY (`co_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `jh_jokes`
+-- Dumping data for table `jh_content`
 --
 
-INSERT INTO `jh_jokes` (`j_id`, `n_id`, `c_id`, `j_content`) VALUES
-(1, 5, 5, 'THis is status\r\n'),
-(2, 6, 12, 'This is Name___'),
-(3, 7, 5, 'dfsd sd fdss fsd fsd'),
-(4, 8, 5, 'When the angels ask what I most loved about life, Iâ€™ll say you'),
-(5, 24, 10, 'asdfsad dsffadsf fdsa fadsf sdf sdf'),
-(6, 25, 5, '123456 879 9'),
-(7, 26, 12, 'this is noida'),
-(8, 27, 10, 'asdfsadfsd'),
-(9, 28, 8, 'asdfasdfads'),
-(10, 29, 5, 'asdfsadfsdf'),
-(11, 30, 8, 'asdfasdfasdf'),
-(12, 31, 5, 'asdfadsf'),
-(13, 32, 9, 'zxcvzxcvzxc'),
-(14, 33, 10, 'asdfasdf'),
-(15, 34, 11, 'zxcvzxcvzxc'),
-(16, 35, 8, 'sadfsadf'),
-(17, 36, 5, 'This is add by new user'),
-(18, 37, 12, 'This is by Rashid'),
-(19, 57, 0, 'categorycategorycategorycategory'),
-(20, 58, 0, 'categorycategorycategorycategory'),
-(21, 59, 0, 'jokeshubindia'),
-(22, 60, 0, 'asasaasa'),
-(23, 61, 0, 'asasaasa');
+INSERT INTO `jh_content` (`co_id`, `n_id`, `c_id`, `mc_id`, `co_content`) VALUES
+(1, 6, 3, 0, 'Let wind blow away ur sadness\nLet rain wash away ur worries\nLet sun bring u warmth\nLet D new day bring u hope & happiness and Let my SMS make u SMILE...\nNice Day Dear'),
+(2, 7, 3, 0, 'A smile is the lighting system of the face;\nThe cooling system of the head;\nAnd the heating system of the heart!'),
+(3, 8, 4, 0, 'If God is the DJ, then Life is the dance floor; Love is the rhythm, and You are the melodious music. Have a nice day ahead!'),
+(4, 10, 3, 0, 'asdasdasdasdasdasd');
 
 -- --------------------------------------------------------
 
@@ -169,20 +131,15 @@ CREATE TABLE IF NOT EXISTS `jh_main_category` (
   `n_id` int(11) NOT NULL,
   `c_description` text NOT NULL,
   PRIMARY KEY (`mc_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `jh_main_category`
 --
 
 INSERT INTO `jh_main_category` (`mc_id`, `n_id`, `c_description`) VALUES
-(1, 66, 'aliaaaaaaliaaaaa'),
-(2, 67, 'this is SMS'),
-(3, 68, 'This is Quotus'),
-(4, 69, 'dsfsdfsdfsdfds'),
-(5, 74, 'New Main Cat'),
-(6, 75, 'Hello'),
-(7, 76, 'Hello');
+(1, 1, 'Short Message Service (SMS) is a text messaging service component of phone, Web, or mobile communication systems. It uses standardized communications protocols to allow fixed line or mobile phone devices to exchange short text messages.[1]\n\nSMS was the most widely used data application, with an estimated 3.5 billion active users, or about 80% of all mobile phone subscribers at the end of 2010.[2] The term "SMS" is used for both the user activity and all types of short text messaging in many parts of the world. SMS is also employed in direct marketing, known as SMS marketing.[3] As of September 2014, global SMS messaging business is said to be worth over USD 100 billion, and SMS accounts for almost 50 percent of all the revenue generated by mobile messaging.[4]\n\nSMS as used on modern handsets originated from radio telegraphy in radio memo pagers using standardized phone protocols. These were defined in 1985 as part of the Global System for Mobile Communications (GSM) series of standards[5] as a means of sending messages of up to 160 characters to and from GSM mobile handsets. Though most SMS messages are mobile-to-mobile text messages, support for the service has expanded to include other mobile technologies, such as ANSI CDMA networks and Digital AMPS, as well as satellite and landline networks.'),
+(2, 2, 'A good joke is succinct, containing no more detail than is needed to set the scene for the punchline at the end. In the case of riddle jokes or one-liners the setting is implicitly understood, leaving only the dialogue and punchline to be verbalized. Identified as one of the simple forms of oral literature by the Dutch linguist AndrÃ© Jolles,[2] jokes are passed along anonymously. They are told in both private and public settings; a single person tells a joke to his friend in the natural flow of conversation, or a set of jokes is told to a group as part of scripted entertainment. Jokes are also passed along in written form orâ€”more recentlyâ€”through electronic messaging systems. Internet joking has indeed become a major method of transmission. Either as written narratives or graphic cartoons, jokes are sent through email to friends and acquaintances; individuals joking with each other in a physical space have been replaced here by electronic social groups. This correlates with the new understanding of the internet as an "active folkloric space" with evolving social and cultural forces and clearly identifiable performers and audiences.[3] Along with individual transmission of jokes to email contacts, internet services are also available to provide a fresh joke-a-day to your email inbox or archive joke collections on electronic bulletin boards.');
 
 -- --------------------------------------------------------
 
@@ -200,91 +157,23 @@ CREATE TABLE IF NOT EXISTS `jh_node` (
   `n_upadate` timestamp NOT NULL,
   `n_alias` text NOT NULL,
   PRIMARY KEY (`n_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `jh_node`
 --
 
 INSERT INTO `jh_node` (`n_id`, `n_type`, `n_title`, `u_id`, `n_status`, `n_create_date`, `n_upadate`, `n_alias`) VALUES
-(2, 'category', 'Funny_1', 1, 1, '2015-07-02 19:45:51', '2015-08-02 06:02:29', 'funny'),
-(3, 'category', 'Love', 1, 1, '2015-07-02 19:49:30', '2015-07-15 19:30:50', 'love'),
-(4, 'category', 'Rain', 1, 1, '2015-07-02 19:50:21', '2015-07-15 20:09:27', 'rain'),
-(5, 'status', '', 1, 1, '2015-07-02 19:58:16', '2015-07-02 19:58:16', ''),
-(6, 'status', '', 1, 1, '2015-07-02 19:58:16', '2015-07-02 19:58:16', ''),
-(7, 'status', '', 1, 0, '2015-07-02 20:00:28', '2015-07-26 19:49:43', ''),
-(8, 'status', '', 1, 1, '2015-07-04 20:17:01', '2015-07-04 20:17:01', ''),
-(9, 'category', 'asdf', 1, 0, '2015-07-11 12:32:45', '2015-07-11 12:32:45', 'rashid'),
-(10, 'category', 'sadf', 1, 0, '2015-07-11 12:34:44', '2015-07-11 12:34:44', 'rashid'),
-(11, 'category', 'dfgdf', 1, 0, '2015-07-11 12:37:02', '2015-07-11 12:37:02', 'rashid'),
-(12, 'category', 'asdf', 1, 0, '2015-07-11 12:41:23', '2015-07-11 12:41:23', 'rashid'),
-(13, 'category', 'dfsdfg', 1, 0, '2015-07-11 12:44:28', '2015-07-11 12:44:28', 'rashid'),
-(14, 'category', 'sdf', 1, 0, '2015-07-11 12:51:36', '2015-07-11 12:51:36', 'rashid'),
-(15, 'category', 'asdf', 1, 0, '2015-07-11 12:52:39', '2015-07-11 12:52:39', 'rashid'),
-(16, 'category', 'asdf454654', 1, 0, '2015-07-11 12:53:20', '2015-07-11 12:53:20', 'rashid'),
-(17, 'category', 'sdf fdsfsdf fds', 1, 0, '2015-07-11 12:58:46', '2015-07-11 12:58:46', 'rashid'),
-(18, 'category', 'sdfsd', 1, 1, '2015-07-11 13:00:21', '2015-07-15 19:59:33', 'rashid'),
-(19, 'category', 'sds', 1, 1, '2015-07-11 13:01:32', '2015-07-16 16:09:22', 'rashid'),
-(20, 'category', 'Noida 123sdfdsf', 1, 1, '2015-07-14 20:54:48', '2015-07-27 15:38:22', 'rashid'),
-(21, 'category', 'new info noida', 1, 1, '2015-07-22 03:28:55', '2015-07-22 03:29:44', 'new-info-noida'),
-(22, 'category', 'New OOne From me', 1, 1, '2015-07-22 17:51:55', '2015-07-22 17:52:04', 'new-oone-from-me'),
-(23, 'category', 'dfg', 1, 0, '2015-07-22 18:56:20', '2015-07-22 18:56:20', 'dfg'),
-(24, 'status', '', 1, 1, '2015-07-25 12:16:31', '2015-07-26 18:53:12', ''),
-(25, 'status', '', 1, 0, '2015-07-25 12:18:02', '2015-07-26 19:44:19', ''),
-(26, 'status', '', 1, 1, '2015-07-27 15:38:34', '2015-07-27 15:38:53', ''),
-(27, 'status', '', 1, 0, '2015-08-10 18:51:15', '2015-08-10 18:51:15', ''),
-(28, 'status', '', 1, 0, '2015-08-10 18:52:18', '2015-08-10 18:52:18', ''),
-(29, 'status', '', 1, 0, '2015-08-10 18:54:46', '2015-08-10 18:54:46', ''),
-(30, 'status', '', 1, 0, '2015-08-10 18:55:32', '2015-08-10 18:55:32', ''),
-(31, 'status', '', 1, 0, '2015-08-10 18:58:07', '2015-08-10 18:58:07', ''),
-(32, 'status', '', 1, 0, '2015-08-10 19:01:45', '2015-08-10 19:01:45', ''),
-(33, 'status', '', 1, 0, '2015-08-10 19:03:03', '2015-08-10 19:03:03', ''),
-(34, 'status', '', 1, 0, '2015-08-10 19:04:06', '2015-08-10 19:04:06', ''),
-(35, 'status', '', 1, 0, '2015-08-10 19:05:46', '2015-08-10 19:05:46', ''),
-(36, 'status', '', 3, 1, '2015-08-10 19:08:59', '2015-08-10 19:09:07', ''),
-(37, 'status', '', 2, 1, '2015-08-10 19:17:37', '2015-08-10 19:17:45', ''),
-(38, 'category', 'sdfgsd', 1, 0, '2016-08-21 09:24:19', '2016-08-21 09:24:19', 'sdfgsd'),
-(39, '', 'funn', 0, 0, '2016-08-29 18:13:18', '0000-00-00 00:00:00', ''),
-(40, '', 'funn', 1, 1, '2016-08-29 18:15:46', '0000-00-00 00:00:00', ''),
-(41, '', 'sdfgdfsg', 0, 1, '2016-08-29 18:20:24', '0000-00-00 00:00:00', ''),
-(42, '', 'funn', 0, 1, '2016-08-29 18:21:10', '0000-00-00 00:00:00', ''),
-(43, '', 'c', 0, 1, '2016-08-29 18:24:43', '0000-00-00 00:00:00', ''),
-(44, '', 'funn', 0, 1, '2016-08-29 18:27:10', '0000-00-00 00:00:00', ''),
-(45, '', 'funnddd', 0, 1, '2016-08-29 18:28:05', '0000-00-00 00:00:00', ''),
-(46, '', 'funn', 0, 1, '2016-08-29 18:29:30', '0000-00-00 00:00:00', 'hhhhh'),
-(47, '', 'santa bnta', 0, 1, '2016-08-29 18:30:49', '0000-00-00 00:00:00', ''),
-(48, '', 'bad jokes', 0, 1, '2016-08-29 18:35:18', '0000-00-00 00:00:00', ''),
-(49, '', 'santa bnta', 0, 1, '2016-08-29 18:36:33', '0000-00-00 00:00:00', ''),
-(50, '', 'santa bnta', 0, 1, '2016-08-29 18:37:29', '0000-00-00 00:00:00', ''),
-(51, '', 'santa bnta', 0, 1, '2016-08-29 18:38:11', '0000-00-00 00:00:00', ''),
-(52, '', 'santa bnta', 0, 1, '2016-08-29 18:40:50', '0000-00-00 00:00:00', ''),
-(53, '', 'santa bnta', 0, 1, '2016-08-29 18:44:38', '0000-00-00 00:00:00', ''),
-(54, '', 'santa bnta', 0, 1, '2016-08-29 18:46:07', '0000-00-00 00:00:00', ''),
-(55, '', 'bad jokes', 0, 1, '2016-08-29 18:48:39', '0000-00-00 00:00:00', ''),
-(56, '', 'santa bnta', 0, 1, '2016-08-29 18:49:47', '0000-00-00 00:00:00', ''),
-(57, '', 'joke', 0, 1, '2016-08-31 18:40:00', '0000-00-00 00:00:00', ''),
-(58, '', 'joke', 0, 1, '2016-08-31 18:40:56', '0000-00-00 00:00:00', ''),
-(59, 'joke', 'joke', 0, 1, '2016-08-31 18:51:34', '0000-00-00 00:00:00', ''),
-(60, 'joke', 'joke', 1, 1, '2016-08-31 19:19:46', '0000-00-00 00:00:00', 'joke'),
-(61, 'joke', 'joke funny fun AAA', 1, 1, '2016-08-31 19:21:24', '0000-00-00 00:00:00', 'joke-funny-fun-aaa'),
-(62, '', 'Alia jokes', 5, 1, '2016-09-02 19:21:32', '0000-00-00 00:00:00', ''),
-(63, '', 'Alia jokes', 5, 1, '2016-09-02 19:32:24', '0000-00-00 00:00:00', ''),
-(64, '', 'Alia jokes', 5, 1, '2016-09-02 20:08:54', '0000-00-00 00:00:00', 'alia-jokes'),
-(65, '', 'isaq', 5, 1, '2016-09-02 20:24:00', '0000-00-00 00:00:00', 'isaq'),
-(66, '', 'aliaaaaa', 5, 1, '2016-09-02 20:33:44', '0000-00-00 00:00:00', 'aliaaaaa'),
-(67, '', 'SMS', 5, 1, '2016-09-02 20:42:51', '0000-00-00 00:00:00', 'sms'),
-(68, 'main-category', 'Quotus', 5, 0, '2016-09-02 20:50:38', '0000-00-00 00:00:00', 'quotus'),
-(69, 'main-category', 'Hindi Syari', 5, 0, '2016-09-02 20:51:24', '0000-00-00 00:00:00', 'hindi-syari'),
-(70, 'category', 'this is empty', 5, 0, '2016-09-02 20:52:12', '0000-00-00 00:00:00', 'this-is-empty'),
-(71, 'category', 'new Cat', 5, 0, '2016-09-04 07:59:44', '0000-00-00 00:00:00', 'new-cat'),
-(72, 'category', 'Name', 5, 0, '2016-09-04 08:03:26', '0000-00-00 00:00:00', 'name'),
-(73, 'category', 'Name One', 5, 0, '2016-09-04 08:03:46', '0000-00-00 00:00:00', 'name-one'),
-(74, 'main-category', 'Joke One', 5, 0, '2016-09-04 08:04:41', '0000-00-00 00:00:00', 'joke-one'),
-(75, 'main-category', 'Main Three', 1, 0, '2016-09-04 08:08:19', '0000-00-00 00:00:00', 'main-three'),
-(76, 'main-category', 'Main Three', 1, 0, '2016-09-04 08:10:49', '0000-00-00 00:00:00', 'main-three'),
-(77, 'category', 'sdfsdfs', 1, 0, '2016-09-04 08:51:10', '0000-00-00 00:00:00', 'sdfsdfs'),
-(78, 'category', 'Hello', 1, 0, '2016-09-04 08:52:28', '0000-00-00 00:00:00', 'hello'),
-(79, 'category', 'SMS', 1, 0, '2016-09-04 08:53:10', '0000-00-00 00:00:00', 'sms');
+(1, 'main-category', 'SMS', 1, 1, '2016-09-06 17:02:38', '2016-09-06 17:02:41', 'sms'),
+(2, 'main-category', 'JOKES', 1, 1, '2016-09-06 17:04:32', '2016-09-06 17:04:55', 'jokes'),
+(3, 'category', 'Love SMS', 1, 1, '2016-09-06 17:06:49', '2016-09-06 17:06:52', 'love-sms'),
+(4, 'category', 'FUNNY SMS', 1, 1, '2016-09-06 17:07:43', '2016-09-06 17:07:52', 'funny-sms'),
+(5, 'category', 'SANTA BANTA JOKES', 1, 1, '2016-09-06 17:09:18', '2016-09-06 17:09:20', 'santa-banta-jokes'),
+(6, 'joke', 'SMS1', 1, 1, '2016-09-06 17:13:40', '0000-00-00 00:00:00', 'sms1'),
+(7, 'joke', 'SMS2', 1, 1, '2016-09-06 17:14:10', '0000-00-00 00:00:00', 'sms2'),
+(8, 'joke', 'SMS3', 1, 1, '2016-09-06 17:15:13', '0000-00-00 00:00:00', 'sms3'),
+(9, 'joke', 'jokes1', 1, 1, '2016-09-06 17:49:08', '0000-00-00 00:00:00', 'jokes1'),
+(10, 'content', 'joke454545', 1, 1, '2016-09-06 18:54:42', '0000-00-00 00:00:00', 'joke454545');
 
 -- --------------------------------------------------------
 
