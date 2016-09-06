@@ -4,10 +4,10 @@
 
     angular
         .module('app.content')
-        .controller('ContentController', ContentController);
+        .controller('AddContentController', AddContentController);
 
     /** @ngInject */
-    function ContentController(API,ContentService,$scope) {
+    function AddContentController(API,ContentService,$scope) {
 
         var vm = this;
         ContentService.getCategories()

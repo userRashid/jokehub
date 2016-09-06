@@ -9,12 +9,20 @@
     /** @ngInject */
     function config($stateProvider) {
 
-        $stateProvider.state('app.content', {
-            url  : '/content',
+        $stateProvider.state('app.add-content', {
+            url  : '/add-content',
             views  : {
                 'content@app': {
-                    templateUrl: 'app/content/content.html',
-                    controller : 'ContentController as vm'
+                    templateUrl: 'app/content/add-content.html',
+                    controller : 'AddContentController as vm'
+                }
+            }
+        }).state('app.manage-content', {
+            url  : '/manage-content',
+            views  : {
+                'content@app': {
+                    templateUrl: 'app/content/manage-content.html',
+                    controller : 'ManageContentController as vm'
                 }
             }
         });
