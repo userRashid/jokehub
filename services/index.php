@@ -9,6 +9,7 @@ require 'category.php';
 require 'main-category.php';
 require 'content.php';
 require 'contentModify.php';
+require 'contents.php';
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
@@ -42,6 +43,9 @@ $app->get('/category/:id', function ($id) use ($app){
 // Jokes
 $app->post('/content', function () use ($app){
     createContent($app);
+});
+$app->post('/contents/:id', function () use ($app){
+    getContent($app);
 });
 
 // Login

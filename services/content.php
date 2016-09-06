@@ -25,10 +25,12 @@ function createContent($app){
 		    $dbCon->query($node_query);
 		    $n_id 	= $dbCon->lastInsertId();
 		    $c_id	= $body->category;
+		    $mc_id  = $body->mainCategory;
 		    $img_id	= 0;      
 		    $cat_data_query = "INSERT INTO jh_content set
 		    	n_id		=	'".$n_id."',
 		    	c_id		=	'".$c_id."',
+		    	mc_id       =   '".$mc_id."',
 		    	co_content = '".$co_content."'
 		    ";    		
 		    $dbCon->query($cat_data_query);
@@ -41,6 +43,5 @@ function createContent($app){
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     } 
  }
-
 
 ?>
