@@ -50,6 +50,7 @@ function createCategory($app){
 	    	$obj = new stdClass();
     		$obj->id 			= $row['n_id'];
     		$obj->n_id 			= $row['n_id'];
+    		$obj->mc_id 		= $row['mc_id'];
     		$obj->title 		= $row['n_title'];
     		$obj->status 		= $row['n_status'];
     		$obj->description 	= $row['c_description'];

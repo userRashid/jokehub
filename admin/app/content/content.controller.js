@@ -7,12 +7,20 @@
         .controller('ContentController', ContentController);
 
     /** @ngInject */
-    function ContentController(API,ContentService) {
+    function ContentController(API,ContentService,$scope) {
 
         var vm = this;
-        ContentService.getCategories().then(function(categories){
-          vm.categories = categories;
-        });
+        ContentService.getCategories()
+        $scope.$watch(
+            function watchFoo( scope ) {
+              return( vm.selectedMainCategory );
+            },function handleFooChange( newValue, oldValue ) {
+              if(newValue == undefined) return;
+              ContentService.getCategoryById(newValue).then(function(categories){
+                vm.categories = categories;
+              });
+            }
+        );
         vm.Create = function(_data,_image){
           API._post('content',_data).then(function(){
           });
