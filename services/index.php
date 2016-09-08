@@ -44,8 +44,8 @@ $app->get('/category/:id', function ($id) use ($app){
 $app->post('/content', function () use ($app){
     createContent($app);
 });
-$app->post('/contents/:id', function () use ($app){
-    getContent($app);
+$app->get('/contents/:id', function ($id) use ($app){
+    getContents($id);
 });
 
 // Login
