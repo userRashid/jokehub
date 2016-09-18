@@ -1,1 +1,1 @@
-var pre_url = '/jokehub/services/';
+var pre_url = 'http://api.jokehub.in/';

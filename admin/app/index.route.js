@@ -7,7 +7,7 @@
         .config(routeConfig);
 
     /** @ngInject */
-    function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+    function routeConfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
         $urlRouterProvider.otherwise('/login');
 
@@ -28,6 +28,8 @@
                     }
                 }
             });
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];   
     }
 
 })();

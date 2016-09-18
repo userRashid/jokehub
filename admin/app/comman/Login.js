@@ -18,7 +18,7 @@
 
     function login(LoginModel){
       var headers = { Authorization: (btoa(LoginModel.userName + ':' + LoginModel.pwd))};
-      API._get('authenticate',headers).then(function(response){
+      API._post('authenticate','',headers).then(function(response){
         sessionStorage.setItem('ticket',response.data.token);
         sessionStorage.setItem('name',response.data.name);
         sessionStorage.setItem('user_id',response.data.u_id);

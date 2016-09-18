@@ -1,20 +1,20 @@
 <!-- Blog Search Well -->
-<div class="well">
-    <h4>Blog Search</h4>
+<div class="card p-a-1">
+    <h5>Search</h5>
     <div class="input-group">
         <input type="text" class="form-control">
         <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-                <span class="glyphicon glyphicon-search"></span>
-        </button>
+            <button class="btn btn-primary" type="button">
+                <span class="fa fa-search"></span>
+            </button>
         </span>
     </div>
     <!-- /.input-group -->
 </div>
 
 <!-- Blog Categories Well -->
-<div class="well">
-    <h4>Blog Categories</h4>
+<div class="card m-y-1 p-a-1">
+    <h5>Categories</h5>
     <div class="row">
         <div class="col-lg-12">
             <ul class="list-unstyled">
@@ -29,7 +29,7 @@
 					}
                     $cat = $bdd->getAll($query);
                     foreach ($cat as $value) {
-					    echo '<li><h4><a href="category.php?id='.$value['n_id'].'">'.$value['n_title'].'</a></h4></li>';
+					    echo '<li class="font-weight-bold"><a class="text-capitalize" href="/category/'.$value['n_alias'].'">'.$value['n_title'].'</a></li>';
 					}
             	?>
             </ul>
@@ -39,7 +39,10 @@
 </div>
 
 <!-- Side Widget Well -->
-<div class="well">
-    <h4>Side Widget Well</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+<div class="card p-a-1">
+    <h5 class="text-capitalize">find us on social</h5>
+    <button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i></button>
+    <button type="button" class="btn btn-danger"><i class="fa fa-google-plus"></i></button>
+    <button type="button" class="btn btn-info"><i class="fa fa-twitter"></i></button>
+    <button type="button" class="btn btn-danger"><i class="fa fa-instagram"></i></button>
 </div>

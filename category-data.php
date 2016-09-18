@@ -1,7 +1,14 @@
 <?php 
-    include('include/auth.php'); // call db.class.php
-    $bdd = new db(); // create a new object, class db()
-?>
+
+    //include('include/auth.php'); // call db.class.php
+    //$bdd = new db(); // create a new object, class db()
+    $main_query = "select * from jh_category C, jh_node N where  C.n_id = N.n_id and 
+        N.n_status = 1 and C.n_id = ".$n_id;
+    $main_category = $bdd->getOne($main_query);
+    //echo '<pre>';
+      //  print_r($main_category);
+    //echo '</pre>';
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,10 +23,10 @@
     <title>Joke Hub</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/blog-post.css" rel="stylesheet">
+    <link href="/css/blog-post.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,7 +39,7 @@
 
 <body>
     <?php
-        include 'include/nav.php';
+        include '../include/nav.php';
     ?>
 
     <!-- Page Content -->
@@ -43,15 +50,7 @@
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
 
-                <?php
-                    $id=$_GET['id'];
-                    $main_query = "select * from jh_category C, jh_node N where  C.n_id = N.n_id and 
-                        N.n_status = 1 and C.n_id = ".$id;
-                    $main_category = $bdd->getOne($main_query);
-                    //echo '<pre>';
-                    //print_r($main_category);
-                    //echo '</pre>';
-                ?>    
+                   
                 <!-- Blog Post -->
 
                 <!-- Title -->
@@ -73,7 +72,7 @@
             <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-4">
                 <?php 
-                    include 'include/sidebar.php';
+                    include '../include/sidebar.php';
                 ?>
             </div>
 
@@ -82,17 +81,17 @@
 
         <hr>
         <?php 
-            include 'include/footer.php';
+            include '../include/footer.php';
         ?>
 
     </div>
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
 </body>
 

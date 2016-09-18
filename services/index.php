@@ -1,4 +1,7 @@
 <?php
+
+exit;
+
 require 'Slim/Slim.php';
 require 'connection.php';
 require 'authenticate.php';
@@ -10,9 +13,19 @@ require 'main-category.php';
 require 'content.php';
 require 'contentModify.php';
 require 'contents.php';
+require ('vendor/CorsSlim.php');
+//require 'vendor/CorsSlim.php';
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
+$corsOptions = array(
+    "origin" => "*",
+    "exposeHeaders" => array("Content-Type", "X-Requested-With", "X-authentication", "X-client"),
+    "allowMethods" => array('GET', 'POST', 'PUT', 'DELETE', 'OPTIONS')
+);
+//$cors = new \CorsSlim\CorsSlim();
+$cors = new \vendor\CorsSlim($corsOptions);
+$app->add($cors);
 
 //Main Category
 $app->post('/main-category', function () use ($app){
@@ -49,8 +62,10 @@ $app->get('/contents/:id', function ($id) use ($app){
 });
 
 // Login
-$app->get('/authenticate', function () use ($app){
+$app->post('/authenticate', function () use ($app){
+    //echo 'callled';
     authenticate($app);
+
 });
 
 // User

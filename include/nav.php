@@ -1,28 +1,16 @@
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a style="padding:5px 15px" class="navbar-brand" href="/"><img src="images/logo.png" /></a>
+            <a style="padding:5px 15px" class="navbar-brand" href="/"><img src="/images/logo.png" /></a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <?php 
-                $cat = $bdd->getAll("select * from jh_main_category C, jh_node N where N.n_id = C.n_id and N.n_status = 1");
-                    foreach ($cat as $value) {
-                        echo '<li><a href="mainCategory.php?id='.$value['mc_id'].'">'.$value['n_title'].'</a></li>';
-                    }
-                ?>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+        <ul class="nav navbar-nav">
+            <?php 
+            $cat = $bdd->getAll("select * from jh_main_category C, jh_node N where N.n_id = C.n_id and N.n_status = 1");
+            foreach ($cat as $value) {
+                echo '<li class="nav-item"><a class="nav-link" href="/mainCategory.php?id='.$value['mc_id'].'">'.$value['n_title'].'</a></li>';
+            }
+            ?>
+        </ul>
     </div>
-    <!-- /.container -->
 </nav>

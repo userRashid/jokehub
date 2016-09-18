@@ -1,16 +1,20 @@
 <!-- Footer -->
 <footer>
-    <div class="row">
-        <div class="col-lg-4">
-            <p>Copyright &copy; JokeHub.in 2014</p>
-        </div>
-        <div class="col-lg-8 text-right">
-			<ul class="nav navbar-nav">
-                <li><a style="padding:0 15px" href="#">Privacy</a></li>
-                <li><a style="padding:0 15px" href="#">Disclaimer</a></li>   
-                <li><a style="padding:0 15px" href="#">About us</a></li>            
-            </ul>
-        </div>
+    <div class="navbar p-x-0">
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <span class="nav-link">Copyright &copy; JokeHub.in 2016</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/privacy-policy">Privacy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Disclaimer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About us</a>
+            </li>
+        </ul>
     </div>
     <!-- /.row -->
 </footer>

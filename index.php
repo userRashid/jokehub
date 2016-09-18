@@ -1,6 +1,9 @@
 <?php 
 	include('include/auth.php'); // call db.class.php
 	$bdd = new db(); // create a new object, class db()
+    //echo '<pre>';
+    //echo phpversion();
+    //echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +18,7 @@
     <title>Joke Hub</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/blog-post.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,7 +41,7 @@
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
                 <!-- Preview Image -->
-                <img class="img-responsive" src="images/main-image.jpg" alt="">
+                <img class="w-100" src="images/main-image.jpg" alt="">
 
                 <hr>
 
@@ -47,74 +51,12 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-
-                <hr>
-
-                <!-- Blog Comments -->
-
-                <!-- Comments Form -->
-                <div class="well">
-                    <h4>Leave a Comment:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-
-                <hr>
-
-                <!-- Posted Comments -->
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </div>
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <!-- End Nested Comment -->
-                    </div>
-                </div>
-
             </div>
-
-            <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-4">
                 <?php 
                     include 'include/sidebar.php';
                 ?>
             </div>
-
         </div>
         <!-- /.row -->
 
