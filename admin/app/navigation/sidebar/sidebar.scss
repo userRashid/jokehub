@@ -1,51 +1,40 @@
-#sidebar {
+._sidebar{ margin: 0px;}
 
-	.sidebar {
-	    position: fixed;
-	    top: $topbar-height;
-	    bottom: 0;
-	    left: 0;
-	    z-index: 1000;
-	    display: block;
-	    width: $sidebar-width;
-	    background-color: $sidebar-bg;
-	    color: $sidebar-color;
-	    box-shadow: $sidebar-shadow;
-	    height: 100%;
-	}
-	.sidebar-link {
-		padding: .55rem .2rem;
-		margin-top: .25rem;
-
-		i {
-			color: darken($white, 10%);
-			margin-left: .75rem;
-			margin-right: .5rem;
-		}
-		a {
-			color: darken($white, 10%);
-		}
-	}
-	.active {
-		background-color: lighten($sidebar-bg, 10%);
-		
-		i {
-			color: $white;
-		}
-		a {
-			color: $white;
-		}
-	}
-	.sidebar-footer {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		width: $sidebar-width;
-		text-align: center;
-		padding: 15px 5px;
-
-		img {
-			max-width: $sidebar-width/3;
-		}
-	}
+.header__sideNav .subMenu{
+    position: absolute;
+    left: 100%;
+    background: #ffffff;
+    list-style: none;
+    background: #ffffff;
+    border: solid 1px #ccc;
+    top: -1px;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.21);
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.21);
+    margin: 0;
+    padding:0;
+    display: none;
+}
+ul.subMenu li {
+    width: 100%;
+    display: block;
+    border-bottom: solid 1px #ddd;
+}
+.header__sideNav li:hover,.header__sideNav li:hover a {
+    background: #007bff;
+    color: #ffffff;
+}
+.header__sideNav li:hover .subMenu {
+    display: block;
+}
+ul.subMenu > li > a {
+    background-color: #fff!important;
+    color: #4e4e4e !important;
+    white-space: nowrap;
+    padding: 8px 25px;
+    text-align: left;
+}
+.header__sideNav ul.subMenu > li > a:hover{
+    background:#007bff !important;
+    color:#ffffff !important;
 }

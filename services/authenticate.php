@@ -9,6 +9,7 @@
 		private function login($user_name, $password) {
 	    	$user_query = "select * from jh_user WHERE u_email='".$user_name."' and u_pwd = '".$password."' and u_status = 1";
 	    	$dbCon = getConnection();
+	    	echo $user_query;
     		$stmt_user  = $dbCon->query($user_query);
     		$login_data = $stmt_user->fetchAll(PDO::FETCH_ASSOC);
     		return $login_data;

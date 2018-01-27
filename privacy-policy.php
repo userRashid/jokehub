@@ -11,9 +11,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Privacy Policy - Joke Hub</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/blog-post.css" rel="stylesheet">
+    <?php 
+        include 'include/style.php';
+    ?>
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-                <img class="w-100" src="images/privacy-policy.jpg" alt="">
+                <img class="w-100" src="/images/privacy-policy.jpg" alt="">
                 <hr>
                 <p class="lead">
                     <h2>Privacy Policy</h2>
@@ -74,7 +74,8 @@
             include 'include/footer.php';
         ?>
     </div>
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <?php 
+        include '/include/script.php';
+    ?>
 </body>
 </html>

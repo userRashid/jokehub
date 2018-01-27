@@ -1,24 +1,38 @@
-<div class="sidebar">
-	<ul class="nav nav-sidebar">
-		<li class="sidebar-link" ui-sref="app.home" ui-sref-active="active">
-			<i class="icon-home"></i>
-			<a class="sidebar-item text-uppercase">Home</a>
-		</li>
-		<li class="sidebar-link" ui-sref="app.components" ui-sref-active="active">
-			<i class="icon-rocket"></i>
-			<a class="sidebar-item text-uppercase">Components</a>
-		</li>
-    <li class="sidebar-link" ui-sref="app.manage-category" ui-sref-active="active">
-      <i class="icon-hourglass"></i>
-      <a class="sidebar-item text-uppercase">Category</a>
+<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+  <ul class="nav nav-pills flex-column header__sideNav">
+    <li class="header__logoCntr">DT</li>
+    <li class="nav-item">
+
+      <a class="nav-link" ng-class="vm.isSelected('dashboard')" ui-sref="jokehub.dashboard">
+        <i class="icon downarrow-icon dashboard-icon"></i>
+        Dashboard</a>
     </li>
-    <li class="sidebar-link" ui-sref="app.manage-content" ui-sref-active="active">
-      <i class="icon-list"></i>
-      <a class="sidebar-item text-uppercase">Content</a>
+    <li class="nav-item">
+      <a class="nav-link" ng-class="vm.isSelected('add-product') || vm.isSelected('manage-product')">
+        <i class="icon downarrow-icon product-icon"></i>
+        Product</a>
+        <ul class="subMenu">
+          <li><a class="nav-link" ui-sref="jokehub.addProduct">Add Product</a></li>
+          <li><a class="nav-link" ui-sref="jokehub.manageProduct">Manage Product</a></li>
+        </ul>
     </li>
-    <li class="sidebar-link" ui-sref="app.manage-main-category" ui-sref-active="active">
-      <i class="icon-list"></i>
-      <a class="sidebar-item text-uppercase">Main Category</a>
+    <li class="nav-item">
+      <a class="nav-link" ng-class="vm.isSelected('manage-category') || vm.isSelected('add-category')">
+        <i class="icon downarrow-icon product-icon"></i>
+        Category</a>
+        <ul class="subMenu">
+          <li><a class="nav-link" ui-sref="jokehub.addCategory">Add Category</a></li>
+          <li><a class="nav-link" ui-sref="jokehub.manageCategory">Manage Category</a></li>
+        </ul>
     </li>
-	</ul>
-</div>
+    <li class="nav-item">
+      <a class="nav-link" ng-class="vm.isSelected('add-subscriber') || vm.isSelected('manage-subscriber')">
+        <i class="icon downarrow-icon product-icon"></i>
+        Subscriber</a>
+        <ul class="subMenu">
+          <li><a class="nav-link" ui-sref="jokehub.addSubscriber">Add Subscriber</a></li>
+          <li><a class="nav-link" ui-sref="jokehub.manageSubscriber">Manage Subscriber</a></li>
+        </ul>
+    </li>
+  </ul>
+</nav>

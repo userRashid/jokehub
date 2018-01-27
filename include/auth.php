@@ -10,11 +10,16 @@ class db {
  
     function __construct($params=array()) {
 		$this->conn = false;
-		$this->host = 'localhost'; //hostname
-		$this->user = 'root'; //username
-		$this->password = ''; //password
-		$this->baseName = 'jokehub'; //name of your database
-		//$this->port = '3306';
+		$this->host = 'localhost';
+		
+		$this->user = 'root';
+		$this->password = '';
+		$this->baseName = 'jokehub';
+
+		//$this->user = 'jokehiom_main';
+		//$this->password = ';R1{KCoK1.%c';
+		//$this->baseName = 'jokehiom_main_web';
+		
 		$this->debug = true;
 		$this->connect();
 	}

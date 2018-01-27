@@ -1,0 +1,28 @@
+<h3 class="pageTitle">
+    <span class="fontWght400">Manage</span>
+    <strong>Category</strong>
+</h3>
+<section class="mainContentWrapper">
+    <h6 class="fontWght600">It’s too easy to upload your own product to the
+        <a href="#" target="_blank">www.jokehub.com.</a> In just two simple steps you can upload it. It’s like playing with the toys, Lorem ipsum dolor
+        sit amet</h6>
+    <p class="lightGrey basicContent fontWght400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare nunc at magna porta rutrum. Fusce quis diam
+        pellentesque enim placerat interdum. Sed cursus mauris orci, quis commodo
+    </p>
+    <table st-table="vm.categoreis" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Header</th>
+                <th>Category Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in vm.categoreis">
+                <td>{{row.CategoryName}}</td>
+                <td>{{row.Header}}</td>
+                <td>{{row.Description}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

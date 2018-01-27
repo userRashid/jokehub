@@ -1,0 +1,65 @@
+<h3 class="pageTitle">
+    <span class="fontWght400">Create</span>
+    <strong>Product</strong>
+</h3>
+<section class="mainContentWrapper">
+    <h6 class="fontWght600">It’s too easy to upload your own product to the
+        <a href="#" target="_blank">www.jokehub.com.</a> In just two simple steps you can upload it. It’s like playing with the toys, Lorem ipsum dolor
+        sit amet</h6>
+    <p class="lightGrey basicContent fontWght400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare nunc at magna porta rutrum. Fusce quis diam
+        pellentesque enim placerat interdum. Sed cursus mauris orci, quis commodo
+    </p>
+    <div>
+        <div class="text-center">
+            <img src="app/images/createProductSteps.png">
+        </div>
+        <div ng-hide="vm.showCreateProduct">
+            <h6>1. Choose Product category</h6>
+            <div class="flex-container-Center">
+                <div class="product__productBox text-center" ng-repeat="item in vm.category">
+                    <div class="prodct__productBoxCatIcon">
+                        <img src="app/images/bag.png">
+                    </div>
+                    <h6 class="text-center">{{::item.CategoryName}}</h6>
+                    <p class="basicContent text-center">{{::item.Description}}</p>
+                    <button type="button" class="btn btn-primary" ng-click="vm.selectCategory(item)">Select {{::item.CategoryName}}</button>
+                </div>
+            </div>
+        </div>
+        <div ng-show="vm.showCreateProduct" class="row">
+            <div class="col-sm-3">
+                <div class="flex-container-Center">
+                    <div class="product__productBox text-center">
+                        <div class="prodct__productBoxCatIcon product__viewBox">
+                            <img src="app/images/Salwar-Kameez-Neck-Designs-For-Girls2.jpg" width="100%">
+                        </div>
+                        <span class="badge badge-{{vm.addProduct.IsActive.model ? 'success' : 'warning'}}">
+                            {{vm.addProduct.IsActive.model ? 'Active' : 'Not Active'}}
+                        </span>
+                        <br>
+                        <!-- <button type="button" class="btn btn-primary">{{::vm.categoryName}}</button> -->
+                        <h6 ng-if="vm.addProduct.ProductName.model" class="text-center">
+                            {{vm.addProduct.ProductName.model}}
+                        </h6>
+                        <h5 ng-if="vm.addProduct.Price.model" class="text-center">
+                            <span class="fontWght400">Rs.</span> {{vm.addProduct.Price.model}} /-
+                        </h5>
+                        <p ng-if="vm.addProduct.TotalQuantity.model" class="basicContent text-left">
+                            <span class="badge badge-success">{{vm.addProduct.TotalQuantity.model}}</span>
+                        </p>
+                        <p ng-if="vm.addProduct.ProductDescription.model" class="basicContent text-center">
+                            {{vm.addProduct.ProductDescription.model}}
+                            <!-- </p>
+                        <p ng-if="vm.addProduct.ProductSpecification.model" class="basicContent text-center">
+                            {{vm.addProduct.ProductSpecification.model}}
+                        </p> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div dl-form="addProduct" form-model="vm.createProductModel" mode="inline"></div>
+                <button type="submit" ng-click="vm.createProduct()" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</section>

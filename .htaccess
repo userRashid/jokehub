@@ -8,6 +8,9 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^jokehub.in [NC]
 RewriteRule ^(.*)$ http://www.jokehub.in/$1 [L,R=301,NC]
 
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
+
 RewriteCond $1 ^category
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
