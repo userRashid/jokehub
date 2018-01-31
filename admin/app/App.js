@@ -6,7 +6,7 @@
         'jokehubApp.login',
         'jokehubApp.dashboard',
         'jokehubApp.navigation',
-        'jokehubApp.product',
+        'jokehubApp.joke',
         'jokehubApp.category',
         'jokehubApp.subscriber',
         'smart-table',
