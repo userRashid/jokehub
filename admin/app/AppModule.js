@@ -7,7 +7,7 @@
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             var loggedIn = LoginService.isLogin(),
                 currentUrl = $location.path(),
-                restrictedPage = $.inArray(currentUrl, ['/login']) === -1;
+                restrictedPage = $.inArray(currentUrl, ['/login','/signup']) === -1;
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
             }

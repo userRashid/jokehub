@@ -15,6 +15,9 @@
             vm.isLoading = true;
             LoginService.doLogin(_data).then(function () {
                 vm.isLoading = false;
+            }, function (error) {
+                console.log('Error ', error);
+                vm.isLoading = false;
             });
         }
     }

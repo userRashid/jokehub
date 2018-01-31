@@ -15,8 +15,8 @@
         }
 
         function _doLogin(_loginData) {
-            //var headers = { Authorization: (btoa(_loginData.userName + ':' + _loginData.password)) };
-            return _http._post('authenticate', '', null).then(function (response) {
+            var headers = { Authorization: (btoa(_loginData.userName + ':' + _loginData.password)) };
+            return _http._post('authenticate', '', headers).then(function (response) {
                 console.log('Login ----- ', response);
                 var token = response.data.token_type + ' ' + response.data.access_token;
                 _session.set('token', token);
