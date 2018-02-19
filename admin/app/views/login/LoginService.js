@@ -17,8 +17,7 @@
         function _doLogin(_loginData) {
             var headers = { Authorization: (btoa(_loginData.userName + ':' + _loginData.password)) };
             return _http._post('authenticate', '', headers).then(function (response) {
-                console.log('Login ----- ', response);
-                var token = response.data.token_type + ' ' + response.data.access_token;
+                var token = response.data.token;
                 _session.set('token', token);
                 _state.go('jokehub.dashboard');
             });

@@ -9,55 +9,10 @@
         pellentesque enim placerat interdum. Sed cursus mauris orci, quis commodo
     </p>
     <div>
-        <div class="text-center">
-            <img src="app/images/createProductSteps.png">
-        </div>
-        <div ng-hide="vm.showCreateJoke">
-            <h6>1. Choose Joke category</h6>
-            <div class="flex-container-Center">
-                <div class="product__productBox text-center" ng-repeat="item in vm.joke">
-                    <div class="prodct__productBoxCatIcon">
-                        <img src="app/images/bag.png">
-                    </div>
-                    <h6 class="text-center">{{::item.JokeName}}</h6>
-                    <p class="basicContent text-center">{{::item.Description}}</p>
-                    <button type="button" class="btn btn-primary" ng-click="vm.selectJoke(item)">Select {{::item.JokeName}}</button>
-                </div>
-            </div>
-        </div>
-        <div ng-show="vm.showCreateJoke" class="row">
-            <div class="col-sm-3">
-                <div class="flex-container-Center">
-                    <div class="product__productBox text-center">
-                        <div class="prodct__productBoxCatIcon product__viewBox">
-                            <img src="app/images/Salwar-Kameez-Neck-Designs-For-Girls2.jpg" width="100%">
-                        </div>
-                        <span class="badge badge-{{vm.addJoke.IsActive.model ? 'success' : 'warning'}}">
-                            {{vm.addJoke.IsActive.model ? 'Active' : 'Not Active'}}
-                        </span>
-                        <br>
-                        <!-- <button type="button" class="btn btn-primary">{{::vm.jokeName}}</button> -->
-                        <h6 ng-if="vm.addJoke.JokeName.model" class="text-center">
-                            {{vm.addJoke.JokeName.model}}
-                        </h6>
-                        <h5 ng-if="vm.addJoke.Price.model" class="text-center">
-                            <span class="fontWght400">Rs.</span> {{vm.addJoke.Price.model}} /-
-                        </h5>
-                        <p ng-if="vm.addJoke.TotalQuantity.model" class="basicContent text-left">
-                            <span class="badge badge-success">{{vm.addJoke.TotalQuantity.model}}</span>
-                        </p>
-                        <p ng-if="vm.addJoke.JokeDescription.model" class="basicContent text-center">
-                            {{vm.addJoke.JokeDescription.model}}
-                            <!-- </p>
-                        <p ng-if="vm.addJoke.JokeSpecification.model" class="basicContent text-center">
-                            {{vm.addJoke.JokeSpecification.model}}
-                        </p> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-9">
-                <div dl-form="addJoke" form-model="vm.createJokeModel" mode="inline"></div>
-                <button type="submit" ng-click="vm.createJoke()" class="btn btn-primary">Submit</button>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row" dl-form="addJoke" form-model="vm.createJokeModel"></div>
+                <button type="submit" ng-click="vm.createJoke()" class="btn btn-primary">Create</button>
             </div>
         </div>
     </div>

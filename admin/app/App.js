@@ -8,7 +8,10 @@
         'jokehubApp.navigation',
         'jokehubApp.joke',
         'jokehubApp.category',
-        'jokehubApp.subscriber',
+        'jokehubApp.user',
+        'jokehubApp.promote',
+        'jokehubApp.earning',
+        'jokehubApp.guidelines',
         'smart-table',
         'ngAnimate',
         'toastr'

@@ -42,11 +42,14 @@
                 } else {
                     _h.resolve(response);
                 }
-            }, function (data, status, headers, config) {
-                if (status == 408) {
+            }, function (response) {
+                if (response.status == 408) {
                     Session.remove('token');
                     //Session.remove('username');
                     //Session.remove('user_name');
+                }
+                if (apiPath === 'authenticate') {
+                    _h.reject(response);
                 }
             });
             return _h.promise;

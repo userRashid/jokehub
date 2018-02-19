@@ -14,7 +14,7 @@
 
         function onInit() {
             JokeService.getAllJoke().then(function (response) {
-                vm.products = response.data;
+                vm.jokes = response.data;
             });
         }
     }

@@ -11,15 +11,18 @@ class db {
     function __construct($params=array()) {
 		$this->conn = false;
 		$this->host = 'localhost';
-		
-		$this->user = 'root';
-		$this->password = '';
-		$this->baseName = 'jokehub';
+        $local = false;
+		if($local){
+            $this->user = 'root';
+            $this->password = '';
+            $this->baseName = 'jokehub';
 
-		//$this->user = 'jokehiom_main';
-		//$this->password = ';R1{KCoK1.%c';
-		//$this->baseName = 'jokehiom_main_web';
-		
+        } else {
+            $this->user = 'jokehub';
+            $this->password = '$U-x{fwI(F4e';
+            $this->baseName = 'jokehub';
+        }
+
 		$this->debug = true;
 		$this->connect();
 	}

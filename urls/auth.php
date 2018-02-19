@@ -12,12 +12,11 @@ class db {
 		$this->conn = false;
 		$this->host = 'localhost';
 		
-		//$this->user = 'root';
-		//$this->password = '';
-		//$this->baseName = 'jokehub';
+		$this->user = 'jokehub';
+		$this->password = '$U-x{fwI(F4e';
+		$this->baseName = 'jokehub';
 
 	
-		
 		$this->debug = true;
 		$this->connect();
 	}

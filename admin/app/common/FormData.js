@@ -14,42 +14,20 @@
 
         function _getFormData() {
             return {
-                addProduct:
+                addJoke:
                     [{
-                        label: 'Product Name'
-                        , name: 'ProductName'
+                        label: 'Category'
+                        , name: 'Category'
                         , type: 'dlText'
                     }, {
-                        label: 'Product Description'
-                        , name: 'ProductDescription'
+                        label: 'Joke'
+                        , name: 'JokeContent'
                         , type: 'dlTextarea'
-                    }, {
-                        label: 'Total Quantity'
-                        , name: 'TotalQuantity'
-                        , type: 'dlText'
-                    }, {
-                        label: 'Product Specification'
-                        , name: 'ProductSpecification'
-                        , type: 'dlTextarea'
-                        , placeholder: 'Comment...'
-                    }, {
-                        label: 'Price'
-                        , name: 'Price'
-                        , type: 'dlText'
-                    }, {
-                        label: 'Is Active'
-                        , name: 'IsActive'
-                        , type: 'dlCheckbox'
-                        , default: null
                     }],
                 addCategory: [
                     {
                         label: 'Category Name'
                         , name: 'CategoryName'
-                        , type: 'dlText'
-                    }, {
-                        label: 'Category Header'
-                        , name: 'Header'
                         , type: 'dlText'
                     }, {
                         label: 'Category Description'

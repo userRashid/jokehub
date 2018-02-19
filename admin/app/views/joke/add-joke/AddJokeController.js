@@ -12,15 +12,6 @@
 
         onInit();
 
-        var jokeId = null;
-        vm.showCreateJoke = false;
-
-        vm.selectJoke = function (joke) {
-            vm.showCreateJoke = true;
-            vm.jokeName = joke.JokeName;
-            jokeId = joke.JokeId;
-        };
-
         vm.createJoke = function () {
             var createJokeModel = vm.createJokeModel.getModel();
             createJokeModel.JokeId = jokeId;
@@ -28,9 +19,9 @@
         };
 
         function onInit() {
-            CategoryService.getAllCategory().then(function (response) {
+            /* CategoryService.getAllCategory().then(function (response) {
                 vm.joke = response.data;
-            });
+            }); */
         }
     }
 })();

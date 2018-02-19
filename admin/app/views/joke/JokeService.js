@@ -17,7 +17,7 @@
         }
 
         function _getAllJoke(model) {
-            return Http._get('api/products/all');
+            return Http._get('content/all');
         }
     }
 })();
