@@ -21,6 +21,19 @@
       </ul>
     </li>
     <li class="nav-item">
+      <a class="nav-link" ng-class="vm.isSelected('add-category') || vm.isSelected('manage-category')">
+        <i class="downarrow-icon fa fa-list fa-2x"></i>
+        Category</a>
+      <ul class="subMenu">
+        <li>
+          <a class="nav-link" ui-sref="jokehub.addCategory">Add Category</a>
+        </li>
+        <li>
+          <a class="nav-link" ui-sref="jokehub.manageCategory">Manage Category</a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" ui-sref="jokehub.manageEarning" ng-class="vm.isSelected('manage-earning')">
         <i class="downarrow-icon fa fa-inr fa-2x"></i>
         Earning</a>

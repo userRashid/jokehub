@@ -13,15 +13,15 @@
         <thead>
             <tr>
                 <th>Category Name</th>
-                <th>Header</th>
-                <th>Category Description</th>
+                <th>Is Publish</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="row in vm.categoreis">
-                <td>{{row.CategoryName}}</td>
-                <td>{{row.Header}}</td>
-                <td>{{row.Description}}</td>
+                <td>{{row.n_title}}</td>
+                <td>
+                    <span class="badge badge-pill badge-{{row.n_status === '1' ? 'success' : 'warning' }}">{{row.n_status === '1' ? 'Active' : 'Deactive' }}</span>
+                </td>
             </tr>
         </tbody>
     </table>

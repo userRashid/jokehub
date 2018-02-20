@@ -11,11 +11,11 @@
         }
 
         function _getAllCategory(model) {
-            return Http._get('api/category/all');
+            return Http._get('category/all');
         }
 
         function _createCategory(data) {
-            return Http._post('api/category/add', data).then(function (response) {
+            return Http._post('category/add', data).then(function (response) {
                 Notification.notify('success', 'Success', ' New Category added ');
             });
         }

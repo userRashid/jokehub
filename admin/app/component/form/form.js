@@ -40,7 +40,7 @@
 
         function renderHTML() {
             var html = '';
-            html += '<form name="dl-{{formName}}-form" class="clearfix">';
+            html += '<form class="w-100" name="dl-{{formName}}-form" class="clearfix">';
             html += '<div ng-class="getClass(item)" ng-repeat="item in formItems" ng-class="{\'selected\':$odd}" class="form-group" ng-switch on="item.type">';
             html += '<label ng-if="item.label && item.type !== \'dlCheckbox\'">{{item.label}}</label>';
             html += '<div      ng-switch-when="dlText"      data-dl-text="item" ></div>';

@@ -11,7 +11,7 @@
         }
 
         function _createJoke(model) {
-            Http._post('api/joke/add/product', model).then(function () {
+            Http._post('content/add', model).then(function () {
                 Notification.notify('success', 'Success', ' New Joke added ');
             });
         }
