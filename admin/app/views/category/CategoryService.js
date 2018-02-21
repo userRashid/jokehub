@@ -2,9 +2,9 @@
     angular.module('jokehubApp.category')
         .factory('CategoryService', _CategoryService);
 
-    _CategoryService.$inject = ['Http', 'Notification'];
+    _CategoryService.$inject = ['Http', 'Notification', '$state'];
 
-    function _CategoryService(Http, Notification) {
+    function _CategoryService(Http, Notification, _state) {
         return {
             getAllCategory: _getAllCategory,
             createCategory: _createCategory
@@ -17,6 +17,7 @@
         function _createCategory(data) {
             return Http._post('category/add', data).then(function (response) {
                 Notification.notify('success', 'Success', ' New Category added ');
+                _state.go('jokehub.manageCategory');
             });
         }
     }

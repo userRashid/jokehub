@@ -46,6 +46,8 @@
             html += '<div      ng-switch-when="dlText"      data-dl-text="item" ></div>';
             html += '<div      ng-switch-when="dlTextarea"  data-dl-textarea="item"></div>';
             html += '<div      ng-switch-when="dlCheckbox"  data-dl-checkbox="item"></div>';
+            html += '<div      ng-switch-when="dlNumber"    data-dl-number="item"></div>';
+            html += '<div      ng-switch-when="dlSelect"    data-dl-select="item"></div>';
             html += '<div      ng-switch-default style="border: 1px solid #c9302c;">{{item.type}}</div>';
             html += '<div class="separator"></div>';
             html += '</div>';

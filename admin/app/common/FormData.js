@@ -5,11 +5,26 @@
         .module('jokehubApp.common')
         .factory('FormData', _FormData);
 
-    _FormData.$inject = [];
+    _FormData.$inject = ['CategoryService', '$q'];
 
-    function _FormData() {
+    function _FormData(CategoryService, $q) {
         return {
             getForm: _getForm
+        }
+
+        function categoryData() {
+            var _d = $q.defer();
+            CategoryService.getAllCategory().then(function (_data) {
+                var _temp = [];
+                _data.data.forEach(item => {
+                    var _obj = {};
+                    _obj.key = item.id;
+                    _obj.value = item.name;
+                    _temp.push(_obj);
+                });
+                _d.resolve(_temp);
+            });
+            return _d.promise;
         }
 
         function _getFormData() {
@@ -18,10 +33,15 @@
                     [{
                         label: 'Category'
                         , name: 'Category'
+                        , type: 'dlSelect'
+                        , values: categoryData()
+                    }, {
+                        label: 'Joke Title'
+                        , name: 'Title'
                         , type: 'dlText'
                     }, {
                         label: 'Joke'
-                        , name: 'JokeContent'
+                        , name: 'Content'
                         , type: 'dlTextarea'
                     }],
                 addCategory: [

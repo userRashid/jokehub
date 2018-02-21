@@ -18,10 +18,12 @@
         </thead>
         <tbody>
             <tr ng-repeat="row in vm.jokes">
-                <td>{{row.co_content}}</td>
-                <td>{{row.n_type}}</td>
                 <td>
-                    <span class="badge badge-pill badge-{{row.n_status === '1' ? 'success' : 'warning' }}">{{row.n_status === '1' ? 'Active' : 'Deactive' }}</span>
+                    <div class="wrap-text">{{row.description}}</div>
+                </td>
+                <td>{{row.name}}</td>
+                <td>
+                    <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">{{row.isActive === '1' ? 'Active' : 'Deactive' }}</span>
                 </td>
             </tr>
         </tbody>

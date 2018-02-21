@@ -14,14 +14,13 @@
 
         vm.createJoke = function () {
             var createJokeModel = vm.createJokeModel.getModel();
-            createJokeModel.JokeId = jokeId;
             JokeService.createJoke(createJokeModel);
         };
 
         function onInit() {
-            /* CategoryService.getAllCategory().then(function (response) {
-                vm.joke = response.data;
-            }); */
+            CategoryService.getAllCategory().then(function (response) {
+                vm.allCategories = response.data;
+            });
         }
     }
 })();
