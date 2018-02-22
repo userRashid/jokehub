@@ -17,5 +17,9 @@
                 vm.categoreis = response.data;
             });
         }
+
+        this.modifyStatus = function (row) {
+            CategoryService.modifyStatus(row);
+        }
     }
 })();

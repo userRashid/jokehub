@@ -14,6 +14,7 @@
                 <th>Joke</th>
                 <th>Category</th>
                 <th>Is Publish</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +24,14 @@
                 </td>
                 <td>{{row.name}}</td>
                 <td>
-                    <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">{{row.isActive === '1' ? 'Active' : 'Deactive' }}</span>
+                    <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
+                        {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
+                    </span>
+                </td>
+                <td>
+                    <button ng-click="vm.modifyStatus(row)" type="button" class="btn btn-sm btn-outline-{{row.isActive === '0' ? 'success' : 'warning' }}">
+                        {{row.isActive === '1' ? 'Unpublish' : 'Publish' }}
+                    </button>
                 </td>
             </tr>
         </tbody>

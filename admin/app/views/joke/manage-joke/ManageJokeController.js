@@ -17,5 +17,9 @@
                 vm.jokes = response.data;
             });
         }
+
+        this.modifyStatus = function (row) {
+            JokeService.modifyStatus(row);
+        }
     }
 })();
