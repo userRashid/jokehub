@@ -3,7 +3,7 @@
     <div class="navbar p-x-0">
         <ul class="nav navbar-nav">
             <li class="nav-item active">
-                <span class="nav-link">Copyright &copy; JokeHub.in 2018</span>
+                <span class="nav-link">Copyright &copy; TheJokeHub.com 2018</span>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/privacy-policy">Privacy</a>

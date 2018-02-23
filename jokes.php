@@ -48,10 +48,7 @@
                     $main_query = "select * from jh_main_category M, jh_node N where  M.n_id = N.n_id and 
                         N.n_status = 1 and M.mc_id = ".$id;
                     $main_category = $bdd->getOne($main_query);
-                    //echo '<pre>';
-                    //print_r($main_category);
-                    //echo '</pre>';
-                ?>    
+                ?>
                 <!-- Blog Post -->
 
                 <!-- Title -->

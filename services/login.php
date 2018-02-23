@@ -2,8 +2,6 @@
 
 function authenticate($app){
 	try {
-        echo '<pre>';
-        print_r($app);
         $dbCon = getConnection();
         $auth = new Authenticate();
 		$is_login = $auth->validateUser($app,true);

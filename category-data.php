@@ -41,7 +41,6 @@
                                 echo "<h5>".$value['n_title']."</h5>";
                                 echo "<p>".$value['co_content']."</p>";
                             echo "</div>";
-                            //print_r($value);
                         echo "</div>";
                     }
                 ?>

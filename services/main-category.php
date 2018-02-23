@@ -58,8 +58,6 @@ function createMainCategory($app){
  function updateMainCategory($id,$app) {
  	$request = $app->request();
  	$body = json_decode($request->getBody());
- 	echo '<pre>';
- 	print_r($body);
     $dbCon = getConnection();
     $n_title     = $body->name;
     $n_desc = $body->description;   

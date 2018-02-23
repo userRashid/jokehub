@@ -46,11 +46,6 @@ function getStatus($id = null){
 function createStatus($app){
 
     $login_detail = getLogin($app,false);
-
-    echo '<pre>';
-
-    print_r($login_detail);
-
     $request = $app->request();
     $body = json_decode($request->getBody());
     $status_data = $body[0]->status;
