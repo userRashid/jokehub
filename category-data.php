@@ -33,7 +33,6 @@
                 foreach ($content as $value) { ?>
                     <div class='card my-4'>
                         <div class='card-body'>
-                            <h5><?php echo $value['n_title']; ?></h5>
                             <p><?php echo $value['co_content']; ?></p>
                             <i style="cursor: pointer" class="fa fa-2x fa-thumbs-o-up text-primary"></i>
                             <i style="cursor: pointer" class="px-2 fa fa-2x fa-smile-o text-success"></i>
