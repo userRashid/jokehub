@@ -18,7 +18,11 @@
             var headers = { Authorization: (btoa(_loginData.userName + ':' + _loginData.password)) };
             return _http._post('authenticate', '', headers).then(function (response) {
                 var token = response.data.token;
+                var user_name = response.data.name;
+                var privilege = response.data.privilege;
                 _session.set('token', token);
+                _session.set('user_name', user_name);
+                _session.set('privilege', privilege);
                 _state.go('jokehub.dashboard');
             });
         }

@@ -12,6 +12,14 @@
                     controller: 'AddCategoryController as vm'
                 }
             }
+        }).state('jokehub.addMainCategory', {
+            url: '/add-main-category',
+            views: {
+                'content@jokehub': {
+                    templateUrl: 'app/views/category/add-main-category/add-main-category.html',
+                    controller: 'AddMainCategoryController as vm'
+                }
+            }
         }).state('jokehub.manageCategory', {
             url: '/manage-category',
             views: {

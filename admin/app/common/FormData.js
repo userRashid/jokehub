@@ -36,10 +36,6 @@
                         , type: 'dlSelect'
                         , values: categoryData()
                     }, {
-                        label: 'Joke Title'
-                        , name: 'Title'
-                        , type: 'dlText'
-                    }, {
                         label: 'Joke'
                         , name: 'Content'
                         , type: 'dlTextarea'
@@ -52,6 +48,17 @@
                     }, {
                         label: 'Category Description'
                         , name: 'Description'
+                        , type: 'dlTextarea'
+                    }
+                ],
+                addMainCategory: [
+                    {
+                        label: 'Main Category Name'
+                        , name: 'MainCategoryName'
+                        , type: 'dlText'
+                    }, {
+                        label: 'Main Category Description'
+                        , name: 'MainCategoryDescription'
                         , type: 'dlTextarea'
                     }
                 ]
