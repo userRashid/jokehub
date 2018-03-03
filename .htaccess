@@ -11,9 +11,10 @@ RewriteRule ^(.*)$ http://www.jokehub.in/$1 [L,R=301,NC]
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
 
-RewriteCond $1 ^category
+RewriteCond $1 ^
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ urls/url-main-category.php?q=$1 [L,QSA]
+
 #RewriteRule ^category/([0-9a-zA-Z-]+).html$ urls/url-main-category.php?q=$1 [L,QSA]
 

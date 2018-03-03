@@ -1,20 +1,8 @@
-<!-- Footer -->
-<footer>
-    <div class="navbar p-x-0">
-        <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <span class="nav-link">Copyright &copy; TheJokeHub.com 2018</span>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/privacy-policy">Privacy</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Disclaimer</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About us</a>
-            </li>
-        </ul>
+<footer class="py-2 border-top">
+    <div class="container text-center">
+        <p class="m-0 text-center">Copyright &copy; TheJokeHub.com 2018</p>
+        <a href="/privacy-policy" class="badge">Privacy</a>
+        <a href="#" class="badge">Disclaimer</a>
+        <a href="#" class="badge">About us</a>
     </div>
-    <!-- /.row -->
 </footer>

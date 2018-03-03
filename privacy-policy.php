@@ -2,29 +2,23 @@
     include('include/auth.php');
     $bdd = new db();
 ?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Privacy Policy - Joke Hub</title>
+    <title>Privacy Policy - The Joke Hub</title>
     <?php 
         include 'include/style.php';
     ?>
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
     <?php
         include 'include/nav.php';
     ?>
     <div class="container">
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-lg-8">
                 <img class="w-100" src="/images/privacy-policy.jpg" alt="">
                 <hr>
@@ -51,7 +45,7 @@
                     </p>
                     <h5>Terms and Conditions</h5>
                     <p>
-                        Please also visit our Terms and Conditions section establishing the use, disclaimers, and limitations of liability governing the use of our website at <a href="http://www.jokehub.in">http://www.jokehub.in</a>
+                        Please also visit our Terms and Conditions section establishing the use, disclaimers, and limitations of liability governing the use of our website at <a href="http://www.thejokehub.com">http://www.thejokehub.com</a>
                     </p>    
                     <h5>Your Consent</h5>
                     <p>
@@ -69,12 +63,9 @@
                 ?>
             </div>
         </div>
-        <hr>
-        <?php 
-            include 'include/footer.php';
-        ?>
     </div>
-    <?php 
+    <?php
+        include 'include/footer.php';
         include '/include/script.php';
     ?>
 </body>
