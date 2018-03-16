@@ -1,3 +1,24 @@
+<div class="modal fade" id="editContent" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="filer">Edit Joke</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" dl-form="addJoke" form-model="vm.updateJokeModel"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="vm.update()" data-dismiss="modal">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Model Popup -->
+
 <h3 class="pageTitle">
     <span class="fontWght400">Manage</span>
     <strong>Jokes</strong>
@@ -20,15 +41,16 @@
         <tbody>
             <tr ng-repeat="row in vm.jokes">
                 <td>
-                    <div class="wrap-text">{{row.description}}</div>
+                    <div class="wrap-text">{{row.Content}}</div>
                 </td>
-                <td>{{row.name}}</td>
+                <td>{{row.Category}}</td>
                 <td>
                     <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
                         {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
                     </span>
                 </td>
                 <td>
+                    <button ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="btn btn-sm btn-outline-success">Edit</button>
                     <button ng-click="vm.modifyStatus(row)" type="button" class="btn btn-sm btn-outline-{{row.isActive === '0' ? 'success' : 'warning' }}">
                         {{row.isActive === '1' ? 'Unpublish' : 'Publish' }}
                     </button>

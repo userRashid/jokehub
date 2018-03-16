@@ -31,8 +31,18 @@
             }
         }
 
-        function _setModel() {
-
+        function _setModel(models) {
+            this.data.forEach(e => {
+                for (var key in models) {
+                    if (e.name === key) {
+                        if (e.type === 'dlMultiSelect') {
+                            console.log('Need to work on it', key, e);
+                        } else {
+                            e.model = models[key];
+                        }
+                    }
+                }
+            });
         }
 
         function _getModel() {
