@@ -13,6 +13,7 @@
         'jokehubApp.earning',
         'jokehubApp.guidelines',
         'jokehubApp.signup',
+        'jokehubApp.confirm',
         'smart-table',
         'ngAnimate',
         'toastr'
