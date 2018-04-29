@@ -13,9 +13,10 @@
         }
 
         function _doSignup(_signupData) {
-            return _http._post('signup', _signupData).then(function (response) {
-                _state.go('jokehub.login');
-            });
+            return _http._post('signup', _signupData);
+            // .then(function (response) {
+            //     _state.go('jokehub.login');
+            // });
         }
     }
 })();

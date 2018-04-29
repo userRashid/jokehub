@@ -3,11 +3,17 @@
     <div class="text-center">
       <img src="app/images/logo.png" />
     </div>
-    <div class="alert alert-success" role="alert">
-      This is a success alert—check it out!
+    <div ng-if="vm.isSuccess">
+      <div class="alert alert-success" role="alert">
+        Your email is successfuly verified
+        <br /> You can login now.
+      </div>
+      <div class="checkbox">
+        <a href="#!/login">Login</a>
+      </div>
     </div>
-    <div class="alert alert-danger" role="alert">
-      This is a danger alert—check it out!
+    <div ng-if="vm.isError" class="alert alert-danger" role="alert">
+      Something went wrong.
     </div>
   </form>
 </div>

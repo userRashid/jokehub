@@ -12,8 +12,12 @@
         vm.isLoading = false;
         vm.doSignup = function (_data) {
             vm.isLoading = true;
-            SignupService.doSignup(_data).then(function () {
+            vm.showMsg = false;
+            SignupService.doSignup(_data).then(function (r) {
                 vm.isLoading = false;
+                vm.showMsg = true;
+                vm.name = r.data.name;
+                vm.email = r.data.email;
             }, function (error) {
                 console.log('Error', error);
                 vm.isLoading = false;

@@ -10,7 +10,9 @@
     function _ConfirmController(ConfirmService, $stateParams) {
         var vm = this;
         vm.confirmId = $stateParams.id;
-        console.log(vm.confirmId);
-        ConfirmService.doConfirm(vm.confirmId)
+        vm.isError = false;
+        ConfirmService.doConfirm(vm.confirmId).then(function (response) {
+            vm.isSuccess = true;
+        });
     }
 })();

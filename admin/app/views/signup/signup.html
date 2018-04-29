@@ -1,6 +1,6 @@
 <div class="liquidHgt loginBG">
   <form class="form-signin">
-    <fieldset ng-disabled="vm.isLoading">
+    <fieldset ng-disabled="vm.isLoading" ng-if="!vm.showMsg">
       <div class="text-center">
         <img src="app/images/logo.png" />
       </div>
@@ -18,5 +18,17 @@
       <button class="btn btn-lg btn-primary btn-block loginButton" ng-click="vm.doSignup(signup)" type="submit">
         <i ng-show="vm.isLoading" class="fa fa-spinner fa-pulse fa-1x fa-fw"></i> Signup</button>
     </fieldset>
+    <div class="alert alert-success" role="alert" ng-if="vm.showMsg">
+      Hey
+      <b>{{vm.name}}</b>,
+      <br />
+      <br /> Please check your email
+      <b>
+        <em>'{{vm.email}}'</em>
+      </b> for complete your registration with us.
+      <br />
+      <br/>Thanks,
+      <br />TheJokeHub Team
+    </div>
   </form>
 </div>
