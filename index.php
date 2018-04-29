@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>The Joke Hub</title>
+    <title>The Joke Hub - thejokehub.com Great Sense of Humour</title>
+    <meta name="description" content="At thejokehub.com we have Jokes, Santa Banta Jokes, Morning Jokes, Teacher-Student Jokes,Funny Jokes, Marriage Jokes, Political Jokes, Drinking Jokes, Women Jokes" />
+    <meta name="keyword" content="The Joke Hub - Great Sense of Humour" />
     <?php 
         include 'include/style.php';
     ?>
@@ -29,11 +31,12 @@
             <div class="row">
                 <div class="col align-self-end"></div>
                 <div class="col-lg-8 align-self-end text-center ">
-                    <h1 class="display-4 mt-4">Get Paid to Write</h1>
+                    <h6>Have a Great Sense of Humour?</h6>
+                    <h1 class="display-4 mt-4">Write Jokes & Get Paid</h1>
                     <h2 class="h1 mt-2">Jokes on TheJokeHub</h2>
-                    <h3 class="text-info mt-2 font-weight-bold">Earn Rs 1000 - Rs 10000 Per Month!</h3>
+                    <h3 class="text-info mt-2 font-weight-bold">You can earn upto Rs.10000 per month!</h3>
                     <button onclick="GoTo();" type="button" class="btn btn-outline-primary mt-4">
-                        <span class="h3"> Click Here To Start Now</span>
+                        <span class="h3">Let’s Get Started</span>
                     </button>
                 </div>
             </div>
