@@ -20,7 +20,7 @@
         </li>
       </ul>
     </li>
-    <li class="nav-item">
+    <li jh-privilege="ADMIN" class="nav-item">
       <a class="nav-link" ng-class="vm.isSelected('add-category') || vm.isSelected('manage-category')">
         <i class="downarrow-icon fa fa-list fa-2x"></i>
         Category</a>
@@ -41,7 +41,7 @@
         <i class="downarrow-icon fa fa-inr fa-2x"></i>
         Earning</a>
     </li>
-    <li class="nav-item">
+    <li jh-privilege="ADMIN" class="nav-item">
       <a class="nav-link" ui-sref="jokehub.manageUser" ng-class="vm.isSelected('manage-user')">
         <i class="downarrow-icon fa fa-user fa-2x"></i>
         User</a>

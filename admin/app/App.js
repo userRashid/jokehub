@@ -14,6 +14,7 @@
         'jokehubApp.guidelines',
         'jokehubApp.signup',
         'jokehubApp.confirm',
+        'jokehubApp.privilege',
         'smart-table',
         'ngAnimate',
         'toastr'

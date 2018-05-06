@@ -35,13 +35,13 @@
                 <th>Joke</th>
                 <th>Category</th>
                 <th>Is Publish</th>
-                <th>Action</th>
+                <th jh-privilege="ADMIN">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="row in vm.jokes">
                 <td>
-                    <div class="wrap-text">{{row.Content}}</div>
+                    <div class="wrap-text">{{row.description}}</div>
                 </td>
                 <td>{{row.Category}}</td>
                 <td>
@@ -49,7 +49,7 @@
                         {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
                     </span>
                 </td>
-                <td>
+                <td jh-privilege="ADMIN">
                     <button ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="btn btn-sm btn-outline-success">Edit</button>
                     <button ng-click="vm.modifyStatus(row)" type="button" class="btn btn-sm btn-outline-{{row.isActive === '0' ? 'success' : 'warning' }}">
                         {{row.isActive === '1' ? 'Unpublish' : 'Publish' }}

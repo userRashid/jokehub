@@ -10,19 +10,12 @@
     function _ManageJokeController(JokeService) {
         var vm = this;
 
-        var _data = [{
-            Content: 'description',
-            Category: 'name',
-            isActive: true
-        }]
-
         onInit();
 
         function onInit() {
-            vm.jokes = _data;
-            /* JokeService.getAllJoke().then(function (response) {
+            JokeService.getAllJoke().then(function (response) {
                 vm.jokes = response.data;
-            }); */
+            });
         }
 
         this.edit = function (data) {
