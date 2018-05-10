@@ -381,3 +381,68 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.cursor {
+  cursor: pointer;
+}
+
+.r3_counter_box {
+  -ms-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+  min-height: 100px;
+  background: #ffffff;
+  text-align: center;
+  position: relative;
+}
+
+.r3_counter_box .fa {
+  margin-right: 0px;
+  width: 66px;
+  height: 130px;
+  text-align: center;
+  line-height: 105px;
+  font-size: 3.5em;
+}
+
+.stats {
+  overflow: hidden;
+  border-top: 1px solid #DDD;
+  background: #f9f9f9;
+  padding: 1.5em;
+}
+
+.r3_counter_box h5 {
+  margin: 10px 0;
+  color: #575757;
+  font-size: 2.5em;
+}
+
+.stats span {
+  color: #999;
+  font-size: 14px;
+}
+
+/* Colos */
+
+.grow {
+  position: absolute;
+  top: 47%;
+  left: 20%;
+  width: 160px;
+  height: 30px;
+  padding: .4em 0 0;
+}
+
+.grow p {
+  color: #fff;
+  margin: 0;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.grow1, .grow3, .grow2 {
+  left: 36%;
+}

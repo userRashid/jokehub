@@ -8,13 +8,35 @@
     _ManageJokeController.$inject = ['JokeService'];
 
     function _ManageJokeController(JokeService) {
+
+        /////////////////////////////////////////////////////////////
+        // Locals
+        /////////////////////////////////////////////////////////////
+
+        function getContentStatus(data, status) {
+            var temp = [];
+            data.forEach(function (e) {
+                if (e.status === status) {
+                    temp.push(e);
+                }
+            });
+            return temp;
+        }
+
+        /////////////////////////////////////////////////////////////
+
         var vm = this;
 
         onInit();
 
         function onInit() {
             JokeService.getAllJoke().then(function (response) {
-                vm.jokes = response.data;
+                vm.approvedContent = getContentStatus(response.data, 'approve');
+                vm.approvedCount = vm.approvedContent.length;
+                vm.pendingContent = getContentStatus(response.data, 'pending');
+                vm.pendingCount = vm.pendingContent.length;
+                vm.rejectedContent = getContentStatus(response.data, 'reject');
+                vm.rejectedCount = vm.rejectedContent.length;
             });
         }
 
@@ -29,6 +51,14 @@
 
         this.modifyStatus = function (row) {
             JokeService.modifyStatus(row);
+        }
+
+        this.view = function (row) {
+            this.viewData = row;
+        }
+
+        this.changeStatus = function (nid, isForApprove) {
+            JokeService.changeStatus(nid, isForApprove);
         }
     }
 })();

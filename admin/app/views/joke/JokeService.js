@@ -8,7 +8,8 @@
         return {
             createJoke: _createJoke,
             getAllJoke: _getAllJoke,
-            modifyStatus: _modifyStatus
+            modifyStatus: _modifyStatus,
+            changeStatus: _changeStatus
         }
 
         function _createJoke(model) {
@@ -29,7 +30,18 @@
                 url = 'content/publish';
             }
             Http._post(url, model).then(function () {
-                console.log('Called');
+                Notification.notify('success', 'Success', ' Content modified successfully');
+            });
+        }
+
+        function _changeStatus(nid, isForApprove) {
+            var model = { 'id': nid };
+            if (isForApprove) {
+                model.status = 'approve';
+            } else {
+                model.status = 'reject';
+            }
+            Http._post('content/status', model).then(function () {
                 Notification.notify('success', 'Success', ' Content modified successfully');
             });
         }

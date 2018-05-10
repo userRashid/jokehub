@@ -19,6 +19,40 @@
 </div>
 <!-- End Model Popup -->
 
+<div class="modal fade" id="viewContent" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="d-flex justify-content-between w-100">
+                    <div>{{vm.viewData.user_name}}</div>
+                    <div>Hello</div>
+                    <div>
+                        <button type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)" class="btn btn-success btn-sm">
+                            <i class="fa fa-check"></i> Approve
+                        </button>
+                        <button type="button" ng-click="vm.changeStatus(vm.viewData.nid, false)" class="btn btn-danger btn-sm">
+                            <i class="fa fa-times"></i> Reject
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                {{vm.viewData.description}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Model Popup -->
+
 <h3 class="pageTitle">
     <span class="fontWght400">Manage</span>
     <strong>Jokes</strong>
@@ -29,33 +63,114 @@
     <p class="lightGrey basicContent fontWght400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare nunc at magna porta rutrum. Fusce quis diam
         pellentesque enim placerat interdum. Sed cursus mauris orci, quis commodo
     </p>
-    <table st-table="vm.jokes" class="table table-striped">
-        <thead>
-            <tr>
-                <th>Joke</th>
-                <th>Category</th>
-                <th>Is Publish</th>
-                <th jh-privilege="ADMIN">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="row in vm.jokes">
-                <td>
-                    <div class="wrap-text">{{row.description}}</div>
-                </td>
-                <td>{{row.Category}}</td>
-                <td>
-                    <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
-                        {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
-                    </span>
-                </td>
-                <td jh-privilege="ADMIN">
-                    <button ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="btn btn-sm btn-outline-success">Edit</button>
-                    <button ng-click="vm.modifyStatus(row)" type="button" class="btn btn-sm btn-outline-{{row.isActive === '0' ? 'success' : 'warning' }}">
-                        {{row.isActive === '1' ? 'Unpublish' : 'Publish' }}
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item cursor" ng-click="vm.selectedTab = 1">
+            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Approved ({{vm.approvedCount}})</a>
+        </li>
+        <li class="nav-item cursor" ng-click="vm.selectedTab = 2">
+            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Pending ({{vm.pendingCount}})</a>
+        </li>
+        <li class="nav-item cursor" ng-click="vm.selectedTab = 3">
+            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Rejected ({{vm.rejectedCount}})</a>
+        </li>
+    </ul>
+    <div ng-init="vm.selectedTab = 1" class="tab-content" id="myTabContent">
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 1}" ng-show="vm.selectedTab === 1" role="tabpanel">
+            <table st-table="vm.jokes" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="border: 0px;">Joke</th>
+                        <th style="border: 0px;">Category</th>
+                        <th style="border: 0px;">Is Publish</th>
+                        <th style="border: 0px;" jh-privilege="ADMIN">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in vm.approvedContent">
+                        <td>
+                            <div class="wrap-text">{{row.description}}</div>
+                        </td>
+                        <td>{{row.Category}}</td>
+                        <td>
+                            <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
+                                {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
+                            </span>
+                        </td>
+                        <td jh-privilege="ADMIN">
+                            <button ng-click="vm.view(row)" data-toggle="modal" data-target="#viewContent" class="btn btn-sm btn-outline-success">View</button>
+                            <button ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="btn btn-sm btn-outline-success">Edit</button>
+                            <button ng-click="vm.modifyStatus(row)" type="button" class="btn btn-sm btn-outline-{{row.isActive === '0' ? 'success' : 'warning' }}">
+                                {{row.isActive === '1' ? 'Unpublish' : 'Publish' }}
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 2}" ng-show="vm.selectedTab === 2" role="tabpanel">
+            <table st-table="vm.jokes" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="border: 0px;">Joke</th>
+                        <th style="border: 0px;">Category</th>
+                        <th style="border: 0px;">Is Publish</th>
+                        <th style="border: 0px;" jh-privilege="ADMIN">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in vm.pendingContent">
+                        <td>
+                            <div class="wrap-text">{{row.description}}</div>
+                        </td>
+                        <td>{{row.Category}}</td>
+                        <td>
+                            <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
+                                {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
+                            </span>
+                        </td>
+                        <td jh-privilege="ADMIN">
+                            <button ng-click="vm.view(row)" data-toggle="modal" data-target="#viewContent" class="btn btn-sm btn-outline-success">View</button>
+                            <button ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="btn btn-sm btn-outline-success">Edit</button>
+                            <button ng-click="vm.modifyStatus(row)" type="button" class="btn btn-sm btn-outline-{{row.isActive === '0' ? 'success' : 'warning' }}">
+                                {{row.isActive === '1' ? 'Unpublish' : 'Publish' }}
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 3}" ng-show="vm.selectedTab === 3" role="tabpanel">
+            <table st-table="vm.jokes" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="border: 0px;">Joke</th>
+                        <th style="border: 0px;">Category</th>
+                        <th style="border: 0px;">Is Publish</th>
+                        <th style="border: 0px;" jh-privilege="ADMIN">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in vm.rejectedContent">
+                        <td>
+                            <div class="wrap-text">{{row.description}}</div>
+                        </td>
+                        <td>{{row.Category}}</td>
+                        <td>
+                            <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
+                                {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
+                            </span>
+                        </td>
+                        <td jh-privilege="ADMIN">
+                            <button ng-click="vm.view(row)" data-toggle="modal" data-target="#viewContent" class="btn btn-sm btn-outline-success">View</button>
+                            <button ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="btn btn-sm btn-outline-success">Edit</button>
+                            <button ng-click="vm.modifyStatus(row)" type="button" class="btn btn-sm btn-outline-{{row.isActive === '0' ? 'success' : 'warning' }}">
+                                {{row.isActive === '1' ? 'Unpublish' : 'Publish' }}
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </section>
