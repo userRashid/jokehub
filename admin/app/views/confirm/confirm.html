@@ -1,0 +1,19 @@
+<div class="liquidHgt loginBG">
+  <form class="form-signin">
+    <div class="text-center">
+      <img src="app/images/logo.png" />
+    </div>
+    <div ng-if="vm.isSuccess">
+      <div class="alert alert-success" role="alert">
+        Your email is successfuly verified
+        <br /> You can login now.
+      </div>
+      <div class="checkbox">
+        <a href="#!/login">Login</a>
+      </div>
+    </div>
+    <div ng-if="vm.isError" class="alert alert-danger" role="alert">
+      Something went wrong.
+    </div>
+  </form>
+</div>

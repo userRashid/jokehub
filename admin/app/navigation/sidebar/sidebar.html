@@ -1,0 +1,60 @@
+<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+  <ul class="nav nav-pills flex-column header__sideNav">
+    <li class="header__logoCntr">JH</li>
+    <li class="nav-item">
+
+      <a class="nav-link" ng-class="vm.isSelected('dashboard')" ui-sref="jokehub.dashboard">
+        <i class="downarrow-icon fa fa-tachometer fa-2x"></i>
+        Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" ng-class="vm.isSelected('add-joke') || vm.isSelected('manage-joke')">
+        <i class="downarrow-icon fa fa-smile-o fa-2x"></i>
+        Jokes</a>
+      <ul class="subMenu">
+        <li>
+          <a class="nav-link" ui-sref="jokehub.addJoke">Add Jokes</a>
+        </li>
+        <li>
+          <a class="nav-link" ui-sref="jokehub.manageJoke">Manage Jokes</a>
+        </li>
+      </ul>
+    </li>
+    <li jh-privilege="ADMIN" class="nav-item">
+      <a class="nav-link" ng-class="vm.isSelected('add-category') || vm.isSelected('manage-category')">
+        <i class="downarrow-icon fa fa-list fa-2x"></i>
+        Category</a>
+      <ul class="subMenu">
+        <li>
+          <a class="nav-link" ui-sref="jokehub.addCategory">Add Category</a>
+        </li>
+        <li>
+          <a class="nav-link" ui-sref="jokehub.addMainCategory">Add Main Category</a>
+        </li>
+        <li>
+          <a class="nav-link" ui-sref="jokehub.manageCategory">Manage Category</a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" ui-sref="jokehub.manageEarning" ng-class="vm.isSelected('manage-earning')">
+        <i class="downarrow-icon fa fa-inr fa-2x"></i>
+        Earning</a>
+    </li>
+    <li jh-privilege="ADMIN" class="nav-item">
+      <a class="nav-link" ui-sref="jokehub.manageUser" ng-class="vm.isSelected('manage-user')">
+        <i class="downarrow-icon fa fa-user fa-2x"></i>
+        User</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" ui-sref="jokehub.promote" ng-class="vm.isSelected('promote')">
+        <i class="downarrow-icon fa fa-globe fa-2x"></i>
+        Promote</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" ui-sref="jokehub.guideLines" ng-class="vm.isSelected('guidelines')">
+        <i class="downarrow-icon fa fa-book fa-2x"></i>
+        Guide Lines</a>
+    </li>
+  </ul>
+</nav>

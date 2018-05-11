@@ -1,0 +1,38 @@
+{
+  "name": "jokehub",
+  "version": "1.0.0",
+  "description": "this is client's offer based project",
+  "main": "app/index.html",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "angular-animate": "^1.6.8",
+    "angular-chart.js": "^1.1.1",
+    "angular-resource": "^1.6.7",
+    "angular-smart-table": "^2.1.11",
+    "angular-toastr": "^2.1.1",
+    "angular-ui-router": "^0.4.3",
+    "bootstrap": "^4.0.0-beta.3",
+    "chart.js": "^2.7.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.9",
+    "tether": "^1.4.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0"
+  },
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "n/a"
+  ],
+  "author": "Rashid,Rahul",
+  "license": "ISC"
+}

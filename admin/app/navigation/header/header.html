@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white flexOverwrite">
+    <ul class="header__nav">
+        <li>
+            <a>
+                <i style="vertical-align:0px;" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                {{::vm.userName}}
+                <i style="vertical-align:0px;" class="fa fa-caret-down"></i>
+            </a>
+        </li>
+        <li>
+            <a>
+                Help
+                <i style="vertical-align:0px;" class="fa fa-info-circle"></i>
+            </a>
+        </li>
+        <li>
+            <a ng-click="vm.logout()">Signout
+                <i style="vertical-align:0px;" class="fa fa-power-off"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
