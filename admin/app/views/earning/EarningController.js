@@ -5,9 +5,17 @@
         .module('jokehubApp.earning')
         .controller('EarningController', _EarningController);
 
-    _EarningController.$inject = [];
+    _EarningController.$inject = ['EarningServices'];
 
-    function _EarningController() {
+    function _EarningController(EarningServices) {
         var vm = this;
+
+        function OnInit() {
+            EarningServices.getEarning().then(function (_data) {
+                vm.earning = _data.data;
+            });
+        }
+
+        OnInit();
     }
 })();
