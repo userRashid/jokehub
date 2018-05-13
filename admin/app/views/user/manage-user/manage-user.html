@@ -1,5 +1,63 @@
+<div class="modal fade" id="viewUser" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="d-flex justify-content-between w-100">
+                    <div>{{vm.viewData.name}}</div>
+                    <div>{{vm.viewData.email}}</div>
+                    <div>
+                        <button type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)" class="btn btn-success btn-sm">
+                            <i class="fa fa-check"></i> Activate
+                        </button>
+                        <button type="button" ng-click="vm.changeStatus(vm.viewData.nid, false)" class="btn btn-danger btn-sm">
+                            <i class="fa fa-times"></i> De-Activate
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h4>{{vm.viewData.title}}</h4>
+                {{vm.viewData.about}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <h3 class="pageTitle">
     <span class="fontWght400">Manage</span>
     <strong>User</strong>
 </h3>
-<section class="mainContentWrapper"></section>
+<section class="mainContentWrapper">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">About</th>
+                <th scope="col" colspan="2">Is Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in vm.users">
+                <th>{{user.name}}</th>
+                <td>{{user.email}}</td>
+                <td>{{user.about}}</td>
+                <td>
+                    <span class="badge badge-pill badge-{{user.isActive === '1' ? 'success' : 'warning' }}">
+                        {{user.isActive === '1' ? 'Active' : 'Deactive' }}
+                    </span>
+                </td>
+                <td>
+                    <button ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="btn btn-sm btn-outline-success">View</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
