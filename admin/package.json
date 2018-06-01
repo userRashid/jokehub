@@ -10,6 +10,7 @@
     "angular-resource": "^1.6.7",
     "angular-smart-table": "^2.1.11",
     "angular-toastr": "^2.1.1",
+    "angular-trix": "^1.0.2",
     "angular-ui-router": "^0.4.3",
     "bootstrap": "^4.0.0-beta.3",
     "chart.js": "^2.7.1",
@@ -21,7 +22,8 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
-    "gulp-sass": "^3.1.0"
+    "gulp-sass": "^3.1.0",
+    "trix": "^0.11.2"
   },
   "scripts": {
     "test": "none"

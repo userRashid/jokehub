@@ -38,7 +38,7 @@
                     }, {
                         label: 'Joke'
                         , name: 'Content'
-                        , type: 'dlTextarea'
+                        , type: 'dlTextEditor'
                     }],
                 addCategory: [
                     {

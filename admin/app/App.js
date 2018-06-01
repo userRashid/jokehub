@@ -1,6 +1,7 @@
 (function () {
     angular.module('jokehubApp', [
         'ui.router',
+        'angularTrix',
         'jokehubApp.component',
         'jokehubApp.common',
         'jokehubApp.login',

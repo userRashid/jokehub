@@ -36,9 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-body">
-                {{vm.viewData.description}}
-            </div>
+            <div class="modal-body" ng-bind-html="vm.displayDescription(vm.viewData.description)"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm">
                     <i class="fa fa-chevron-left"></i>
@@ -88,7 +86,7 @@
                 <tbody>
                     <tr ng-repeat="row in vm.approvedContent">
                         <td>
-                            <div class="wrap-text">{{row.description}}</div>
+                            <div class="wrap-text" ng-bind-html="vm.displayDescription(row.description)"></div>
                         </td>
                         <td>{{row.Category}}</td>
                         <td>
@@ -120,7 +118,7 @@
                 <tbody>
                     <tr ng-repeat="row in vm.pendingContent">
                         <td>
-                            <div class="wrap-text">{{row.description}}</div>
+                            <div class="wrap-text">{{vm.displayDescription(row.description)}}</div>
                         </td>
                         <td>{{row.Category}}</td>
                         <td>

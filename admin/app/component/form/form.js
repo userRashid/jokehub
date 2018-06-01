@@ -43,11 +43,12 @@
             html += '<form class="w-100" name="dl-{{formName}}-form" class="clearfix">';
             html += '<div ng-class="getClass(item)" ng-repeat="item in formItems" ng-class="{\'selected\':$odd}" class="form-group" ng-switch on="item.type">';
             html += '<label ng-if="item.label && item.type !== \'dlCheckbox\'">{{item.label}}</label>';
-            html += '<div      ng-switch-when="dlText"      data-dl-text="item" ></div>';
-            html += '<div      ng-switch-when="dlTextarea"  data-dl-textarea="item"></div>';
-            html += '<div      ng-switch-when="dlCheckbox"  data-dl-checkbox="item"></div>';
-            html += '<div      ng-switch-when="dlNumber"    data-dl-number="item"></div>';
-            html += '<div      ng-switch-when="dlSelect"    data-dl-select="item"></div>';
+            html += '<div      ng-switch-when="dlText"          data-dl-text="item" ></div>';
+            html += '<div      ng-switch-when="dlTextarea"      data-dl-textarea="item"></div>';
+            html += '<div      ng-switch-when="dlCheckbox"      data-dl-checkbox="item"></div>';
+            html += '<div      ng-switch-when="dlNumber"        data-dl-number="item"></div>';
+            html += '<div      ng-switch-when="dlSelect"        data-dl-select="item"></div>';
+            html += '<div      ng-switch-when="dlTextEditor"    data-dl-text-editor="item"></div>';
             html += '<div      ng-switch-default style="border: 1px solid #c9302c;">{{item.type}}</div>';
             html += '<div class="separator"></div>';
             html += '</div>';

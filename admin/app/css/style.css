@@ -375,7 +375,7 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
 
 /* Login Css End */
 
-.wrap-text {
+.wrap-text, .wrap-text>div {
   white-space: nowrap;
   width: 300px;
   overflow: hidden;

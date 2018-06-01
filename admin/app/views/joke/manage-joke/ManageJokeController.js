@@ -5,9 +5,9 @@
         .module('jokehubApp.joke')
         .controller('ManageJokeController', _ManageJokeController);
 
-    _ManageJokeController.$inject = ['JokeService'];
+    _ManageJokeController.$inject = ['JokeService', '$sce'];
 
-    function _ManageJokeController(JokeService) {
+    function _ManageJokeController(JokeService, $sce) {
 
         /////////////////////////////////////////////////////////////
         // Locals
@@ -59,6 +59,10 @@
 
         this.changeStatus = function (nid, isForApprove) {
             JokeService.changeStatus(nid, isForApprove);
+        }
+
+        this.displayDescription = function (html) {
+            return $sce.trustAsHtml(html);
         }
     }
 })();
