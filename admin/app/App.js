@@ -18,6 +18,7 @@
         'jokehubApp.privilege',
         'smart-table',
         'ngAnimate',
-        'toastr'
+        'toastr',
+        'ngImgCrop'
     ])
 })();

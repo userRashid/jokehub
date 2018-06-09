@@ -49,6 +49,10 @@
                         label: 'Category Description'
                         , name: 'Description'
                         , type: 'dlTextarea'
+                    }, {
+                        label: 'Image'
+                        , name: 'image'
+                        , type: 'dlUpload'
                     }
                 ],
                 addMainCategory: [

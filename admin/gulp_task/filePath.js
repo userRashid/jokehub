@@ -16,7 +16,8 @@ exports.FilePath = function () {
             './node_modules/angular-toastr/dist/angular-toastr.js',
             './node_modules/angular-toastr/dist/angular-toastr.tpls.js',
             './node_modules/trix/dist/trix.js',
-            './node_modules/angular-trix/dist/angular-trix.js'
+            './node_modules/angular-trix/dist/angular-trix.js',
+            './node_modules/ng-img-crop/compile/unminified/ng-img-crop.js'
         ];
     }
 
@@ -25,6 +26,7 @@ exports.FilePath = function () {
             './node_modules/bootstrap/dist/css/bootstrap.css',
             './node_modules/font-awesome/css/font-awesome.css',
             './node_modules/angular-toastr/dist/angular-toastr.css',
+            './node_modules/ng-img-crop/compile/unminified/ng-img-crop.css',
             './node_modules/trix/dist/trix.css',
             './app/css/*.css',
             './app/**/*.scss'

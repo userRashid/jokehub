@@ -446,3 +446,10 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
 .grow1, .grow3, .grow2 {
   left: 36%;
 }
+
+.cropArea {
+  background: #E4E4E4;
+  overflow: hidden;
+  width: 500px;
+  height: 350px;
+}

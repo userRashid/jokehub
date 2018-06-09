@@ -49,6 +49,7 @@
             html += '<div      ng-switch-when="dlNumber"        data-dl-number="item"></div>';
             html += '<div      ng-switch-when="dlSelect"        data-dl-select="item"></div>';
             html += '<div      ng-switch-when="dlTextEditor"    data-dl-text-editor="item"></div>';
+            html += '<div      ng-switch-when="dlUpload"        data-dl-upload="item"></div>';
             html += '<div      ng-switch-default style="border: 1px solid #c9302c;">{{item.type}}</div>';
             html += '<div class="separator"></div>';
             html += '</div>';
