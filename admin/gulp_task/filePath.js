@@ -17,7 +17,8 @@ exports.FilePath = function () {
             './node_modules/angular-toastr/dist/angular-toastr.tpls.js',
             './node_modules/trix/dist/trix.js',
             './node_modules/angular-trix/dist/angular-trix.js',
-            './node_modules/ng-img-crop/compile/unminified/ng-img-crop.js'
+            './node_modules/ng-img-crop/compile/unminified/ng-img-crop.js',
+            './node_modules/underscore/underscore-min.js'
         ];
     }
 

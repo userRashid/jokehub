@@ -11,8 +11,10 @@
         var vm = this;
 
         vm.createCategory = function () {
-            var categoryModel = vm.createCategoryModel.getModel();
-            CategoryService.createCategory(categoryModel);
+            vm.createCategoryModel.getModel().then(function (categoryModel) {
+                console.log('*******', categoryModel);
+                //CategoryService.createCategory(categoryModel);
+            });
         }
     }
 })();

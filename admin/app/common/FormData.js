@@ -14,9 +14,12 @@
 
         function categoryData() {
             var _d = $q.defer();
-            CategoryService.getAllCategory().then(function (_data) {
+            CategoryService.getAllCategory().then(function (_response) {
                 var _temp = [];
-                _data.data.forEach(item => {
+                var categories = _.filter(_response.data, function (category) {
+                    return category.isActive !== '0';
+                });
+                categories.forEach(item => {
                     var _obj = {};
                     _obj.key = item.id;
                     _obj.value = item.name;

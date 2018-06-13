@@ -5,9 +5,9 @@
         .module('jokehubApp.common')
         .factory('Form', _Form);
 
-    _Form.$inject = ['FORMS'];
+    _Form.$inject = ['FORMS', 'UploadAPI', '$q'];
 
-    function _Form(FORMS) {
+    function _Form(FORMS, UploadAPI, $q) {
         return {
             getForm: _getForm,
             getFormFunction: _getFormFunction
@@ -46,11 +46,20 @@
         }
 
         function _getModel() {
+            var _d = $q.defer();
             var tempModel = {};
             for (var key in this.data) {
                 tempModel[this.data[key].name] = this.data[key].model;
             }
-            return tempModel;
+            if (tempModel.hasOwnProperty('image')) {
+                UploadAPI._post('upload', tempModel, { "Content-Type": undefined }).then(function (_response) {
+                    tempModel.imgId = _response.data.imageId;
+                    _d.resolve(tempModel);
+                });
+            } else {
+                _d.resolve(tempModel);
+            }
+            return _d.promise;
         }
 
         function _reset() {
