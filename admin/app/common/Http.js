@@ -68,8 +68,9 @@
             return httpRequest('POST', _url, _headers, _data)
         }
 
-        function _put() {
-            console.log('Http Put');
+        function _put(_url, _data, _headers) {
+            if (_headers === undefined) _headers = {};
+            return httpRequest('PUT', _url, _headers, _data)
         }
 
         function _delete() {

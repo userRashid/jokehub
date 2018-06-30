@@ -8,6 +8,7 @@
         return {
             createJoke: _createJoke,
             getAllJoke: _getAllJoke,
+            updateJoke: _updateJoke,
             modifyStatus: _modifyStatus,
             changeStatus: _changeStatus
         }
@@ -48,6 +49,10 @@
 
         function _getAllJoke(model) {
             return Http._get('content/all');
+        }
+
+        function _updateJoke(nid, model) {
+            Http._put('content/' + nid, model);
         }
     }
 })();

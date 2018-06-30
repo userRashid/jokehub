@@ -28,7 +28,7 @@
                 headers: headers,
                 transformRequest: function (data) {
                     var formData = new FormData();
-                    formData.append("_imageData", data.image);
+                    formData.append("_imageData", data);
                     return formData;
                 }
             };

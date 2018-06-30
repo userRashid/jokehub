@@ -291,7 +291,7 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
   font-size: 20px;
   border-top: solid 1px #d7dae3;
   border-bottom: solid 1px #d7dae3;
-  z-index: 1030
+  z-index: 1
 }
 
 .mainContentWrapper {
@@ -452,4 +452,13 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
   overflow: hidden;
   width: 500px;
   height: 350px;
+}
+
+.joke-hub-dp {
+  border-radius: 0px;
+  padding: 0px;
+}
+
+.joke-hub-dp a{
+  padding: 5px 10px;
 }

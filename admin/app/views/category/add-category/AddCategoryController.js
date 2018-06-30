@@ -12,8 +12,7 @@
 
         vm.createCategory = function () {
             vm.createCategoryModel.getModel().then(function (categoryModel) {
-                console.log('*******', categoryModel);
-                //CategoryService.createCategory(categoryModel);
+                CategoryService.createCategory(categoryModel);
             });
         }
     }

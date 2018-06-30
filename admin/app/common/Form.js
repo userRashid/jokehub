@@ -32,9 +32,10 @@
         }
 
         function _setModel(models) {
+            console.log('models =>', models);
             this.data.forEach(e => {
                 for (var key in models) {
-                    if (e.name === key) {
+                    if (e.name === KeyConstant[key]) {
                         if (e.type === 'dlMultiSelect') {
                             console.log('Need to work on it', key, e);
                         } else {
@@ -48,12 +49,18 @@
         function _getModel() {
             var _d = $q.defer();
             var tempModel = {};
+            var imageModel = [];
             for (var key in this.data) {
-                tempModel[this.data[key].name] = this.data[key].model;
+                if (this.data[key].type === 'dlUpload') {
+                    var _model = this.data[key].model;
+                    imageModel.push(_model);
+                } else {
+                    tempModel[this.data[key].name] = this.data[key].model;
+                }
             }
-            if (tempModel.hasOwnProperty('image')) {
-                UploadAPI._post('upload', tempModel, { "Content-Type": undefined }).then(function (_response) {
-                    tempModel.imgId = _response.data.imageId;
+            if (imageModel.length > 0) {
+                UploadAPI._post('upload', imageModel[0], { "Content-Type": undefined }).then(function (_response) {
+                    tempModel.ImgId = _response.data.imageId;
                     _d.resolve(tempModel);
                 });
             } else {

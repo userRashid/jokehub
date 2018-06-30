@@ -41,12 +41,15 @@
         }
 
         this.edit = function (data) {
+            this.editData = data;
             vm.updateJokeModel.setModel(data);
         }
 
         this.update = function () {
-            var model = vm.updateJokeModel.getModel();
-            console.log('Model for Update', model);
+            vm.updateJokeModel.getModel().then(function (model) {
+                var nid = vm.editData.nid;
+                JokeService.updateJoke(nid, model);
+            });
         }
 
         this.modifyStatus = function (row) {

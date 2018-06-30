@@ -20,7 +20,7 @@
         function controller($scope) { }
         function renderHTML() {
             var html = '';
-            html += '<input type="password" ng-model="data.model" class="form-control">'
+            html += '<input type="password" ng-model="data.model" autocomplete="off" class="form-control">'
             return html;
         }
     }

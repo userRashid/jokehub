@@ -13,8 +13,9 @@
         onInit();
 
         vm.createJoke = function () {
-            var createJokeModel = vm.createJokeModel.getModel();
-            JokeService.createJoke(createJokeModel);
+            vm.createJokeModel.getModel().then(function (createJokeModel) {
+                JokeService.createJoke(createJokeModel);
+            });
         };
 
         function onInit() {
