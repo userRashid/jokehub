@@ -68,21 +68,6 @@
                         , name: 'MainCategoryDescription'
                         , type: 'dlTextarea'
                     }
-                ],
-                changePassword: [
-                    {
-                        label: 'Old Password'
-                        , name: 'OldPassword'
-                        , type: 'dlPassword'
-                    }, {
-                        label: 'New Password'
-                        , name: 'NewPassword'
-                        , type: 'dlPassword'
-                    }, {
-                        label: 'Confirm Password'
-                        , name: 'ConfirmPassword'
-                        , type: 'dlPassword'
-                    }
                 ]
             }
         }

@@ -3,9 +3,9 @@
     angular.module('jokehubApp.component')
         .directive('dlChangePassword', _dlChangePassword);
 
-    _dlChangePassword.$inject = ['Http'];
+    _dlChangePassword.$inject = ['Http', 'Notification'];
 
-    function _dlChangePassword(Http) {
+    function _dlChangePassword(Http, Notification) {
         return {
             restrict: 'A'
             , controller: controller
