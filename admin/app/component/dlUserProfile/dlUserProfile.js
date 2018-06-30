@@ -17,6 +17,11 @@
             Http._get('userprofile').then(function (response) {
                 $scope.userProfile = response.data;
             });
+            $scope.updateDetails = function () {
+                $scope.userDetailModel.getModel().then(function (model) {
+                    console.log(' ********** ', model);
+                });
+            }
             // $scope.changePassword = function (data) {
             //     var temp = new Object();
             //     temp.oldpassword = data.oldpassword;
