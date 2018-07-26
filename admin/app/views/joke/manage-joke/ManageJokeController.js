@@ -64,6 +64,12 @@
             JokeService.changeStatus(nid, isForApprove);
         }
 
+        this.stripHtml = function (html) {
+            var tmp = document.createElement("DIV");
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || "";
+        }
+
         this.displayDescription = function (html) {
             return $sce.trustAsHtml(html);
         }

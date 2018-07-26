@@ -1,0 +1,42 @@
+<h3 class="pageTitle">
+    <span class="fontWght400">Content</span>
+    <strong>Management</strong>
+</h3>
+<section class="mainContentWrapper">
+    <h6 class="fontWght600">It’s too easy to upload your own product to the
+        <a href="#" target="_blank">www.jokehub.com.</a> In just two simple steps you can upload it. It’s like playing with the toys, Lorem ipsum dolor
+        sit amet</h6>
+    <p class="lightGrey basicContent fontWght400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare nunc at magna porta rutrum. Fusce quis diam
+        pellentesque enim placerat interdum. Sed cursus mauris orci, quis commodo
+    </p>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item cursor" ng-click="vm.selectedTab = 1">
+            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Reject Reason</a>
+        </li>
+    </ul>
+    <div ng-init="vm.selectedTab = 1" class="tab-content" id="myTabContent">
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 1}" ng-show="vm.selectedTab === 1" role="tabpanel">
+            <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">
+                <thead>
+                    <tr>
+                        <th style="border: 0px;">Reject Reason</th>
+                        <th style="width: 150px; border: 0px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in vm.rejectReason">
+                        <td>{{row.reason}}</td>
+                        <td style="position: relative;">
+                            <div class="action-menu">
+                                <i ng-click="vm.modifyStatus(row)" class="fa fa-cloud-upload cursor"></i>
+                                <i ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
+                                <i ng-click="vm.view(row)" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
+                                <i class="fa fa-trash-o cursor"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

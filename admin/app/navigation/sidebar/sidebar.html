@@ -56,5 +56,15 @@
         <i class="downarrow-icon fa fa-book fa-2x"></i>
         Guide Lines</a>
     </li>
+    <li jh-privilege="ADMIN" class="nav-item">
+      <a class="nav-link" ng-class="vm.isSelected('content-management')">
+        <i class="downarrow-icon fa fa-user-secret fa-2x"></i>
+        Administrator</a>
+      <ul class="subMenu">
+        <li>
+          <a class="nav-link" ui-sref="jokehub.contentManagement">Manage Content</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>

@@ -9,31 +9,38 @@
     <p class="lightGrey basicContent fontWght400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare nunc at magna porta rutrum. Fusce quis diam
         pellentesque enim placerat interdum. Sed cursus mauris orci, quis commodo
     </p>
-    <table st-table="vm.categoreis" class="table table-striped">
+    <table st-table="vm.categoreis" class="table table-striped jokehub-action-menu">
         <thead>
             <tr>
                 <th>Category Name</th>
-                <th>Category</th>
+                <th>Total Status</th>
+                <th>Approved Status</th>
+                <th>Pending Status</th>
+                <th>Rejected Status</th>
                 <th>Is Publish</th>
-                <th>Action</th>
+                <th style="width: 150px;">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="row in vm.categoreis">
 
-                <th>{{row.name}}</th>
-                <td>
-                    <div class="wrap-text">{{row.description}}</div>
-                </td>
+                <td>{{row.name}}</td>
+                <td>500</td>
+                <td>256</td>
+                <td>256</td>
+                <td>256</td>
                 <td>
                     <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
                         {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
                     </span>
                 </td>
-                <td>
-                    <button ng-click="vm.modifyStatus(row)" type="button" class="btn btn-sm btn-outline-{{row.isActive === '0' ? 'success' : 'warning' }}">
-                        {{row.isActive === '1' ? 'Unpublish' : 'Publish' }}
-                    </button>
+                <td style="position: relative;">
+                    <div class="action-menu">
+                        <i ng-click="vm.modifyStatus(row)" class="fa fa-cloud-upload cursor"></i>
+                        <i class="fa fa-pencil-square cursor"></i>
+                        <i class="fa fa-eye cursor"></i>
+                        <i class="fa fa-trash-o cursor"></i>
+                    </div>
                 </td>
             </tr>
         </tbody>

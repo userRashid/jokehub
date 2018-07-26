@@ -35,27 +35,31 @@
     <strong>User</strong>
 </h3>
 <section class="mainContentWrapper">
-    <table class="table">
+    <table class="table jokehub-action-menu">
         <thead>
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">About</th>
-                <th scope="col" colspan="2">Is Active</th>
+                <th scope="col">Is Active</th>
+                <th style="width: 150px;">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="user in vm.users">
                 <th>{{user.name}}</th>
                 <td>{{user.email}}</td>
-                <td>{{user.about}}</td>
                 <td>
                     <span class="badge badge-pill badge-{{user.isActive === '1' ? 'success' : 'warning' }}">
                         {{user.isActive === '1' ? 'Active' : 'Deactive' }}
                     </span>
                 </td>
-                <td>
-                    <button ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="btn btn-sm btn-outline-success">View</button>
+                <td style="position: relative;">
+                    <div class="action-menu">
+                        <i class="fa fa-cloud-upload cursor"></i>
+                        <i class="fa fa-pencil-square cursor"></i>
+                        <i ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-eye cursor"></i>
+                        <i class="fa fa-trash-o cursor"></i>
+                    </div>
                 </td>
             </tr>
         </tbody>
