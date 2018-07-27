@@ -15,7 +15,7 @@
                             </a>
                             <div class="circle-tile-content bg-success text-white">
                                 <div class="circle-tile-description"> Total</div>
-                                <div class="circle-tile-number">265</div>
+                                <div class="circle-tile-number">{{vm.analyticalData.total}}</div>
                                 <a class="circle-tile-footer">More Info
                                     <i class="fa fa-chevron-circle-right"></i>
                                 </a>
@@ -31,7 +31,7 @@
                             </a>
                             <div class="circle-tile-content bg-warning text-white">
                                 <div class="circle-tile-description"> Approved</div>
-                                <div class="circle-tile-number ">120</div>
+                                <div class="circle-tile-number ">{{vm.analyticalData.approved}}</div>
                                 <a class="circle-tile-footer">More Info
                                     <i class="fa fa-chevron-circle-right"></i>
                                 </a>
@@ -47,7 +47,7 @@
                             </a>
                             <div class="circle-tile-content bg-danger text-white">
                                 <div class="circle-tile-description"> Pending</div>
-                                <div class="circle-tile-number ">56</div>
+                                <div class="circle-tile-number ">{{vm.analyticalData.pending}}</div>
                                 <a class="circle-tile-footer">More Info
                                     <i class="fa fa-chevron-circle-right"></i>
                                 </a>
@@ -64,7 +64,7 @@
                             </a>
                             <div class="circle-tile-content bg-info text-white">
                                 <div class="circle-tile-description"> Reject </div>
-                                <div class="circle-tile-number ">90</div>
+                                <div class="circle-tile-number ">{{vm.analyticalData.reject}}</div>
                                 <a class="circle-tile-footer">More Info
                                     <i class="fa fa-chevron-circle-right"></i>
                                 </a>
@@ -73,6 +73,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-sm-4">
                 <canvas id="bar" class="chart chart-bar" chart-data="vm.dataOne" chart-labels="vm.labelsOne" chart-series="vm.seriesOne">
                 </canvas>

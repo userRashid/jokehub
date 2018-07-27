@@ -5,9 +5,9 @@
         .module('jokehubApp.dashboard')
         .controller('DashboardController', _DashboardController);
 
-    _DashboardController.$inject = [];
+    _DashboardController.$inject = ['DashboardServices'];
 
-    function _DashboardController() {
+    function _DashboardController(DashboardServices) {
         var vm = this;
 
         ////////////////////////////////////////////////////////////////////////////
@@ -48,5 +48,15 @@
         ];
         vm.labelsOne = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
         vm.seriesOne = ['Series A', 'Series B'];
+
+
+        function OnInit() {
+            DashboardServices.getAnalytics().then(function (response) {
+                vm.analyticalData = response.data.analyticalData;
+            });
+        }
+
+        OnInit();
+
     }
 })();
