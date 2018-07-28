@@ -27,10 +27,10 @@
                     <div>{{vm.viewData.user_name}}</div>
                     <div>Hello</div>
                     <div>
-                        <button type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)" class="btn btn-success btn-sm">
+                        <button ng-if="vm.selectedTab == 3" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)" class="btn btn-success btn-sm">
                             <i class="fa fa-check"></i> Approve
                         </button>
-                        <button type="button" ng-click="vm.changeStatus(vm.viewData.nid, false)" class="btn btn-danger btn-sm">
+                        <button ng-if="vm.selectedTab == 1" type="button" ng-click="vm.changeStatus(vm.viewData.nid, false)" class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i> Reject
                         </button>
                     </div>
@@ -89,7 +89,7 @@
                         <td>
                             <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
                         </td>
-                        <td>{{row.cid}}</td>
+                        <td>{{row.category}}</td>
                         <td>{{row.publishOn}}</td>
                         <td jh-privilege="ADMIN">{{row.user}}</td>
                         <td>
@@ -101,7 +101,7 @@
                             <div class="action-menu">
                                 <!-- <i ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i> -->
                                 <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                                <i ng-click="vm.edit(row)" title="Reject" data-toggle="modal" data-target="#editContent" class="fa fa-ban cursor"></i>
+                                <i ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
                             </div>
                         </td>
                     </tr>
@@ -131,7 +131,7 @@
                         <td>
                             <div>{{vm.stripHtml(row.description)}}</div>
                         </td>
-                        <td>{{row.cid}}</td>
+                        <td>{{row.category}}</td>
                         <td>{{row.publishOn}}</td>
                         <td jh-privilege="ADMIN">{{row.user}}</td>
                         <td>
@@ -141,10 +141,10 @@
                         </td>
                         <td style="position: relative;">
                             <div class="action-menu">
-                                <i jh-privilege="ADMIN" ng-click="vm.modifyStatus(row)" title="Approve" class="fa fa-check cursor"></i>
+                                <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
                                 <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
                                 <i jh-privilege="ADMIN" ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                                <i jh-privilege="ADMIN" title="Reject" class="fa fa-ban cursor"></i>
+                                <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
                             </div>
                         </td>
                     </tr>
@@ -168,7 +168,7 @@
                         <td>
                             <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
                         </td>
-                        <td>{{row.cid}}</td>
+                        <td>{{row.category}}</td>
                         <td>{{row.publishOn}}</td>
                         <td jh-privilege="ADMIN">{{row.user}}</td>
                         <td>
@@ -178,7 +178,7 @@
                         </td>
                         <td jh-privilege="ADMIN" style="position: relative;">
                             <div class="action-menu">
-                                <i ng-click="vm.modifyStatus(row)" title="Approve" class="fa fa-check cursor"></i>
+                                <i ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
                                 <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
                                 <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
                                 <i title="Delete" class="fa fa-trash-o cursor"></i>

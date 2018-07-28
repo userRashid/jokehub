@@ -5,18 +5,24 @@
         .module('jokehubApp.joke')
         .controller('ManageJokeController', _ManageJokeController);
 
-    _ManageJokeController.$inject = ['JokeService', '$sce'];
+    _ManageJokeController.$inject = ['JokeService', '$sce', 'CategoryService'];
 
-    function _ManageJokeController(JokeService, $sce) {
+    function _ManageJokeController(JokeService, $sce, CategoryService) {
 
         /////////////////////////////////////////////////////////////
         // Locals
         /////////////////////////////////////////////////////////////
 
-        function getContentStatus(data, status) {
+        function getContentStatus(data, status, categoreis) {
             var temp = [];
             data.forEach(function (e) {
                 if (e.status === status) {
+                    var category = _.filter(categoreis, function (item) {
+                        return item.id === e.cid
+                    })[0];
+                    if (category != undefined) {
+                        e.category = category.name;
+                    }
                     temp.push(e);
                 }
             });
@@ -30,13 +36,16 @@
         onInit();
 
         function onInit() {
-            JokeService.getAllJoke().then(function (response) {
-                vm.approvedContent = getContentStatus(response.data, 'approve');
-                vm.approvedCount = vm.approvedContent.length;
-                vm.pendingContent = getContentStatus(response.data, 'pending');
-                vm.pendingCount = vm.pendingContent.length;
-                vm.rejectedContent = getContentStatus(response.data, 'reject');
-                vm.rejectedCount = vm.rejectedContent.length;
+            CategoryService.getAllCategory().then(function (res) {
+                var categoreis = res.data;
+                JokeService.getAllJoke().then(function (response) {
+                    vm.approvedContent = getContentStatus(response.data, 'approve', categoreis);
+                    vm.approvedCount = vm.approvedContent.length;
+                    vm.pendingContent = getContentStatus(response.data, 'pending', categoreis);
+                    vm.pendingCount = vm.pendingContent.length;
+                    vm.rejectedContent = getContentStatus(response.data, 'reject', categoreis);
+                    vm.rejectedCount = vm.rejectedContent.length;
+                });
             });
         }
 

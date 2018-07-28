@@ -25,10 +25,10 @@
             <tr ng-repeat="row in vm.categoreis">
 
                 <td>{{row.name}}</td>
-                <td>500</td>
-                <td>256</td>
-                <td>256</td>
-                <td>256</td>
+                <td>{{row.totalJokes}}</td>
+                <td>{{row.approved}}</td>
+                <td>{{row.pending}}</td>
+                <td>{{row.reject}}</td>
                 <td>
                     <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
                         {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
