@@ -551,6 +551,7 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
   padding: 10px;
   height: 100%;
   top: 0px;
+  right: 0px;
 }
 
 .jokehub-action-menu tr:hover .action-menu {
@@ -561,4 +562,8 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
   padding: 0 3px;
   font-size: 19px;
   color: #333;
+}
+
+.nav-tabs .nav-item {
+  float: left!important;
 }

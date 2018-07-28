@@ -1074,11 +1074,39 @@
                         , name: 'CategoryName'
                         , type: 'dlText'
                     }, {
+                        label: 'Seo Url'
+                        , name: 'SeoUrl'
+                        , type: 'dlText'
+                    }, {
                         label: 'Category Description'
                         , name: 'Description'
+                        , type: 'dlTextEditor'
+                    }, {
+                        label: 'Meta title'
+                        , name: 'MetaTitle'
+                        , type: 'dlText'
+                    }, {
+                        label: 'Meta Description'
+                        , name: 'MetaDescription'
                         , type: 'dlTextarea'
                     }, {
-                        label: 'Image'
+                        label: 'Meta keywords'
+                        , name: 'MetaKeywords'
+                        , type: 'dlText'
+                    }, {
+                        label: 'OG:Title'
+                        , name: 'OGTitle'
+                        , type: 'dlText'
+                    }, {
+                        label: 'OG:Description'
+                        , name: 'OGDescription'
+                        , type: 'dlTextarea'
+                    }, {
+                        label: 'OG:Image'
+                        , name: 'og_image'
+                        , type: 'dlUpload'
+                    }, {
+                        label: 'Category Image'
                         , name: 'image'
                         , type: 'dlUpload'
                     }

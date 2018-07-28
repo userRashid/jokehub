@@ -29,14 +29,11 @@
           <a class="nav-link" ui-sref="jokehub.addCategory">Add Category</a>
         </li>
         <li>
-          <a class="nav-link" ui-sref="jokehub.addMainCategory">Add Main Category</a>
-        </li>
-        <li>
           <a class="nav-link" ui-sref="jokehub.manageCategory">Manage Category</a>
         </li>
       </ul>
     </li>
-    <li class="nav-item">
+    <li jh-privilege="USER" class="nav-item">
       <a class="nav-link" ui-sref="jokehub.manageEarning" ng-class="vm.isSelected('manage-earning')">
         <i class="downarrow-icon fa fa-inr fa-2x"></i>
         Earning</a>

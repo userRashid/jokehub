@@ -56,12 +56,7 @@
     <strong>Jokes</strong>
 </h3>
 <section class="mainContentWrapper">
-    <h6 class="fontWght600">It’s too easy to create your own joke and pulish on
-        <a href="http://www.thejokehub.com" target="_blank">www.thejokehub.com.</a> In just two simple steps you can create it. It’s like playing with the toys.</h6>
-    <p class="lightGrey basicContent fontWght400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare nunc at magna porta rutrum. Fusce quis diam
-        pellentesque enim placerat interdum. Sed cursus mauris orci, quis commodo
-    </p>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs" id="myTab" role="tablist" style="display: block">
         <li class="nav-item cursor" ng-click="vm.selectedTab = 1">
             <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Approved ({{vm.approvedCount}})</a>
         </li>
@@ -70,6 +65,10 @@
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 3">
             <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Rejected ({{vm.rejectedCount}})</a>
+        </li>
+        <li jh-privilege="ADMIN" ng-if="vm.selectedTab === 2" style="float: right">
+            <button type="button" ng-disabled="!vm.isAllSelected" class="btn btn-success btn-sm">Approve All</button>
+            <button type="button" ng-disabled="!vm.isAllSelected" class="btn btn-danger btn-sm">Reject All</button>
         </li>
     </ul>
     <div ng-init="vm.selectedTab = 1" class="tab-content" id="myTabContent">
@@ -82,7 +81,7 @@
                         <th style="border: 0px;">Posted on</th>
                         <th style="border: 0px;" jh-privilege="ADMIN">User</th>
                         <th style="border: 0px;">Is Publish</th>
-                        <th style="width: 150px; border: 0px;" jh-privilege="ADMIN">Action</th>
+                        <th style="width: 150px; border: 0px;" class="text-right" jh-privilege="ADMIN">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,10 +99,9 @@
                         </td>
                         <td jh-privilege="ADMIN" style="position: relative;">
                             <div class="action-menu">
-                                <i ng-click="vm.modifyStatus(row)" class="fa fa-cloud-upload cursor"></i>
-                                <i ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
-                                <i ng-click="vm.view(row)" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                                <i class="fa fa-trash-o cursor"></i>
+                                <!-- <i ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i> -->
+                                <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
+                                <i ng-click="vm.edit(row)" title="Reject" data-toggle="modal" data-target="#editContent" class="fa fa-ban cursor"></i>
                             </div>
                         </td>
                     </tr>
@@ -114,18 +112,24 @@
             <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">
                 <thead>
                     <tr>
+                        <th jh-privilege="ADMIN" style="border: 0px;">
+                            <input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.isAllSelected" aria-label="Checkbox for following text input">
+                        </th>
                         <th style="border: 0px;">Joke</th>
-                        <th style="border: 0px;">Category</th>
-                        <th style="border: 0px;">Posted on</th>
-                        <th style="border: 0px;" jh-privilege="ADMIN">User</th>
-                        <th style="border: 0px;">Is Publish</th>
-                        <th style="width: 150px; border: 0px;" jh-privilege="ADMIN">Action</th>
+                        <th style="border: 0px; width: 150px;">Category</th>
+                        <th style="border: 0px; width: 140px;">Posted on</th>
+                        <th style="border: 0px; width: 100px;" jh-privilege="ADMIN">User</th>
+                        <th style="border: 0px; width: 80px;">Is Publish</th>
+                        <th style="width: 150px; border: 0px;" class="text-right">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="row in vm.pendingContent">
+                        <td jh-privilege="ADMIN">
+                            <input type="checkbox" ng-click="vm.optionSelect()" ng-model="row.selected" aria-label="Checkbox for following text input">
+                        </td>
                         <td>
-                            <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
+                            <div>{{vm.stripHtml(row.description)}}</div>
                         </td>
                         <td>{{row.cid}}</td>
                         <td>{{row.publishOn}}</td>
@@ -135,12 +139,12 @@
                                 {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
                             </span>
                         </td>
-                        <td jh-privilege="ADMIN" style="position: relative;">
+                        <td style="position: relative;">
                             <div class="action-menu">
-                                <i ng-click="vm.modifyStatus(row)" class="fa fa-cloud-upload cursor"></i>
-                                <i ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
-                                <i ng-click="vm.view(row)" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                                <i class="fa fa-trash-o cursor"></i>
+                                <i jh-privilege="ADMIN" ng-click="vm.modifyStatus(row)" title="Approve" class="fa fa-check cursor"></i>
+                                <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
+                                <i jh-privilege="ADMIN" ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
+                                <i jh-privilege="ADMIN" title="Reject" class="fa fa-ban cursor"></i>
                             </div>
                         </td>
                     </tr>
@@ -174,10 +178,10 @@
                         </td>
                         <td jh-privilege="ADMIN" style="position: relative;">
                             <div class="action-menu">
-                                <i ng-click="vm.modifyStatus(row)" class="fa fa-cloud-upload cursor"></i>
-                                <i ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
-                                <i ng-click="vm.view(row)" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                                <i class="fa fa-trash-o cursor"></i>
+                                <i ng-click="vm.modifyStatus(row)" title="Approve" class="fa fa-check cursor"></i>
+                                <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
+                                <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
+                                <i title="Delete" class="fa fa-trash-o cursor"></i>
                             </div>
                         </td>
                     </tr>

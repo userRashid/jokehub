@@ -35,33 +35,163 @@
     <strong>User</strong>
 </h3>
 <section class="mainContentWrapper">
-    <table class="table jokehub-action-menu">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Is Active</th>
-                <th style="width: 150px;">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="user in vm.users">
-                <th>{{user.name}}</th>
-                <td>{{user.email}}</td>
-                <td>
-                    <span class="badge badge-pill badge-{{user.isActive === '1' ? 'success' : 'warning' }}">
-                        {{user.isActive === '1' ? 'Active' : 'Deactive' }}
-                    </span>
-                </td>
-                <td style="position: relative;">
-                    <div class="action-menu">
-                        <i class="fa fa-cloud-upload cursor"></i>
-                        <i class="fa fa-pencil-square cursor"></i>
-                        <i ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-eye cursor"></i>
-                        <i class="fa fa-trash-o cursor"></i>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item cursor" ng-click="vm.selectedTab = 1">
+            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Active Users (833)</a>
+        </li>
+        <li class="nav-item cursor" ng-click="vm.selectedTab = 2">
+            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Inactive Users (10)</a>
+        </li>
+        <li class="nav-item cursor" ng-click="vm.selectedTab = 3">
+            <a class="nav-link text-secondary font-weight-bold" data-toggle="tab" role="tab">Register Pending Users (158817)</a>
+        </li>
+        <li class="nav-item cursor" ng-click="vm.selectedTab = 4">
+            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Deleted Users (6)</a>
+        </li>
+    </ul>
+    <div ng-init="vm.selectedTab = 1" class="tab-content" id="myTabContent">
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 1}" ng-show="vm.selectedTab === 1" role="tabpanel">
+            <table class="table table-striped jokehub-action-menu">
+                <thead>
+                    <tr style="font-size: 13px;">
+                        <th style="border: 0px;">Name</th>
+                        <th style="border: 0px;">Registration Date</th>
+                        <th style="border: 0px;">Pending Status</th>
+                        <th style="border: 0px;">Approved Status</th>
+                        <th style="border: 0px;">Rejected Status</th>
+                        <th style="border: 0px;">Pending Payments</th>
+                        <th style="border: 0px;">Payments</th>
+                        <th class="text-right" style="border: 0px; width: 150px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in vm.users">
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>123</td>
+                        <td style="position: relative;">
+                            <div class="action-menu">
+                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
+                                <i title="Details" class="fa fa-folder-open cursor"></i>
+                                <i title="In Active" class="fa fa-ban cursor"></i>
+                                <i title="Delete" class="fa fa-trash-o cursor"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 2}" ng-show="vm.selectedTab === 2" role="tabpanel">
+            <table class="table table-striped jokehub-action-menu">
+                <thead>
+                    <tr style="font-size: 13px;">
+                        <th style="border: 0px;">Name</th>
+                        <th style="border: 0px;">Registration Date</th>
+                        <th style="border: 0px;">Pending Status</th>
+                        <th style="border: 0px;">Approved Status</th>
+                        <th style="border: 0px;">Rejected Status</th>
+                        <th style="border: 0px;">Pending Payments</th>
+                        <th style="border: 0px;">Payments</th>
+                        <th class="text-right" style="border: 0px; width: 150px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in vm.users">
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>123</td>
+                        <td style="position: relative;">
+                            <div class="action-menu">
+                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
+                                <i title="Details" class="fa fa-folder-open cursor"></i>
+                                <i title="Active" class="fa fa-check cursor"></i>
+                                <i title="Delete" class="fa fa-trash-o cursor"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 3}" ng-show="vm.selectedTab === 3" role="tabpanel">
+            <table class="table table-striped jokehub-action-menu">
+                <thead>
+                    <tr style="font-size: 13px;">
+                        <th style="border: 0px;">Name</th>
+                        <th style="border: 0px;">Registration Date</th>
+                        <th style="border: 0px;">Pending Status</th>
+                        <th style="border: 0px;">Approved Status</th>
+                        <th style="border: 0px;">Rejected Status</th>
+                        <th style="border: 0px;">Pending Payments</th>
+                        <th style="border: 0px;">Payments</th>
+                        <th class="text-right" style="border: 0px; width: 150px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in vm.users">
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>123</td>
+                        <td style="position: relative;">
+                            <div class="action-menu">
+                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
+                                <i title="Details" class="fa fa-folder-open cursor"></i>
+                                <i title="Active" class="fa fa-check cursor"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 4}" ng-show="vm.selectedTab === 4" role="tabpanel">
+            <table class="table table-striped jokehub-action-menu">
+                <thead>
+                    <tr style="font-size: 13px;">
+                        <th style="border: 0px;">Name</th>
+                        <th style="border: 0px;">Registration Date</th>
+                        <th style="border: 0px;">Pending Status</th>
+                        <th style="border: 0px;">Approved Status</th>
+                        <th style="border: 0px;">Rejected Status</th>
+                        <th style="border: 0px;">Pending Payments</th>
+                        <th style="border: 0px;">Payments</th>
+                        <th class="text-right" style="border: 0px; width: 150px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in vm.users">
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.name}}</td>
+                        <td>123</td>
+                        <td style="position: relative;">
+                            <div class="action-menu">
+                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
+                                <i title="Active" class="fa fa-check cursor"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </section>

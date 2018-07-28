@@ -73,5 +73,15 @@
         this.displayDescription = function (html) {
             return $sce.trustAsHtml(html);
         }
+
+        this.selectAll = function () {
+            var selectStatus = !vm.isAllSelected;
+            angular.forEach(vm.pendingContent, function (item) { item.selected = selectStatus; });
+
+        }
+
+        this.optionSelect = function () {
+            vm.isAllSelected = !vm.pendingContent.every(function (item) { return item.selected; })
+        }
     }
 })();

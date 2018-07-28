@@ -3,9 +3,9 @@
     angular.module('jokehubApp.privilege')
         .directive('jhPrivilege', _jhPrivilege);
 
-    _jhPrivilege.$inject = ['$compile', 'PrivilegeServices'];
+    _jhPrivilege.$inject = ['PrivilegeServices'];
 
-    function _jhPrivilege($compile, PrivilegeServices) {
+    function _jhPrivilege(PrivilegeServices) {
         return {
             restrict: 'A'
             , scope: {
