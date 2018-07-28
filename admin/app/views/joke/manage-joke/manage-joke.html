@@ -24,8 +24,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="d-flex justify-content-between w-100">
-                    <div>{{vm.viewData.user_name}}</div>
-                    <div>Hello</div>
+                    <div>
+                        <a ui-sref="jokehub.userDetail({userId:vm.viewData.userId})">{{vm.viewData.user}}</a>
+                    </div>
+                    <div>
+                        <b>{{vm.viewData.category}}</b>
+                    </div>
                     <div>
                         <button ng-if="vm.selectedTab == 3" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)" class="btn btn-success btn-sm">
                             <i class="fa fa-check"></i> Approve
@@ -38,6 +42,9 @@
             </div>
             <div class="modal-body" ng-bind-html="vm.displayDescription(vm.viewData.description)"></div>
             <div class="modal-footer">
+                <em>
+                    {{vm.viewData.publishOn}}
+                </em>
                 <button type="button" class="btn btn-secondary btn-sm">
                     <i class="fa fa-chevron-left"></i>
                 </button>
@@ -91,7 +98,7 @@
                         </td>
                         <td>{{row.category}}</td>
                         <td>{{row.publishOn}}</td>
-                        <td jh-privilege="ADMIN">{{row.user}}</td>
+                        <td jh-privilege="ADMIN"><a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a></td>
                         <td>
                             <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
                                 {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
@@ -133,7 +140,7 @@
                         </td>
                         <td>{{row.category}}</td>
                         <td>{{row.publishOn}}</td>
-                        <td jh-privilege="ADMIN">{{row.user}}</td>
+                        <td jh-privilege="ADMIN"><a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a></td>
                         <td>
                             <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
                                 {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
@@ -170,7 +177,7 @@
                         </td>
                         <td>{{row.category}}</td>
                         <td>{{row.publishOn}}</td>
-                        <td jh-privilege="ADMIN">{{row.user}}</td>
+                        <td jh-privilege="ADMIN"><a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a></td>
                         <td>
                             <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
                                 {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
