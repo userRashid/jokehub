@@ -1103,11 +1103,11 @@
                         , type: 'dlTextarea'
                     }, {
                         label: 'OG:Image'
-                        , name: 'og_image'
+                        , name: 'OGImage'
                         , type: 'dlUpload'
                     }, {
                         label: 'Category Image'
-                        , name: 'image'
+                        , name: 'CategoryImage'
                         , type: 'dlUpload'
                     }
                 ],
