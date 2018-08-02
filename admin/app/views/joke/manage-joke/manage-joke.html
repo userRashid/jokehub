@@ -87,7 +87,6 @@
                         <th style="border: 0px;">Category</th>
                         <th style="border: 0px;">Posted on</th>
                         <th style="border: 0px;" jh-privilege="ADMIN">User</th>
-                        <th style="border: 0px;">Is Publish</th>
                         <th style="width: 150px; border: 0px;" class="text-right" jh-privilege="ADMIN">Action</th>
                     </tr>
                 </thead>
@@ -98,15 +97,11 @@
                         </td>
                         <td>{{row.category}}</td>
                         <td>{{row.publishOn}}</td>
-                        <td jh-privilege="ADMIN"><a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a></td>
-                        <td>
-                            <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
-                                {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
-                            </span>
+                        <td jh-privilege="ADMIN">
+                            <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
                         </td>
                         <td jh-privilege="ADMIN" style="position: relative;">
                             <div class="action-menu">
-                                <!-- <i ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i> -->
                                 <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
                                 <i ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
                             </div>
@@ -126,7 +121,6 @@
                         <th style="border: 0px; width: 150px;">Category</th>
                         <th style="border: 0px; width: 140px;">Posted on</th>
                         <th style="border: 0px; width: 100px;" jh-privilege="ADMIN">User</th>
-                        <th style="border: 0px; width: 80px;">Is Publish</th>
                         <th style="width: 150px; border: 0px;" class="text-right">Action</th>
                     </tr>
                 </thead>
@@ -140,11 +134,8 @@
                         </td>
                         <td>{{row.category}}</td>
                         <td>{{row.publishOn}}</td>
-                        <td jh-privilege="ADMIN"><a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a></td>
-                        <td>
-                            <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
-                                {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
-                            </span>
+                        <td jh-privilege="ADMIN">
+                            <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
                         </td>
                         <td style="position: relative;">
                             <div class="action-menu">
@@ -166,7 +157,6 @@
                         <th style="border: 0px;">Category</th>
                         <th style="border: 0px;">Posted on</th>
                         <th style="border: 0px;" jh-privilege="ADMIN">User</th>
-                        <th style="border: 0px;">Is Publish</th>
                         <th style="width: 150px; border: 0px;" jh-privilege="ADMIN">Action</th>
                     </tr>
                 </thead>
@@ -177,11 +167,8 @@
                         </td>
                         <td>{{row.category}}</td>
                         <td>{{row.publishOn}}</td>
-                        <td jh-privilege="ADMIN"><a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a></td>
-                        <td>
-                            <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
-                                {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
-                            </span>
+                        <td jh-privilege="ADMIN">
+                            <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
                         </td>
                         <td jh-privilege="ADMIN" style="position: relative;">
                             <div class="action-menu">

@@ -1,4 +1,6 @@
 var KeyConstant = {
     'description': 'Content',
-    'cid': 'Category'
+    'cid': 'Category',
+    'name': 'CategoryName',
+    'description': 'Description'
 };

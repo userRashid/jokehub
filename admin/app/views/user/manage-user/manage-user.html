@@ -66,13 +66,17 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="user in vm.users">
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>123</td>
+                        <td>
+                            <a ui-sref="jokehub.userDetail({userId:user.id})">{{user.name}} (30)</a>
+                            <br/>
+                            <small>Male</small>
+                        </td>
+                        <td>{{user.created}}</td>
+                        <td>50</td>
+                        <td>125</td>
+                        <td>50</td>
+                        <td>100</td>
+                        <td>250</td>
                         <td style="position: relative;">
                             <div class="action-menu">
                                 <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
@@ -103,13 +107,15 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="user in vm.users">
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>123</td>
+                        <td>
+                            <a ui-sref="jokehub.userDetail({userId:user.id})">{{user.name}}</a>
+                        </td>
+                        <td>{{user.created}}</td>
+                        <td>5</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
                         <td style="position: relative;">
                             <div class="action-menu">
                                 <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
@@ -140,13 +146,15 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="user in vm.users">
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>123</td>
+                        <td>
+                            <a ui-sref="jokehub.userDetail({userId:user.id})">{{user.name}}</a>
+                        </td>
+                        <td>{{user.created}}</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
                         <td style="position: relative;">
                             <div class="action-menu">
                                 <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
@@ -175,13 +183,15 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="user in vm.users">
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.name}}</td>
-                        <td>123</td>
+                        <td>
+                            <a ui-sref="jokehub.userDetail({userId:user.id})">{{user.name}}</a>
+                        </td>
+                        <td>{{user.created}}</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>100</td>
+                        <td>0</td>
+                        <td>0</td>
                         <td style="position: relative;">
                             <div class="action-menu">
                                 <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>

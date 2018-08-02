@@ -28,7 +28,9 @@
                 headers: headers,
                 transformRequest: function (data) {
                     var formData = new FormData();
-                    formData.append("_imageData", data);
+                    data.forEach(item => {
+                        formData.append(item.name, item.data);
+                    });
                     return formData;
                 }
             };

@@ -12,12 +12,13 @@
         var vm = this;
 
         function Onint() {
-            UserService.getUser(userId).then(function (response) {
+            /* UserService.getUser(userId).then(function (response) {
                 vm.user = response.data;
-            });
+            }); */
+            vm.approvedPaymentPending = ['', '', '', ''];
         }
 
-        //Onint();
+        Onint();
 
     }
 })();

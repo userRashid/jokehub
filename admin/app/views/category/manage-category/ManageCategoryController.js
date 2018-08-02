@@ -47,5 +47,14 @@
         this.modifyStatus = function (row) {
             CategoryService.modifyStatus(row);
         }
+
+        this.view = function (row) {
+            this.viewData = row;
+        }
+
+        this.edit = function (row) {
+            this.editData = row;
+            vm.updateCategoryModel.setModel(row);
+        }
     }
 })();

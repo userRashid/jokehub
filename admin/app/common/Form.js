@@ -52,15 +52,21 @@
             var imageModel = [];
             for (var key in this.data) {
                 if (this.data[key].type === 'dlUpload') {
-                    var _model = this.data[key].model;
+                    var _data = this.data[key].model;
+                    var _name = this.data[key].name;
+                    var _model = { data: _data, name: _name };
                     imageModel.push(_model);
                 } else {
                     tempModel[this.data[key].name] = this.data[key].model;
                 }
             }
             if (imageModel.length > 0) {
-                UploadAPI._post('upload', imageModel[0], { "Content-Type": undefined }).then(function (_response) {
-                    tempModel.ImgId = _response.data.imageId;
+                UploadAPI._post('upload', imageModel, { "Content-Type": undefined }).then(function (_response) {
+                    _response.data.forEach(function (item) {
+                        for (var _k in item) {
+                            tempModel[_k] = item[_k];
+                        }
+                    });
                     _d.resolve(tempModel);
                 });
             } else {
