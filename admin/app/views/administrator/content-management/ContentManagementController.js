@@ -5,12 +5,23 @@
         .module('jokehubApp.administrator')
         .controller('ContentManagementController', _ContentManagementController);
 
-    _ContentManagementController.$inject = [];
+    _ContentManagementController.$inject = ['AdministratorService'];
 
-    function _ContentManagementController() {
+    function _ContentManagementController(AdministratorService) {
         var vm = this;
 
-        vm.rejectReason = ['', '', ''];
+        function OnInit() {
+            AdministratorService.getAllReasons().then(function (response) {
+                vm.rejectReason = response.data;
+            })
+        }
 
+        OnInit();
+
+        vm.addRejectReason = function () {
+            vm.addRejectReasonModel.getModel().then(function (rejectModel) {
+                AdministratorService.createRejectReason(rejectModel);
+            });
+        }
     }
 })();

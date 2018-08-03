@@ -1156,7 +1156,14 @@
                     label: 'Address'
                     , name: 'Address'
                     , type: 'dlTextarea'
-                }]
+                }],
+                rejectReason: [
+                    {
+                        label: 'Reject Reason'
+                        , name: 'RejectReason'
+                        , type: 'dlText'
+                    }
+                ]
             }
         }
 

@@ -17,8 +17,11 @@
 
         function _createCategory(data) {
             return Http._post('category/add', data).then(function (response) {
+                console.log('response', response);
                 Notification.notify('success', 'Success', ' New Category added ');
                 _state.go('jokehub.manageCategory');
+            }, function (error) {
+                console.log('error', error);
             });
         }
 
