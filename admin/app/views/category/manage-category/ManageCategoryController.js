@@ -5,9 +5,9 @@
         .module('jokehubApp.category')
         .controller('ManageCategoryController', _ManageCategoryController);
 
-    _ManageCategoryController.$inject = ['CategoryService', 'JokeService'];
+    _ManageCategoryController.$inject = ['CategoryService', '$sce', 'JokeService'];
 
-    function _ManageCategoryController(CategoryService, JokeService) {
+    function _ManageCategoryController(CategoryService, $sce, JokeService) {
 
         /////////////////////////////
         // Locals
@@ -53,8 +53,18 @@
         }
 
         this.edit = function (row) {
-            this.editData = row;
+            vm.editData = row;
             vm.updateCategoryModel.setModel(row);
+        }
+
+        this.displayDescription = function (html) {
+            return $sce.trustAsHtml(html);
+        }
+
+        this.update = function () {
+            vm.updateCategoryModel.getModel().then(function (updateModel) {
+                CategoryService.updateCategory(updateModel, vm.editData.nid);
+            });
         }
     }
 })();
