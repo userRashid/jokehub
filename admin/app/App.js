@@ -20,6 +20,7 @@
         'smart-table',
         'ngAnimate',
         'toastr',
-        'ngImgCrop'
+        'ngImgCrop',
+        'ui.bootstrap'
     ])
 })();

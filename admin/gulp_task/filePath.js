@@ -18,7 +18,10 @@ exports.FilePath = function () {
             './node_modules/trix/dist/trix.js',
             './node_modules/angular-trix/dist/angular-trix.js',
             './node_modules/ng-img-crop/compile/unminified/ng-img-crop.js',
-            './node_modules/underscore/underscore-min.js'
+            './node_modules/underscore/underscore-min.js',
+            './node_modules/moment/moment.js',
+            './node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js',
+            './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js'
         ];
     }
 
@@ -28,6 +31,7 @@ exports.FilePath = function () {
             './node_modules/font-awesome/css/font-awesome.css',
             './node_modules/angular-toastr/dist/angular-toastr.css',
             './node_modules/ng-img-crop/compile/unminified/ng-img-crop.css',
+            './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css',
             './node_modules/trix/dist/trix.css',
             './app/css/*.css',
             './app/**/*.scss'
