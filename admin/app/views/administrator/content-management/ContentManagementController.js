@@ -13,7 +13,7 @@
         function OnInit() {
             AdministratorService.getAllReasons().then(function (response) {
                 vm.rejectReason = response.data;
-            })
+            });
         }
 
         OnInit();

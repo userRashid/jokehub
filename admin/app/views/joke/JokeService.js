@@ -35,12 +35,13 @@
             });
         }
 
-        function _changeStatus(nid, isForApprove) {
+        function _changeStatus(nid, isForApprove, rejectReason) {
             var model = { 'id': nid };
             if (isForApprove) {
                 model.status = 'approve';
             } else {
                 model.status = 'reject';
+                model.rejectReason = rejectReason;
             }
             Http._post('content/status', model).then(function () {
                 Notification.notify('success', 'Success', ' Content modified successfully');

@@ -31,16 +31,24 @@
                         <b>{{vm.viewData.category}}</b>
                     </div>
                     <div>
-                        <button ng-if="vm.selectedTab == 3" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)" class="btn btn-success btn-sm">
+                        <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 3 || vm.selectedTab == 2" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)"
+                            class="btn btn-success btn-sm">
                             <i class="fa fa-check"></i> Approve
                         </button>
-                        <button ng-if="vm.selectedTab == 1" type="button" ng-click="vm.changeStatus(vm.viewData.nid, false)" class="btn btn-danger btn-sm">
+                        <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 1 || vm.selectedTab == 2" type="button" data-dismiss="modal" ng-click="vm.changeStatus(vm.viewData.nid, false)"
+                            class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i> Reject
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="modal-body" ng-bind-html="vm.displayDescription(vm.viewData.description)"></div>
+
+            <div class="modal-body">
+                <div ng-if="vm.viewData.reason" class="alert alert-warning" role="alert">
+                    <strong>Reject Reason - </strong>{{vm.viewData.reason}}
+                </div>
+                <span ng-bind-html="vm.displayDescription(vm.viewData.description)"></span>
+            </div>
             <div class="modal-footer">
                 <em>
                     {{vm.viewData.publishOn}}

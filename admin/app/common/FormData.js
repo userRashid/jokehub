@@ -1065,7 +1065,7 @@
                         , values: categoryData()
                     }, {
                         label: 'Joke'
-                        , name: 'Content'
+                        , name: 'Description'
                         , type: 'dlTextEditor'
                     }],
                 addCategory: [

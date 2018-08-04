@@ -5,9 +5,9 @@
         .module('jokehubApp.joke')
         .controller('ManageJokeController', _ManageJokeController);
 
-    _ManageJokeController.$inject = ['JokeService', '$sce', 'CategoryService'];
+    _ManageJokeController.$inject = ['JokeService', '$sce', 'CategoryService', 'RejectReason', 'AdministratorService'];
 
-    function _ManageJokeController(JokeService, $sce, CategoryService) {
+    function _ManageJokeController(JokeService, $sce, CategoryService, RejectReason, AdministratorService) {
 
         /////////////////////////////////////////////////////////////
         // Locals
@@ -47,6 +47,9 @@
                     vm.rejectedCount = vm.rejectedContent.length;
                 });
             });
+            AdministratorService.getAllReasons().then(function (response) {
+                vm.rejectReason = response.data;
+            });
         }
 
         this.edit = function (data) {
@@ -70,7 +73,14 @@
         }
 
         this.changeStatus = function (nid, isForApprove) {
-            JokeService.changeStatus(nid, isForApprove);
+            if (isForApprove) {
+                JokeService.changeStatus(nid, isForApprove, null);
+            } else {
+                RejectReason.getReason({
+                    'id': nid,
+                    'data': vm.rejectReason
+                });
+            }
         }
 
         this.stripHtml = function (html) {
