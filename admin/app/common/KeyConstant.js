@@ -7,5 +7,6 @@ var KeyConstant = {
     'metaKeywords': 'MetaKeywords',
     'ogTitle': 'OGTitle',
     'ogDescription': 'OGDescription',
-    'alias': 'SeoUrl'
+    'alias': 'SeoUrl',
+    'userName': 'UserName'
 };

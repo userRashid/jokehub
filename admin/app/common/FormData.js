@@ -1124,7 +1124,7 @@
                 ],
                 userDetail: [{
                     label: 'Name'
-                    , name: 'Name'
+                    , name: 'UserName'
                     , type: 'dlText'
                 }, {
                     label: 'Phone'
@@ -1150,7 +1150,7 @@
                     , type: 'dlCalender'
                 }, {
                     label: 'Title'
-                    , name: 'Title'
+                    , name: 'ProfileTitle'
                     , type: 'dlTextarea'
                 }, {
                     label: 'Address'

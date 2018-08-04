@@ -22,6 +22,9 @@
                     console.log(' ********** ', model);
                 });
             }
+            $scope.editProfile = function () {
+                $scope.userDetailModel.setModel($scope.userProfile)
+            }
             // $scope.changePassword = function (data) {
             //     var temp = new Object();
             //     temp.oldpassword = data.oldpassword;
