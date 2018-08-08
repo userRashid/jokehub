@@ -19,7 +19,9 @@
             });
             $scope.updateDetails = function () {
                 $scope.userDetailModel.getModel().then(function (model) {
-                    console.log(' ********** ', model);
+                    Http._put('userprofile/update', model).then(function (response) {
+                        Notification.notify('success', 'Success', response.data.message);
+                    });
                 });
             }
             $scope.editProfile = function () {

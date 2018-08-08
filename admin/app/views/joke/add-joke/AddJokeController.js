@@ -5,9 +5,9 @@
         .module('jokehubApp.joke')
         .controller('AddJokeController', _AddJokeController);
 
-    _AddJokeController.$inject = ['JokeService', 'CategoryService'];
+    _AddJokeController.$inject = ['JokeService', 'CategoryService', '$timeout'];
 
-    function _AddJokeController(JokeService, CategoryService) {
+    function _AddJokeController(JokeService, CategoryService, $timeout) {
         var vm = this;
 
         onInit();
@@ -23,5 +23,8 @@
                 vm.allCategories = response.data;
             });
         }
+        $timeout(function () {
+            $("button[data-trix-action='link']").remove();
+        });
     }
 })();

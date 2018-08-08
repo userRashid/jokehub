@@ -8,5 +8,12 @@ var KeyConstant = {
     'ogTitle': 'OGTitle',
     'ogDescription': 'OGDescription',
     'alias': 'SeoUrl',
-    'userName': 'UserName'
+    'userName': 'UserName',
+    'phone': 'Phone',
+    'country': 'Country',
+    'sex': 'Sex',
+    'about': 'About',
+    'profileTitle': 'ProfileTitle',
+    'address': 'Address'
+    //'dob': 'DOB'
 };
