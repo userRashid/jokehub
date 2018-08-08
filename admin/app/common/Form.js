@@ -38,6 +38,8 @@
                     if (e.name === KeyConstant[key]) {
                         if (e.type === 'dlMultiSelect') {
                             console.log('Need to work on it', key, e);
+                        } else if (e.type === 'dlCalender') {
+                            e.model = new Date(models[key]);
                         } else {
                             e.model = models[key];
                         }

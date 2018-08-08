@@ -14,6 +14,6 @@ var KeyConstant = {
     'sex': 'Sex',
     'about': 'About',
     'profileTitle': 'ProfileTitle',
-    'address': 'Address'
-    //'dob': 'DOB'
+    'address': 'Address',
+    'dob': 'DOB'
 };
