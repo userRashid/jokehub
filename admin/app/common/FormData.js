@@ -1055,6 +1055,15 @@
             return _d.promise;
         }
 
+        function preferredModeData() {
+            var _d = $q.defer();
+            var _temp = [];
+            _temp.push({ key: '1', value: 'Bank Account' });
+            _temp.push({ key: '2', value: 'Paytm' });
+            _d.resolve(_temp);
+            return _d.promise;
+        }
+
         function _getFormData() {
             return {
                 addJoke:
@@ -1156,6 +1165,36 @@
                     label: 'Address'
                     , name: 'Address'
                     , type: 'dlTextarea'
+                }],
+                userPaymentDetail: [{
+                    label: 'Prefred payment mode'
+                    , name: 'PreferredMode'
+                    , type: 'dlSelect'
+                    , values: preferredModeData()
+                }, {
+                    label: 'Account Holder Name'
+                    , name: 'AccountHolderName'
+                    , type: 'dlText'
+                }, {
+                    label: 'Account Number'
+                    , name: 'AccountNumber'
+                    , type: 'dlText'
+                }, {
+                    label: 'IFSC Code'
+                    , name: 'IFSCCode'
+                    , type: 'dlText'
+                }, {
+                    label: 'Bank Name'
+                    , name: 'BankName'
+                    , type: 'dlText'
+                }, {
+                    label: 'Branch Name'
+                    , name: 'BranchName'
+                    , type: 'dlText'
+                }, {
+                    label: 'Paytm Number'
+                    , name: 'PaytmNumber'
+                    , type: 'dlText'
                 }],
                 rejectReason: [
                     {

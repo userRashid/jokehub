@@ -58,17 +58,22 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" ng-class="{'show active': selectedDetailsTab === 2}" ng-show="selectedDetailsTab === 2" role="tabpanel">
-                                    Your prefred payment mode -
-                                    <span class="badge badge-pill badge-success">
-                                        <b>Paytm</b>
-                                    </span>
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            Your prefred payment mode -
+                                            <span class="badge badge-pill badge-{{paymentDetail.preferredPaymentMode === '2' ? 'success' : 'warning' }}">
+                                                <b>{{paymentDetail.preferredPaymentMode == '2' ? 'Paytm' : 'Bank'}}</b>
+                                            </span>
+                                        </div>
+                                        <i class="col-sm-2 fa fa-edit" ng-click="selectedDetailsTab = 4; editPaymentDetails()"></i>
+                                    </div>
                                     <div class="row mt-2">
                                         <div class="col-sm-5">
                                             <i class="fa fa-user" aria-hidden="true"></i>
                                             Account Holder Name
                                         </div>
                                         <div class="col-sm-7">
-                                            {{userProfile.account_holder_name}}
+                                            {{paymentDetail.accountHolderName}}
                                         </div>
                                     </div>
 
@@ -78,7 +83,7 @@
                                             Account Number
                                         </div>
                                         <div class="col-sm-7">
-                                            {{userProfile.account_number}}
+                                            {{paymentDetail.accountNumber}}
                                         </div>
                                     </div>
 
@@ -88,7 +93,7 @@
                                             IFSC Code
                                         </div>
                                         <div class="col-sm-7">
-                                            {{userProfile.bank_ifsc}}
+                                            {{paymentDetail.ifscCode}}
                                         </div>
                                     </div>
 
@@ -98,7 +103,7 @@
                                             Bank Name
                                         </div>
                                         <div class="col-sm-7">
-                                            {{userProfile.bank_name}}
+                                            {{paymentDetail.bankName}}
                                         </div>
                                     </div>
 
@@ -108,7 +113,7 @@
                                             Branch Name
                                         </div>
                                         <div class="col-sm-7">
-                                            {{userProfile.bank_branch_name}}
+                                            {{paymentDetail.bankAddress}}
                                         </div>
                                     </div>
 
@@ -119,7 +124,7 @@
                                             Paytm Number
                                         </div>
                                         <div class="col-sm-7">
-                                            {{userProfile.paytm_number}}
+                                            {{paymentDetail.paytmNumber}}
                                         </div>
                                     </div>
                                 </div>
@@ -127,6 +132,11 @@
                                     <div dl-form="userDetail" mode="half" form-model="userDetailModel"></div>
                                     <button type="button" class="btn btn-primary btn-sm" ng-click="updateDetails()">Update</button>
                                     <button type="button" class="btn btn-secondary btn-sm" ng-click="selectedDetailsTab = 1">Cencel</button>
+                                </div>
+                                <div class="tab-pane fade" ng-class="{'show active': selectedDetailsTab === 4}" ng-show="selectedDetailsTab === 4" role="tabpanel">
+                                    <div dl-form="userPaymentDetail" mode="half" form-model="userPaymentDetailModel"></div>
+                                    <button type="button" class="btn btn-primary btn-sm" ng-click="updatePaymentDetails()">Update</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" ng-click="selectedDetailsTab = 2">Cencel</button>
                                 </div>
                             </div>
                         </div>

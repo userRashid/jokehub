@@ -15,5 +15,12 @@ var KeyConstant = {
     'about': 'About',
     'profileTitle': 'ProfileTitle',
     'address': 'Address',
-    'dob': 'DOB'
+    'dob': 'DOB',
+    'accountHolderName': 'AccountHolderName',
+    'accountNumber': 'AccountNumber',
+    'ifscCode': 'IFSCCode',
+    'bankName': 'BankName',
+    'bankAddress': 'BranchName',
+    'paytmNumber': 'PaytmNumber',
+    'preferredPaymentMode': 'PreferredMode'
 };
