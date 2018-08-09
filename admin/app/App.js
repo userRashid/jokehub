@@ -2,6 +2,7 @@
     angular.module('jokehubApp', [
         'ui.router',
         'angularTrix',
+        'jokehubApp.filter',
         'jokehubApp.component',
         'jokehubApp.common',
         'jokehubApp.login',
