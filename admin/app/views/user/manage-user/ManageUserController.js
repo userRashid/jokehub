@@ -49,5 +49,9 @@
         vm.viewUser = function (data) {
             vm.viewData = data;
         }
+
+        vm.totalContent = function (data) {
+            return data.approve + data.pending + data.reject;
+        }
     }
 })();

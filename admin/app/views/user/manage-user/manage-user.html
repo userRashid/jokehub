@@ -2,22 +2,63 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="d-flex justify-content-between w-100">
-                    <div>{{vm.viewData.userName}}</div>
-                    <div>{{vm.viewData.email}}</div>
-                    <div>
-                        <button type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)" class="btn btn-success btn-sm">
+                <div class="row w-100">
+                    <div class="col-sm-4">
+                        <i class="fa fa-user" aria-hidden="true"></i> {{vm.viewData.userName}}
+                        <small>
+                            <a target="_blank" href="http://www.thejokehub.com/user/{{vm.viewData.profileUrl}}">http://www.thejokehub.com/user/{{vm.viewData.profileUrl}}</a>
+                        </small>
+                    </div>
+                    <div class="col-sm-4">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i> {{vm.viewData.email}}</div>
+                    <div class="col-sm-4 text-right">
+                        <button ng-if="vm.selectedTab != 1" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)" class="btn btn-success btn-sm">
                             <i class="fa fa-check"></i> Activate
                         </button>
-                        <button type="button" ng-click="vm.changeStatus(vm.viewData.nid, false)" class="btn btn-danger btn-sm">
+                        <button ng-if="vm.selectedTab != 2" type="button" ng-click="vm.changeStatus(vm.viewData.nid, false)" class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i> De-Activate
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="modal-body">
-                <h4>{{vm.viewData.title}}</h4>
-                {{vm.viewData.about}}
+            <div class="modal-body row">
+                <div class="col-sm-9">
+                    <div>
+                        <span class="badge badge-secondary">
+                            Total
+                            <span class="badge badge-light">{{vm.totalContent(vm.viewData.contentStatus)}}</span>
+                        </span>
+                        <span class="badge badge-success">
+                            Approved
+                            <span class="badge badge-light">{{vm.viewData.contentStatus.approve}}</span>
+                        </span>
+                        <span class="badge badge-primary">
+                            Pending
+                            <span class="badge badge-light">{{vm.viewData.contentStatus.pending}}</span>
+                        </span>
+                        <span class="badge badge-warning">
+                            Reject
+                            <span class="badge badge-light">{{vm.viewData.contentStatus.reject}}</span>
+                        </span>
+                    </div>
+                    <h4>{{vm.viewData.title}}</h4>
+                    <i class="fa fa-inr" aria-hidden="true"></i> {{vm.viewData.payment}}
+                    <br>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i> {{vm.viewData.about}}
+                    <br />
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> {{vm.viewData.address}}
+                    <br />
+                    <i class="fa fa-birthday-cake" aria-hidden="true"></i> {{vm.viewData.dob | date : "dd MMM, y"}}
+                    <br />
+                    <i class="fa fa-calendar" aria-hidden="true"></i> {{vm.viewData.created}}
+                    <br>
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    <span>*************</span>
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                </div>
+                <div class="col-sm-3">
+                    <img src="http://thejokehub.com/img/{{vm.viewData.userImage}}" alt="{{vm.viewData.userName}}" class="img-thumbnail">
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm">
@@ -72,11 +113,11 @@
                             <small>{{user.sex | ageSex}}</small>
                         </td>
                         <td>{{user.created}}</td>
-                        <td>50</td>
-                        <td>125</td>
-                        <td>50</td>
-                        <td>100</td>
-                        <td>250</td>
+                        <td>{{user.contentStatus.pending}}</td>
+                        <td>{{user.contentStatus.approve}}</td>
+                        <td>{{user.contentStatus.reject}}</td>
+                        <td>{{(user.contentStatus.approve * 2) - user.payment}}</td>
+                        <td>{{user.payment}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
                                 <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
@@ -111,11 +152,11 @@
                             <a ui-sref="jokehub.userDetail({userId:user.id})">{{user.userName}}</a>
                         </td>
                         <td>{{user.created}}</td>
-                        <td>5</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>{{user.contentStatus.pending}}</td>
+                        <td>{{user.contentStatus.approve}}</td>
+                        <td>{{user.contentStatus.reject}}</td>
+                        <td>{{(user.contentStatus.approve * 2) - user.payment}}</td>
+                        <td>{{user.payment}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
                                 <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
@@ -150,11 +191,11 @@
                             <a ui-sref="jokehub.userDetail({userId:user.id})">{{user.userName}}</a>
                         </td>
                         <td>{{user.created}}</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>{{user.contentStatus.pending}}</td>
+                        <td>{{user.contentStatus.approve}}</td>
+                        <td>{{user.contentStatus.reject}}</td>
+                        <td>{{(user.contentStatus.approve * 2) - user.payment}}</td>
+                        <td>{{user.payment}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
                                 <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
@@ -187,11 +228,11 @@
                             <a ui-sref="jokehub.userDetail({userId:user.id})">{{user.userName}}</a>
                         </td>
                         <td>{{user.created}}</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>100</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>{{user.contentStatus.pending}}</td>
+                        <td>{{user.contentStatus.approve}}</td>
+                        <td>{{user.contentStatus.reject}}</td>
+                        <td>{{(user.contentStatus.approve * 2) - user.payment}}</td>
+                        <td>{{user.payment}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
                                 <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
@@ -203,5 +244,4 @@
             </table>
         </div>
     </div>
-
 </section>
