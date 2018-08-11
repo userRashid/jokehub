@@ -31,7 +31,7 @@
     </div>
 </div>
 <h3 class="pageTitle">
-    <strong>Rashid</strong>
+    <strong>{{vm.userDetails.userName}}</strong>
 </h3>
 <section class="mainContentWrapper">
     <ul class="nav nav-tabs" role="tablist" style="display: block">
@@ -42,10 +42,10 @@
             <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Approved And Paid (0)</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 3">
-            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Pending Status (60)</a>
+            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Pending Status ({{vm.userDetails.contentStatus.pending}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 4">
-            <a class="nav-link text-success font-weight-bold" data-toggle="tab" role="tab">Rejected Status (38)</a>
+            <a class="nav-link text-success font-weight-bold" data-toggle="tab" role="tab">Rejected Status ({{vm.userDetails.contentStatus.reject}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 5">
             <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Payments (1)</a>

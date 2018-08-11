@@ -5,17 +5,17 @@
         .module('jokehubApp.user')
         .controller('UserDetailController', _UserDetailController);
 
-    _UserDetailController.$inject = ['UserService'];
+    _UserDetailController.$inject = ['UserService', '$stateParams'];
 
-    function _UserDetailController(UserService) {
+    function _UserDetailController(UserService, $stateParams) {
 
         var vm = this;
+        var userId = $stateParams.userId;
 
         function Onint() {
-            /* UserService.getUser(userId).then(function (response) {
-                vm.user = response.data;
-            }); */
-            vm.approvedPaymentPending = ['', '', '', ''];
+            UserService.getUserDetails(userId).then(function (response) {
+                vm.userDetails = response.data;
+            });
         }
 
         Onint();
