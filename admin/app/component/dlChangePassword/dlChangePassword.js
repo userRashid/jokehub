@@ -10,7 +10,9 @@
             restrict: 'A'
             , controller: controller
             , templateUrl: 'app/component/dlChangePassword/dlChangePassword.html'
-            , scope: {}
+            , scope: {
+                cancel: '&'
+            }
         }
 
         function controller($scope) {

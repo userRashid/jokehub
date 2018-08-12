@@ -38,10 +38,15 @@
         <i class="downarrow-icon fa fa-inr fa-2x"></i>
         Earning</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" ui-sref="jokehub.manageProfile" ng-class="vm.isSelected('manage-profile')">
+        <i class="downarrow-icon fa fa-address-card fa-2x"></i>
+        Profile</a>
+    </li>
     <li jh-privilege="ADMIN" class="nav-item">
       <a class="nav-link" ui-sref="jokehub.manageUser" ng-class="vm.isSelected('manage-user')">
-        <i class="downarrow-icon fa fa-user fa-2x"></i>
-        User</a>
+        <i class="downarrow-icon fa fa-users fa-2x"></i>
+        Users</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" ui-sref="jokehub.promote" ng-class="vm.isSelected('promote')">
