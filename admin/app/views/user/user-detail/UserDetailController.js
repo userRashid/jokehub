@@ -14,11 +14,23 @@
 
         function Onint() {
             UserService.getUserDetails(userId).then(function (response) {
-                vm.userDetails = response.data;
+                vm.userDetails = response.user;
+                vm.approvedPaymentPending = response.approvedPaymentPending;
+                vm.approvedAndPaid = response.approvedAndPaid;
+                vm.pendingStatus = response.pendingStatus;
+                vm.rejectedStatus = response.rejectedStatus;
+                vm.payments = [];
+                vm.finallyPaid = [];
             });
         }
 
         Onint();
+
+        this.stripHtml = function (html) {
+            var tmp = document.createElement("DIV");
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || "";
+        }
 
     }
 })();

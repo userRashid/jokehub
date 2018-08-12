@@ -36,7 +36,7 @@
 <section class="mainContentWrapper">
     <ul class="nav nav-tabs" role="tablist" style="display: block">
         <li class="nav-item cursor" ng-click="vm.selectedTab = 1">
-            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Approved Payment Pending (1)</a>
+            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Approved Payment Pending ({{vm.userDetails.contentStatus.approve}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 2">
             <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Approved And Paid (0)</a>
@@ -48,10 +48,10 @@
             <a class="nav-link text-success font-weight-bold" data-toggle="tab" role="tab">Rejected Status ({{vm.userDetails.contentStatus.reject}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 5">
-            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Payments (1)</a>
+            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Payments</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 6">
-            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Finally Paid (63)</a>
+            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Finally Paid</a>
         </li>
     </ul>
     <div ng-init="vm.selectedTab = 1" class="tab-content" id="myTabContent">
@@ -62,13 +62,11 @@
                         <th style="border: 0px;">
                             <input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.isAllSelected" aria-label="Checkbox for following text input">
                         </th>
-                        <th style="border: 0px;">Status</th>
+                        <th style="border: 0px;">Joke</th>
                         <th style="border: 0px;">Category</th>
                         <th style="border: 0px;">Profile</th>
-                        <th style="border: 0px;">Payment Id</th>
                         <th style="border: 0px;">Date Posted</th>
                         <th style="border: 0px;">Date Published</th>
-                        <th style="border: 0px;">Date Payment</th>
                         <th style="width: 150px; border: 0px;" class="text-right">Action</th>
                     </tr>
                 </thead>
@@ -77,19 +75,17 @@
                         <td>
                             <input type="checkbox" ng-click="vm.optionSelect()" ng-model="row.selected" aria-label="Checkbox for following text input">
                         </td>
+                        <td>
+                            <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
+                        </td>
                         <td>{{row.category}}</td>
-                        <td>{{row.category}}</td>
-                        <td>{{row.publishOn}}</td>
                         <td>
                             <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
                         </td>
                         <td>{{row.publishOn}}</td>
                         <td>{{row.publishOn}}</td>
-                        <td>{{row.publishOn}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
-                                <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
-                                <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
                                 <i jh-privilege="ADMIN" ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
                                 <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
                             </div>
@@ -99,24 +95,23 @@
             </table>
         </div>
         <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 2}" ng-show="vm.selectedTab === 2" role="tabpanel">
-            <table st-table="vm.approvedPaymentPending" class="table table-striped jokehub-action-menu">
+            <table st-table="vm.approvedAndPaid" class="table table-striped jokehub-action-menu">
                 <thead>
                     <tr>
                         <th style="border: 0px;">
                             <input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.isAllSelected" aria-label="Checkbox for following text input">
                         </th>
-                        <th style="border: 0px;">Status</th>
+                        <th style="border: 0px;">Joke</th>
                         <th style="border: 0px;">Category</th>
                         <th style="border: 0px;">Profile</th>
-                        <th style="border: 0px;">Payment Id</th>
+                        <th style="border: 0px;">Pay Amount</th>
                         <th style="border: 0px;">Date Posted</th>
                         <th style="border: 0px;">Date Published</th>
                         <th style="border: 0px;">Date Payment</th>
-                        <th style="width: 150px; border: 0px;" class="text-right">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="row in vm.approvedPaymentPending">
+                    <tr ng-repeat="row in vm.approvedAndPaid">
                         <td>
                             <input type="checkbox" ng-click="vm.optionSelect()" ng-model="row.selected" aria-label="Checkbox for following text input">
                         </td>
@@ -129,29 +124,12 @@
                         <td>{{row.publishOn}}</td>
                         <td>{{row.publishOn}}</td>
                         <td>{{row.publishOn}}</td>
-                        <td style="position: relative;">
-                            <div class="action-menu">
-                                <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
-                                <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
-                                <i jh-privilege="ADMIN" ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                                <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
-                            </div>
-                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 3}" ng-show="vm.selectedTab === 3" role="tabpanel">
-
-        </div>
-        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 4}" ng-show="vm.selectedTab === 4" role="tabpanel">
-
-        </div>
-        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 5}" ng-show="vm.selectedTab === 5" role="tabpanel">
-
-        </div>
-        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 6}" ng-show="vm.selectedTab === 6" role="tabpanel">
-            <table st-table="vm.approvedPaymentPending" class="table table-striped jokehub-action-menu">
+            <table st-table="vm.pendingStatus" class="table table-striped jokehub-action-menu">
                 <thead>
                     <tr>
                         <th style="border: 0px;">
@@ -160,38 +138,91 @@
                         <th style="border: 0px;">Status</th>
                         <th style="border: 0px;">Category</th>
                         <th style="border: 0px;">Profile</th>
-                        <th style="border: 0px;">Payment Id</th>
                         <th style="border: 0px;">Date Posted</th>
-                        <th style="border: 0px;">Date Published</th>
-                        <th style="border: 0px;">Date Payment</th>
                         <th style="width: 150px; border: 0px;" class="text-right">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="row in vm.approvedPaymentPending">
+                    <tr ng-repeat="row in vm.pendingStatus">
                         <td>
                             <input type="checkbox" ng-click="vm.optionSelect()" ng-model="row.selected" aria-label="Checkbox for following text input">
                         </td>
+                        <td>
+                            <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
+                        </td>
                         <td>{{row.category}}</td>
-                        <td>{{row.category}}</td>
-                        <td>{{row.publishOn}}</td>
                         <td>
                             <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
                         </td>
                         <td>{{row.publishOn}}</td>
-                        <td>{{row.publishOn}}</td>
-                        <td>{{row.publishOn}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
                                 <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
-                                <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
-                                <i jh-privilege="ADMIN" ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
                                 <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
                             </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 4}" ng-show="vm.selectedTab === 4" role="tabpanel">
+            <table st-table="vm.rejectedStatus" class="table table-striped jokehub-action-menu">
+                <thead>
+                    <tr>
+                        <th style="border: 0px;">
+                            <input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.isAllSelected" aria-label="Checkbox for following text input">
+                        </th>
+                        <th style="border: 0px;">Joke</th>
+                        <th style="border: 0px;">Category</th>
+                        <th style="border: 0px;">Reason</th>
+                        <th style="border: 0px;">Date Posted</th>
+                        <th style="width: 150px; border: 0px;" class="text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in vm.rejectedStatus">
+                        <td>
+                            <input type="checkbox" ng-click="vm.optionSelect()" ng-model="row.selected" aria-label="Checkbox for following text input">
+                        </td>
+                        <td>
+                            <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
+                        </td>
+                        <td>{{row.category}}</td>
+                        <td>{{row.reason}}</td>
+                        <td>{{row.publishOn}}</td>
+                        <td style="position: relative;">
+                            <div class="action-menu">
+                                <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 5}" ng-show="vm.selectedTab === 5" role="tabpanel">
+            <table st-table="vm.payments" class="table table-striped jokehub-action-menu">
+                <thead>
+                    <tr>
+                        <th style="border: 0px;">Jokes (12)</th>
+                        <th style="border: 0px;">Payment Date</th>
+                        <th style="border: 0px;">Amount (80)</th>
+                        <th style="border: 0px;">Payment Id</th>
+                        <th style="border: 0px;">Cheque/Wire Transfer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in vm.payments">
+                        <td></td>
+                        <td>{{row.category}}</td>
+                        <td>{{row.reason}}</td>
+                        <td>{{row.publishOn}}</td>
+                        <td>{{row.publishOn}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 6}" ng-show="vm.selectedTab === 6" role="tabpanel">
+            Working on
         </div>
     </div>
 
