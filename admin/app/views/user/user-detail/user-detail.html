@@ -72,16 +72,16 @@
 <section class="mainContentWrapper">
     <ul class="nav nav-tabs" role="tablist" style="display: block">
         <li class="nav-item cursor" ng-click="vm.selectedTab = 1">
-            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Approved Payment Pending ({{vm.userDetails.contentStatus.approve}})</a>
+            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Approved Payment Pending ({{vm.approvedPaymentPending.length}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 2">
-            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Approved And Paid (0)</a>
+            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Approved And Paid ({{vm.approvedAndPaid.length}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 3">
-            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Pending Status ({{vm.userDetails.contentStatus.pending}})</a>
+            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Pending Status ({{vm.pendingStatus.length}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 4">
-            <a class="nav-link text-success font-weight-bold" data-toggle="tab" role="tab">Rejected Status ({{vm.userDetails.contentStatus.reject}})</a>
+            <a class="nav-link text-success font-weight-bold" data-toggle="tab" role="tab">Rejected Status ({{vm.rejectedStatus.length}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 5">
             <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Payments</a>
