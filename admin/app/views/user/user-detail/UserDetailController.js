@@ -32,5 +32,33 @@
             return tmp.textContent || tmp.innerText || "";
         }
 
+        this.selectAllApprovedPaymentPending = function () {
+            vm.approvedPaymentPending.forEach(item => {
+                item.selected = !vm.isAllApprovedPaymentPendingSelected;
+            });
+        }
+
+        this.isAllApprovedPaymentEnabled = function () {
+            return !_.some(vm.approvedPaymentPending, function (item) {
+                return item.selected;
+            });
+        }
+
+        this.payment = function () {
+            let _temp = [];
+            let _data = _.filter(vm.approvedPaymentPending, function (item) {
+                return item.selected;
+            });
+
+            _data.forEach(function (item) {
+                _temp.push(item.id);
+            });
+            vm.ids = _temp;
+        }
+
+        this.approvedPayment = function (data) {
+            var model = { 'ids': vm.ids, 'cost': data };
+            UserService.updatePayments(model);
+        }
     }
 })();

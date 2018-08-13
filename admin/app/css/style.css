@@ -284,7 +284,7 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
 
 .pageTitle {
   position: fixed;
-  width: 100%;
+  width: 96%;
   top: 50px;
   background: #f3f5f9;
   padding: 9px 15px;

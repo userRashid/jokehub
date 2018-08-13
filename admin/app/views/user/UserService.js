@@ -7,7 +7,8 @@
     function _UserService(_http, $q) {
         return {
             getAllUser: _getUserUser,
-            getUserDetails: _getUserDetails
+            getUserDetails: _getUserDetails,
+            updatePayments: _updatePayments
         }
 
         //////////////////////////////////////////////////
@@ -59,6 +60,10 @@
                 _q.resolve(_temp);
             })
             return _q.promise;
+        }
+
+        function _updatePayments(model) {
+            return _http._post('/updatepayments', model);
         }
     }
 })();
