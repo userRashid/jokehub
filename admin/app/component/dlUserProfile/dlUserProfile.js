@@ -3,9 +3,9 @@
     angular.module('jokehubApp.component')
         .directive('dlUserProfile', _dlUserProfile);
 
-    _dlUserProfile.$inject = ['Http', 'Notification'];
+    _dlUserProfile.$inject = ['Http', 'Notification', 'FormData'];
 
-    function _dlUserProfile(Http, Notification) {
+    function _dlUserProfile(Http, Notification, FormData) {
         return {
             restrict: 'A'
             , controller: controller
@@ -16,6 +16,9 @@
         function controller($scope) {
             Http._get('userprofile').then(function (response) {
                 $scope.userProfile = response.data;
+                FormData.getCountryName(response.data.country).then(function (countryData) {
+                    $scope.countryName = countryData;
+                });
             });
             Http._get('paymentdetail').then(function (response) {
                 $scope.paymentDetail = response.data;

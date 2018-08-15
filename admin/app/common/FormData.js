@@ -9,7 +9,8 @@
 
     function _FormData(CategoryService, $q) {
         return {
-            getForm: _getForm
+            getForm: _getForm,
+            getCountryName: _getCountryName
         }
 
         function categoryData() {
@@ -26,6 +27,17 @@
                     _temp.push(_obj);
                 });
                 _d.resolve(_temp);
+            });
+            return _d.promise;
+        }
+
+        function _getCountryName(countryCode) {
+            var _d = $q.defer();
+            countryData().then(function (_response) {
+                var _data = _.filter(_response, function (item) {
+                    return item.key == countryCode;
+                });
+                _d.resolve(_data[0].value);
             });
             return _d.promise;
         }
