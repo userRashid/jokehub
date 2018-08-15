@@ -452,6 +452,11 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
   overflow: hidden;
   width: 500px;
   height: 350px;
+  float: left;
+}
+.cropped{
+  float: right;
+  width: 295px;
 }
 
 .joke-hub-dp {

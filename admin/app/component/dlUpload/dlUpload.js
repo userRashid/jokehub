@@ -71,20 +71,22 @@
                 $scope.isPopupShow = false;
                 $scope.myImage = '';
                 $scope.myCroppedImage = '';
+                if ($scope.data.imageCropped) $scope.data.imageCropped();
             }
         }
         function renderHTML() {
             var html = '';
-            html += '<button type = "button" class="btn btn-primary" data-toggle="modal" data-target="#imageUpload"> Add Image</button >' +
+            html += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageUpload"> {{data.label}}</button>' +
                 '<div ng-if="isPopupShow" class="modal fade bd-example-modal-lg" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">' +
                 '<div class="modal-dialog modal-lg"><div class="modal-content">' +
-                '<div><input type="file" id="{{data.name}}" /></div>' +
+                '<div class="text-left"><input type="file" id="{{data.name}}" /></div>' +
+                '<div class="clearfix">' +
                 '<div class="cropArea">' +
                 '<img-crop image="myImage" result-image="myCroppedImage"></img-crop>' +
                 '</div>' +
-                '<div>Cropped Image:</div>' +
-                '<div><img ng-src="{{myCroppedImage}}" /></div>' +
-                '<button class="btn btn-success" ng-click="add()" data-dismiss="modal">Add</button>' +
+                '<div class="cropped"><label>Your Selection</label><br/><img ng-src="{{myCroppedImage}}" /></div>' +
+                '</div>' +
+                '<div class="text-center"><button class="btn btn-success" ng-click="add()" data-dismiss="modal">Add</button></div>' +
                 '</div></div></div>';
             return html;
         }

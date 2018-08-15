@@ -138,8 +138,9 @@
             </div>
         </div>
         <div class="col-sm-2 order-lg-1 text-center">
-            <img src="http://thejokehub.com/img/{{userProfile.userImage}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <div data-dl-upload="item" class="mt-2"></div>
+            <img src="http://thejokehub.com/profile_img/{{userProfile.userImage}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            <div ng-click="startImageUpload()" data-dl-upload="imageData" class="mt-2"></div>
+            <button ng-show="isUpdateImage" class="btn btn-success" ng-click="updateImage()">Update Image</button>
         </div>
     </div>
 </div>
