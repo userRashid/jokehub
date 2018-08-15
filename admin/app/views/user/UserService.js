@@ -8,7 +8,8 @@
         return {
             getAllUser: _getUserUser,
             getUserDetails: _getUserDetails,
-            updatePayments: _updatePayments
+            updatePayments: _updatePayments,
+            makePayment: _makePayment
         }
 
         //////////////////////////////////////////////////
@@ -46,17 +47,24 @@
         }
 
         function _getUserDetails(id) {
-            var _p = [_http._get('userdetails/' + id), _http._get('usercontent/all/' + id), _http._get('category/all')];
+            var _p = [
+                _http._get('userdetails/' + id),
+                _http._get('usercontent/all/' + id),
+                _http._get('category/all'),
+                _http._get('payments/' + id),
+                _http._get('paymentdetails/' + id)
+            ];
             var _q = $q.defer();
             var _temp = {};
             $q.all(_p).then(function (response) {
                 let user = response[0].data;
                 let content = mapCategories(response[1].data, response[2].data);
                 _temp['approvedPaymentPending'] = getContentStatus(content, 'approve', false);
-                _temp['approvedAndPaid'] = getContentStatus(content, 'approve', true);
+                _temp['approvedAndPaid'] = response[3].data;
                 _temp['pendingStatus'] = getContentStatus(content, 'pending', false);
                 _temp['rejectedStatus'] = getContentStatus(content, 'reject', false);
                 _temp['user'] = user;
+                _temp['payments'] = response[4].data;
                 _q.resolve(_temp);
             })
             return _q.promise;
@@ -64,6 +72,10 @@
 
         function _updatePayments(model) {
             return _http._post('/updatepayments', model);
+        }
+
+        function _makePayment(model) {
+            return _http._post('/makepayments', model);
         }
     }
 })();

@@ -30,7 +30,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="payment" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+<div class="modal fade" id="approvedPayment" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-body">
@@ -43,7 +43,8 @@
                 <div class="form-group row">
                     <label for="perJoke" class="col-sm-2 col-form-label">Per Joke</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" ng-model="perJoke" value="0" ng-change="vm.total = (perJoke * vm.ids.length)" id="perJoke" placeholder="Per Joke">
+                        <input type="text" class="form-control" ng-model="perJoke" value="0" ng-change="vm.total = (perJoke * vm.ids.length)" id="perJoke"
+                            placeholder="Per Joke">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -55,6 +56,36 @@
             </div>
             <div class="modal-footer">
                 <button ng-click="vm.approvedPayment(vm.total)" data-dismiss="modal" type="button" class="btn btn-success btn-sm">
+                    Approved Payment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="makePayment" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Payment Mode</label>
+                    <div class="col-sm-4">
+                        <select ng-model="vm.paymentMode" class="form-control">
+                            <option value='0'>--- Select Payment Mode --- </option>
+                            <option value='paytm'>Paytm</option>
+                            <option value='bank'>Bank</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Notes</label>
+                    <div class="col-sm-4">
+                        <textarea class="form-control" ng-model="vm.paymentNote"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="vm.makePayment()" data-dismiss="modal" type="button" class="btn btn-success btn-sm">
                     Make Payment
                 </button>
             </div>
@@ -64,9 +95,10 @@
 <h3 class="pageTitle row">
     <strong class="col-sm-8">{{vm.userDetails.userName}}</strong>
     <div class="col-sm-4 text-right">
-        <button ng-show="vm.selectedTab === 1" data-toggle="modal" ng-click="vm.payment()" data-target="#payment" ng-disabled="vm.isAllApprovedPaymentEnabled()"
-            type="button" class="btn btn-success btn-sm">Approved Payment</button>
-        <button ng-show="vm.selectedTab === 2" type="button" class="btn btn-warning btn-sm">Make Payment</button>
+        <button ng-show="vm.selectedTab === 1" data-toggle="modal" ng-click="vm.selectForApprovedPayment()" data-target="#approvedPayment"
+            ng-disabled="vm.isAllApprovedPaymentEnabled()" type="button" class="btn btn-success btn-sm">Approved Payment</button>
+        <button ng-show="vm.selectedTab === 2" data-toggle="modal" ng-click="vm.selectForMakePayment()" data-target="#makePayment"
+            ng-disabled="vm.isAllMakePaymentEnabled()" type="button" class="btn btn-warning btn-sm">Make Payment</button>
     </div>
 </h3>
 <section class="mainContentWrapper">
@@ -84,7 +116,7 @@
             <a class="nav-link text-success font-weight-bold" data-toggle="tab" role="tab">Rejected Status ({{vm.rejectedStatus.length}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 5">
-            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Payments</a>
+            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Payments ({{vm.payments.length}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 6">
             <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Finally Paid</a>
@@ -132,31 +164,27 @@
                 <thead>
                     <tr>
                         <th style="border: 0px;">
-                            <input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.isAllSelected" aria-label="Checkbox for following text input">
+                            <input type="checkbox" ng-click="vm.selectAllMakePayment()" ng-model="vm.iAllMakePaymentSelected" aria-label="Checkbox for following text input">
                         </th>
-                        <th style="border: 0px;">Joke</th>
-                        <th style="border: 0px;">Category</th>
-                        <th style="border: 0px;">Profile</th>
-                        <th style="border: 0px;">Pay Amount</th>
-                        <th style="border: 0px;">Date Posted</th>
-                        <th style="border: 0px;">Date Published</th>
+                        <th style="border: 0px;">No of Jokes</th>
+                        <th style="border: 0px;">Paid Amount</th>
                         <th style="border: 0px;">Date Payment</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="row in vm.approvedAndPaid">
                         <td>
-                            <input type="checkbox" ng-click="vm.optionSelect()" ng-model="row.selected" aria-label="Checkbox for following text input">
+                            <input type="checkbox" ng-model="row.selected" aria-label="Checkbox for following text input">
                         </td>
-                        <td>{{row.category}}</td>
-                        <td>{{row.category}}</td>
-                        <td>{{row.publishOn}}</td>
-                        <td>
-                            <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
+                        <td>{{row.jokes.length}}</td>
+                        <td>{{row.amount}}</td>
+                        <td>{{row.paymentOn}}</td>
+                        <td style="position: relative;">
+                            <div class="action-menu">
+                                <i jh-privilege="ADMIN" ng-click="vm.view(row.jokes)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
+                            </div>
                         </td>
-                        <td>{{row.publishOn}}</td>
-                        <td>{{row.publishOn}}</td>
-                        <td>{{row.publishOn}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -236,20 +264,20 @@
             <table st-table="vm.payments" class="table table-striped jokehub-action-menu">
                 <thead>
                     <tr>
-                        <th style="border: 0px;">Jokes (12)</th>
-                        <th style="border: 0px;">Payment Date</th>
-                        <th style="border: 0px;">Amount (80)</th>
                         <th style="border: 0px;">Payment Id</th>
+                        <th style="border: 0px;">Amount</th>
+                        <th style="border: 0px;">Payment Date</th>
                         <th style="border: 0px;">Cheque/Wire Transfer</th>
+                        <th style="border: 0px;">Referance</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="row in vm.payments">
-                        <td></td>
-                        <td>{{row.category}}</td>
-                        <td>{{row.reason}}</td>
-                        <td>{{row.publishOn}}</td>
-                        <td>{{row.publishOn}}</td>
+                        <td>{{row.paymentId}}</td>
+                        <td>{{row.amount}}</td>
+                        <td>{{row.paymentOn}}</td>
+                        <td>{{row.medium}}</td>
+                        <td>{{row.referance}}</td>
                     </tr>
                 </tbody>
             </table>

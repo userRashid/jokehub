@@ -567,3 +567,29 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
 .nav-tabs .nav-item {
   float: left!important;
 }
+
+.re {
+  font-size: 40px;
+}
+
+.earning {
+  height: 80px;
+}
+
+.earning-bottom {
+  height: 30px;
+}
+
+.pera {
+  width: 70%;
+  margin: auto;
+  padding: 5px;
+  font-size: 19px;
+  position: relative;
+  top: 0px;
+}
+
+.shaido {
+  text-shadow: 5px 5px 5px 5px;
+  color: lightslategray
+}

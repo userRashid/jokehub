@@ -93,7 +93,7 @@
                     <tr>
                         <th style="border: 0px;">Joke</th>
                         <th style="border: 0px;">Category</th>
-                        <th style="border: 0px;">Posted on</th>
+                        <th style="border: 0px;">Publish on</th>
                         <th style="border: 0px;" jh-privilege="ADMIN">User</th>
                         <th style="width: 150px; border: 0px;" class="text-right">Action</th>
                     </tr>
@@ -141,7 +141,7 @@
                             <div>{{vm.stripHtml(row.description)}}</div>
                         </td>
                         <td>{{row.category}}</td>
-                        <td>{{row.publishOn}}</td>
+                        <td>{{row.postedOn}}</td>
                         <td jh-privilege="ADMIN">
                             <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
                         </td>

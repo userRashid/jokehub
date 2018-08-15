@@ -19,7 +19,7 @@
                 vm.approvedAndPaid = response.approvedAndPaid;
                 vm.pendingStatus = response.pendingStatus;
                 vm.rejectedStatus = response.rejectedStatus;
-                vm.payments = [];
+                vm.payments = response.payments;
                 vm.finallyPaid = [];
             });
         }
@@ -44,7 +44,7 @@
             });
         }
 
-        this.payment = function () {
+        this.selectForApprovedPayment = function () {
             let _temp = [];
             let _data = _.filter(vm.approvedPaymentPending, function (item) {
                 return item.selected;
@@ -57,8 +57,39 @@
         }
 
         this.approvedPayment = function (data) {
-            var model = { 'ids': vm.ids, 'cost': data };
+            var model = { 'ids': vm.ids, 'cost': data, 'userId': userId };
             UserService.updatePayments(model);
+        }
+
+        this.selectAllMakePayment = function () {
+            vm.approvedAndPaid.forEach(item => {
+                item.selected = !vm.iAllMakePaymentSelected;
+            });
+        }
+
+        this.isAllMakePaymentEnabled = function () {
+            return !_.some(vm.approvedAndPaid, function (item) {
+                return item.selected;
+            });
+        }
+
+        this.selectForMakePayment = function () {
+            let _temp = [];
+            vm.moneyPaid = 0;
+            let _data = _.filter(vm.approvedAndPaid, function (item) {
+                return item.selected;
+            });
+
+            _data.forEach(function (item) {
+                _temp.push(item.id);
+                vm.moneyPaid += parseInt(item.amount);
+            });
+            vm.paymentsIds = _temp;
+        }
+
+        this.makePayment = function () {
+            var model = { 'ids': vm.paymentsIds, 'mode': vm.paymentMode, 'note': vm.paymentNote, 'userId': userId, 'moneyPaid': vm.moneyPaid };
+            UserService.makePayment(model);
         }
     }
 })();
