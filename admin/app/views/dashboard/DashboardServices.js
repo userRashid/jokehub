@@ -9,11 +9,16 @@
 
     function _DashboardServices(_http) {
         return {
-            getAnalytics: _getAnalytics
+            getAnalytics: _getAnalytics,
+            getRecent: _getRecent
         }
 
         function _getAnalytics() {
             return _http._get('analytical');
+        }
+
+        function _getRecent() {
+            return _http._get('content/recent');
         }
     }
 })();

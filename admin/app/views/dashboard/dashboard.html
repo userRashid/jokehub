@@ -73,20 +73,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-8 ">
-                <div class="card p-3">
-                    <h3 class="mb-3">Joke of the Day</h3>
-                    सिक्योरिटी गार्ड के लिए इंटरव्यू में पूछा गया: अंग्रेज़ी आती है?
-                    <br />
-                    <br /> गार्ड बोला: चोर इंग्लैंड से आएँगे क्या? 😜😜😜😜
-                </div>
-            </div>
             <div class="col-sm-4">
-                <!-- <canvas id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options"
-                    chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick">
-                </canvas> -->
+                <h4 class="border-bottom pb-2">Joke of the day</h4>
+                <span ng-bind-html="vm.recentJoke"></span>
             </div>
         </div>
     </div>
