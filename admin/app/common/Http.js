@@ -5,9 +5,9 @@
         .module('jokehubApp.common')
         .factory('Http', _Http);
 
-    _Http.$inject = ['API_URL', '$http', '$q', 'Session'];
+    _Http.$inject = ['API_URL', '$http', '$q', 'Session', 'Dialog'];
 
-    function _Http(API_URL, $http, $q, Session) {
+    function _Http(API_URL, $http, $q, Session, Dialog) {
         return {
             _get: _get,
             _post: _post,
@@ -37,7 +37,11 @@
             console.log(method + ' Called =>', request);
             var _h = $q.defer();
             $http(request).then(function (response) {
-                if (response.hasOwnProperty('data') && response.data.hasOwnProperty('errorCode')) {
+                if (response.status == 202) {
+                    Dialog.createDialog({
+                        'message': response.data
+                    })
+                } else if (response.hasOwnProperty('data') && response.data.hasOwnProperty('errorCode')) {
                     _h.reject(response);
                 } else {
                     _h.resolve(response);
@@ -73,8 +77,9 @@
             return httpRequest('PUT', _url, _headers, _data)
         }
 
-        function _delete() {
-            console.log('Http Delete');
+        function _delete(_url, _data, _headers) {
+            if (_headers === undefined) _headers = {};
+            return httpRequest('DELETE', _url, _headers)
         }
 
         function injectHeader(headers) {

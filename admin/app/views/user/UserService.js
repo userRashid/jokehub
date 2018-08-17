@@ -9,7 +9,8 @@
             getAllUser: _getUserUser,
             getUserDetails: _getUserDetails,
             updatePayments: _updatePayments,
-            makePayment: _makePayment
+            makePayment: _makePayment,
+            deleteUser: _deleteUser
         }
 
         //////////////////////////////////////////////////
@@ -76,6 +77,11 @@
 
         function _makePayment(model) {
             return _http._post('/makepayments', model);
+        }
+
+        function _deleteUser(userId) {
+            console.log('Called', userId);
+            _http._delete('user/' + userId)
         }
     }
 })();

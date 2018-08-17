@@ -9,6 +9,7 @@
 
     function _EarningController(EarningServices) {
         var vm = this;
+        vm.model = {};
 
         vm.labels = ["January", "February", "March", "April", "May", "June", "July", "Aug", "Sept", "Nov", "Dec"];
         vm.series = ['2018', '2019'];
@@ -24,5 +25,12 @@
         }
 
         OnInit();
+
+        this.filter = function () {
+            let year = parseInt(vm.model.year);
+            let month = parseInt(vm.model.month);
+            let _date = new Date(year, month, 31);
+            console.log(' Date ', _date);
+        }
     }
 })();

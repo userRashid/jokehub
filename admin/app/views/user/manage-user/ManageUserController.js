@@ -5,9 +5,9 @@
         .module('jokehubApp.user')
         .controller('ManageUserController', _ManageUserController);
 
-    _ManageUserController.$inject = ['UserService'];
+    _ManageUserController.$inject = ['UserService', 'Dialog'];
 
-    function _ManageUserController(UserService) {
+    function _ManageUserController(UserService, Dialog) {
 
         /////////////////////////////////////////////////////////////
         // Locals
@@ -51,7 +51,17 @@
         }
 
         vm.totalContent = function (data) {
-            return data.approve + data.pending + data.reject;
+            if (data === undefined) return 0;
+            let _count = 0;
+            _count += data.approve !== undefined ? data.approve : 0;
+            _count += data.pending !== undefined ? data.pending : 0;
+            _count += data.reject !== undefined ? data.reject : 0;
+            return _count;
+        }
+
+        vm.deleteUser = function (data) {
+            var userId = data.id;
+            UserService.deleteUser(userId);
         }
     }
 })();
