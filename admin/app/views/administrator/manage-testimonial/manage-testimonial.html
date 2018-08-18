@@ -1,0 +1,92 @@
+<div class="modal fade" id="editContent" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div dl-form="testimonial" mode="half" form-model="vm.addTestimonialModel"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="vm.update()" data-dismiss="modal">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="viewContent" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="d-flex justify-content-between w-100">
+                    <div>
+                        <a ui-sref="jokehub.userDetail({userId:vm.viewData.userId})">{{vm.viewData.user}}</a>
+                    </div>
+                    <div>
+                        <button type="button" ng-click="vm.changeStatus(vm.viewData)" class="btn btn-success btn-sm">
+                            <i class="fa fa-check"></i> Approve
+                        </button>
+                        <button type="button" data-dismiss="modal" ng-click="vm.changeStatus(vm.viewData)" class="btn btn-danger btn-sm">
+                            <i class="fa fa-times"></i> Reject
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <span ng-bind-html="vm.displayDescription(vm.viewData.description)"></span>
+            </div>
+            <div class="modal-footer">
+                <em>
+                    {{vm.viewData.publishOn}}
+                </em>
+            </div>
+        </div>
+    </div>
+</div>
+<h3 class="pageTitle">
+    <span class="fontWght400">Testimonial</span>
+    <strong>Management</strong>
+</h3>
+<section class="mainContentWrapper">
+
+    <table st-table="vm.allTestimonials" class="table table-striped jokehub-action-menu">
+        <thead>
+            <tr>
+                <th style="border: 0px;">Content</th>
+                <th style="border: 0px;">Publish on</th>
+                <th style="border: 0px; width: 140px;">Posted on</th>
+                <th style="border: 0px;">Is Publish</th>
+                <th style="border: 0px;">User</th>
+                <th style="width: 150px; border: 0px;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in vm.allTestimonials track by $index">
+                <td>
+                    <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
+                </td>
+                <td>{{row.publishOn}}</td>
+                <td>{{row.postedOn}}</td>
+                <td>
+                    <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
+                        {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
+                    </span>
+                </td>
+                <td>
+                    <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
+                </td>
+                <td style="position: relative;">
+                    <div class="action-menu">
+                        <i ng-click="vm.changeStatus(row)" class="fa fa-cloud-upload cursor"></i>
+                        <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
+                        <i ng-click="vm.edit(row)" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
+                        <i class="fa fa-trash-o cursor"></i>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

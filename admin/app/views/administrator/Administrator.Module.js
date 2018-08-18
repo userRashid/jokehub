@@ -11,6 +11,14 @@
                     controller: 'ContentManagementController as vm'
                 }
             }
+        }).state('jokehub.testimonialManagement', {
+            url: '/testimonial-management',
+            views: {
+                'content@jokehub': {
+                    templateUrl: 'app/views/administrator/manage-testimonial/manage-testimonial.html',
+                    controller: 'ManageTestimonialController as vm'
+                }
+            }
         });
     };
 })();

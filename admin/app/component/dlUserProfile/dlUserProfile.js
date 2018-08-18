@@ -17,9 +17,11 @@
             function OnInit() {
                 Http._get('userprofile').then(function (response) {
                     $scope.userProfile = response.data;
-                    FormData.getCountryName(response.data.country).then(function (countryData) {
-                        $scope.countryName = countryData;
-                    });
+                    if (response.data.country) {
+                        FormData.getCountryName(response.data.country).then(function (countryData) {
+                            $scope.countryName = countryData;
+                        });
+                    }
                 });
                 Http._get('paymentdetail').then(function (response) {
                     $scope.paymentDetail = response.data;
@@ -65,6 +67,14 @@
 
             $scope.startImageUpload = function () {
                 $scope.isUpdateImage = true;
+            }
+            $scope.addTestimonial = function () {
+                $scope.addTestimonialModel.getModel().then(function (model) {
+                    Http._post('testimonial/add', model).then(function (response) {
+                        Notification.notify('success', 'Success', response.data);
+                        $scope.selectedDetailsTab = 1;
+                    });
+                });
             }
         }
     }

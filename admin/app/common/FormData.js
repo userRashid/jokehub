@@ -1214,7 +1214,12 @@
                         , name: 'RejectReason'
                         , type: 'dlText'
                     }
-                ]
+                ],
+                testimonial: [{
+                    label: 'Testimonial'
+                    , name: 'Description'
+                    , type: 'dlTextEditor'
+                }]
             }
         }
 
