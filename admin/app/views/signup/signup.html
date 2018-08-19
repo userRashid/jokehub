@@ -1,34 +1,108 @@
-<div class="liquidHgt loginBG">
-  <form class="form-signin">
-    <fieldset ng-disabled="vm.isLoading" ng-if="!vm.showMsg">
-      <div class="text-center">
-        <img src="app/images/logo.png" />
-      </div>
-      <label for="inputEmail" class="sr-only">Name</label>
-      <input type="text" id="inputName" ng-model="signup.name" class="form-control loginInput" placeholder="Name" required autofocus>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" ng-model="signup.email" class="form-control loginInput" placeholder="Email address" required
-        autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" ng-model="signup.password" id="inputPassword" class="form-control loginInput" placeholder="Password"
-        required>
-      <div class="checkbox">
-        <a href="#!/login">Login</a>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block loginButton" ng-click="vm.doSignup(signup)" type="submit">
-        <i ng-show="vm.isLoading" class="fa fa-spinner fa-pulse fa-1x fa-fw"></i> Signup</button>
-    </fieldset>
-    <div class="alert alert-success" role="alert" ng-if="vm.showMsg">
-      Hey
-      <b>{{vm.name}}</b>,
-      <br />
-      <br /> Please check your email
-      <b>
-        <em>'{{vm.email}}'</em>
-      </b> for complete your registration with us.
-      <br />
-      <br/>Thanks,
-      <br />TheJokeHub Team
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+    <div class="container">
+        <a class="navbar-brand" style="width: 50px;">
+            <img class="w-100" src="app/images/logo.png" />
+        </a>
+        <div class="ml-auto my-2 my-lg-0">
+            <a href="#!/login" class="btn btn-primary text-white btn-sm my-2 my-sm-0">Log In to Existing Account</a>
+        </div>
     </div>
-  </form>
+</nav>
+<div class="liquidHgt loginBG">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 text-white">
+                <h1 class="h3">Write Jokes and
+                    <i>Get Paid. </i>
+                </h1>
+                <div class="mt-4">
+                    <p>You heard it right. We pay for every approved JOKE you write and submit with us. Signup for account today
+                        and start right away.</p>
+                    <ul class="list-unstyled text-small">
+                        <li class="border-bottom pb-3 d-inline">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <span>First 200 Jokes (Only Approved Jokes) Rs 1/Joke</span>
+                        </li>
+                        <li class="pt-4">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <span>After 200 Jokes (Only Approved Jokes) Rs 2/Joke</span>
+                        </li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <div class="std-box text-primary border border-primary">
+                                <i class="fa fa-user-plus fa-4x" aria-hidden="true"></i>
+                                <h5>sign up</h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <div class="std-box text-success border border-success">
+                                <i class="fa fa-file-text fa-4x" aria-hidden="true"></i>
+                                <h5>Start Writing</h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <div class="std-box text-warning border border-warning">
+                                <i class="fa fa-sign-in fa-4x" aria-hidden="true"></i>
+                                <h5>Submit Status</h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <div class="std-box text-info border border-info">
+                                <i class="fa fa-money fa-4x" aria-hidden="true"></i>
+                                <h5>Get Paid</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <form class="form-signin">
+                    <fieldset ng-disabled="vm.isLoading" ng-if="!vm.showSuccessMsg || !vm.showErrorMsg">
+                        <input class="form-control loginInput" ng-model="signup.name" type="text" placeholder="Name" required autofocus>
+                        <input class="form-control loginInput" ng-model="signup.email" type="email" placeholder="Email address" required autofocus>
+                        <input class="form-control loginInput" ng-model="signup.phone" type="text" placeholder="Phone No" required autofocus>
+                        <select style="padding: 0 5px" class="form-control" ng-model="signup.gender">
+                            <option>---Please Select---</option>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
+                        <input class="form-control loginInput" ng-model="signup.password" type="password" placeholder="Password" required>
+                        <input class="form-control loginInput" ng-model="signup.dob" type="date" placeholder="Phone No" required>
+                        <small style="color: #ccc; font-style: italic">
+                            By clicking Sign Up, you agree to our
+                            <a href="#" id="terms-link" target="_blank" rel="nofollow">Terms</a> and
+                            <a href="#" id="privacy-link" target="_blank" rel="nofollow">Data Policy</a>
+                        </small>
+                        <button class="btn btn-lg btn-primary btn-block loginButton mt-2" ng-click="vm.doSignup(signup)" type="submit">
+                            <i ng-show="vm.isLoading" class="fa fa-spinner fa-pulse fa-1x fa-fw"></i> Signup
+                        </button>
+                    </fieldset>
+                    <div class="alert alert-success" role="alert" ng-if="vm.showSuccessMsg">
+                        Hey
+                        <b>{{vm.name}}</b>,
+                        <br />
+                        <br /> We have just sent you verification email at
+                        <b>
+                            <em>'{{vm.email}}'.</em>
+                        </b> To complete your registration with us please check your Inbox for our email.
+                        <br /> If you do not find our email in your Inbox then please check your Spam Folder.
+                        <br />
+                        <br/>Thanks,
+                        <br />TheJokeHub Team
+                    </div>
+                    <div class="alert alert-warning" role="alert" ng-if="vm.showErrorMsg">
+                        Sorry
+                        <b>Rashid{{vm.name}}</b>,
+                        <br />
+                        <br /> You have not verified your email address yet, please first verify your email address and then you
+                        can login.
+                        <br />
+                        <br/>Thanks,
+                        <br />TheJokeHub Team
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

@@ -37,10 +37,9 @@ body {
 }
 
 .form-signin input, input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-  background-color: #000000 !important;
   border: solid 1px #272727;
   margin: 13px 0;
-  border-radius: 10px !important;
+  border-radius: 5px !important;
 }
 
 .form-signin button.loginButton {
@@ -450,13 +449,7 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
 .cropArea {
   background: #E4E4E4;
   overflow: hidden;
-  width: 500px;
   height: 350px;
-  float: left;
-}
-.cropped{
-  float: right;
-  width: 295px;
 }
 
 .joke-hub-dp {
@@ -597,4 +590,12 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
 .shaido {
   text-shadow: 5px 5px 5px 5px;
   color: lightslategray
+}
+
+.std-box {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 24px 0 0 0;
 }

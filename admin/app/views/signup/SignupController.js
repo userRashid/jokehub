@@ -12,10 +12,16 @@
         vm.isLoading = false;
         vm.doSignup = function (_data) {
             vm.isLoading = true;
-            vm.showMsg = false;
+            vm.showSuccessMsg = false;
+            vm.showErrorMsg = true;
             SignupService.doSignup(_data).then(function (r) {
                 vm.isLoading = false;
-                vm.showMsg = true;
+                if (r.data.status == 1) {
+                    vm.showSuccessMsg = true;
+                }
+                if (r.data.status == 2) {
+                    vm.showErrorMsg = true;
+                }
                 vm.name = r.data.name;
                 vm.email = r.data.email;
             }, function (error) {

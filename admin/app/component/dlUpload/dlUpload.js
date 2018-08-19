@@ -8,13 +8,10 @@
         return {
             restrict: 'A'
             , controller: controller
+            , templateUrl: 'app/component/dlUpload/dlUpload.html'
             , scope: {
                 data: '=dlUpload'
             }
-            , link: link
-        }
-        function link($scope, element, attr) {
-            element.html('').append($compile(renderHTML())($scope));
         }
         function controller($scope) {
             $scope.isPopupShow = true;
@@ -74,25 +71,5 @@
                 if ($scope.data.imageCropped) $scope.data.imageCropped();
             }
         }
-        function renderHTML() {
-            var html = '';
-            html += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageUpload"> {{data.label}}</button>' +
-                '<div ng-if="isPopupShow" class="modal fade bd-example-modal-lg" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">' +
-                '<div class="modal-dialog modal-lg"><div class="modal-content">' +
-                '<div class="text-left"><input type="file" id="{{data.name}}" /></div>' +
-                '<div class="clearfix">' +
-                '<div class="cropArea">' +
-                '<img-crop image="myImage" result-image="myCroppedImage"></img-crop>' +
-                '</div>' +
-                '<div class="cropped"><label>Your Selection</label><br/><img ng-src="{{myCroppedImage}}" /></div>' +
-                '</div>' +
-                '<div class="text-center"><button class="btn btn-success" ng-click="add()" data-dismiss="modal">Add</button></div>' +
-                '</div></div></div>';
-            return html;
-        }
     }
 })();
-
-
-
-
