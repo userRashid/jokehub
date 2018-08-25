@@ -599,3 +599,7 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
   text-align: center;
   padding: 24px 0 0 0;
 }
+
+.sign-up-info {
+  background: #fff;
+}

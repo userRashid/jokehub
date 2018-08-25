@@ -19,6 +19,7 @@
         'jokehubApp.privilege',
         'jokehubApp.administrator',
         'jokehubApp.profile',
+        'jokehub.forgotPassword',
         'smart-table',
         'ngAnimate',
         'toastr',

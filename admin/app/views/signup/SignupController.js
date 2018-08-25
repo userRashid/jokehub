@@ -13,20 +13,16 @@
         vm.doSignup = function (_data) {
             vm.isLoading = true;
             vm.showSuccessMsg = false;
-            vm.showErrorMsg = true;
+            vm.showErrorMsg = false;
             SignupService.doSignup(_data).then(function (r) {
                 vm.isLoading = false;
-                if (r.data.status == 1) {
-                    vm.showSuccessMsg = true;
-                }
-                if (r.data.status == 2) {
-                    vm.showErrorMsg = true;
-                }
+                vm.showSuccessMsg = true;
                 vm.name = r.data.name;
                 vm.email = r.data.email;
             }, function (error) {
-                console.log('Error', error);
                 vm.isLoading = false;
+                vm.showErrorMsg = true;
+                vm.errorMsg = error.data.errorMsg;
             });
         }
     }

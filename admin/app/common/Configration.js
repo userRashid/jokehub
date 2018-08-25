@@ -13,5 +13,8 @@
                 Price: { model: '' },
                 IsActive: { model: '' }
             }
+        })
+        .constant('ERROR_MSG', {
+            '1001': 'The email address you have entered is already registered, Please user \'Forgot Password\' to reset your password'
         });
 })();

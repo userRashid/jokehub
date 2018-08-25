@@ -14,6 +14,7 @@
         vm.showError = false;
         vm.doLogin = function (_data) {
             vm.isLoading = true;
+            vm.showError = false;
             LoginService.doLogin(_data).then(function () {
                 vm.isLoading = false;
             }, function (error) {

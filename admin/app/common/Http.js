@@ -5,9 +5,9 @@
         .module('jokehubApp.common')
         .factory('Http', _Http);
 
-    _Http.$inject = ['API_URL', '$http', '$q', 'Session', 'Dialog'];
+    _Http.$inject = ['API_URL', '$http', '$q', 'Session', 'Dialog', 'ERROR_MSG'];
 
-    function _Http(API_URL, $http, $q, Session, Dialog) {
+    function _Http(API_URL, $http, $q, Session, Dialog, ERROR_MSG) {
         return {
             _get: _get,
             _post: _post,
@@ -42,6 +42,8 @@
                         'message': response.data
                     })
                 } else if (response.hasOwnProperty('data') && response.data.hasOwnProperty('errorCode')) {
+                    let errorMsg = ERROR_MSG[response.data.errorCode];
+                    response.data.errorMsg = errorMsg;
                     _h.reject(response);
                 } else {
                     _h.resolve(response);
