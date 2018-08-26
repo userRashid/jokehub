@@ -15,6 +15,8 @@
             }
         })
         .constant('ERROR_MSG', {
-            '1001': 'The email address you have entered is already registered, Please user \'Forgot Password\' to reset your password'
+            '1001': 'The email address you have entered is already registered, Please user \'Forgot Password\' to reset your password.'
+            , '1003': 'The email address you have entered is not registered with us, Please \'Create Account\' and then confirm email.'
+            , '1004': 'The reset password link is expire.'
         });
 })();

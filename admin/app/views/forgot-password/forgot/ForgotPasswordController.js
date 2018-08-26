@@ -2,22 +2,22 @@
     'use strict';
 
     angular
-        .module('jokehubApp.signup')
-        .controller('SignupController', _SignupController);
+        .module('jokehub.forgotPassword')
+        .controller('ForgotPasswordController', _ForgotPasswordController);
 
-    _SignupController.$inject = ['SignupService'];
+    _ForgotPasswordController.$inject = ['ForgotPasswordService'];
 
-    function _SignupController(SignupService) {
+    function _ForgotPasswordController(ForgotPasswordService) {
         var vm = this;
         vm.isLoading = false;
-        vm.doSignup = function (_data) {
+        
+        vm.submit = function (data) {
             vm.isLoading = true;
             vm.showSuccessMsg = false;
             vm.showErrorMsg = false;
-            SignupService.doSignup(_data).then(function (r) {
+            ForgotPasswordService.forgotPassword(data).then(function (r) {
                 vm.isLoading = false;
                 vm.showSuccessMsg = true;
-                vm.name = r.data.name;
                 vm.email = r.data.email;
             }, function (error) {
                 vm.isLoading = false;

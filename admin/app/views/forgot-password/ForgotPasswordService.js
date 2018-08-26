@@ -9,13 +9,17 @@
 
     function _ForgotPasswordService(_http, _state) {
         return {
-            forgotPassword: _forgotPassword
+            forgotPassword: _forgotPassword,
+            resetPassword: _resetPassword
         }
 
         function _forgotPassword(_data) {
-            return _http._post('forgotpassword', _data).then(function (response) {
-                _state.go('jokehub.login');
-            });
+            return _http._post('forgotpassword', _data);
+        }
+
+        function _resetPassword(_data) {
+            console.log('data ====>', _data);
+            return _http._put('resetpassword', _data);
         }
     }
 })();

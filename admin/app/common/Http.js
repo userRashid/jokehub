@@ -42,8 +42,10 @@
                         'message': response.data
                     })
                 } else if (response.hasOwnProperty('data') && response.data.hasOwnProperty('errorCode')) {
-                    let errorMsg = ERROR_MSG[response.data.errorCode];
-                    response.data.errorMsg = errorMsg;
+                    if (ERROR_MSG[response.data.errorCode]) {
+                        let errorMsg = ERROR_MSG[response.data.errorCode];
+                        response.data.errorMsg = errorMsg;
+                    }
                     _h.reject(response);
                 } else {
                     _h.resolve(response);

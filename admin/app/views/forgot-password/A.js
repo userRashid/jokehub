@@ -11,8 +11,19 @@
                     templateUrl: 'app/core/default.html'
                 },
                 'content@jokehub.forgotPassword': {
-                    templateUrl: 'app/views/forgot-password/forgot-password.html',
+                    templateUrl: 'app/views/forgot-password/forgot/forgot-password.html',
                     controller: 'ForgotPasswordController as vm'
+                }
+            }
+        }).state('jokehub.reset', {
+            url: '/resetpassword/:id',
+            views: {
+                'jokehub@': {
+                    templateUrl: 'app/core/default.html'
+                },
+                'content@jokehub.reset': {
+                    templateUrl: 'app/views/forgot-password/reset/reset-password.html',
+                    controller: 'ResetPasswordController as vm'
                 }
             }
         });
