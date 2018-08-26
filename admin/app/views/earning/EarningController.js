@@ -27,10 +27,18 @@
         OnInit();
 
         this.filter = function () {
-            let year = parseInt(vm.model.year);
-            let month = parseInt(vm.model.month);
-            let _date = new Date(year, month, 31);
-            console.log(' Date ', _date);
+            let fromYear = parseInt(vm.model.from.year.value);
+            let fromMonth = parseInt(vm.model.from.month.value);
+            let toYear = parseInt(vm.model.to.year.value);
+            let toMonth = parseInt(vm.model.to.month.value);
+
+            let daysInMonth = new Date(toYear, toMonth, 0).getDate();
+
+            let formDate = new Date(fromYear, fromMonth - 1, 1);
+            let toDate = new Date(toYear, toMonth - 1, daysInMonth);
+            toDate.setHours(23, 59, 59, 999);
+            let model = { formDate: formDate, toDate: toDate };
+            console.log('Model =>', model);
         }
     }
 })();
