@@ -73,21 +73,20 @@
         }
 
         function _updatePayments(model) {
-            return _http._post('/updatepayments', model);
+            return _http._post('updatepayments', model);
         }
 
         function _makePayment(model) {
-            return _http._post('/makepayments', model);
+            return _http._post('makepayments', model);
         }
 
         function _changeStatus(model) {
-            return _http._put('/user/status', model).then(function (res) {
+            return _http._put('user/status', model).then(function (res) {
                 Notification.notify('success', 'Success', res.data);
             });
         }
 
         function _deleteUser(userId) {
-            console.log('Called', userId);
             _http._delete('user/' + userId)
         }
     }

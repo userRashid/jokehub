@@ -1,3 +1,18 @@
+<div class="modal fade" id="viewEarning" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body">
+                {{vm.viewEarningData.nids}}
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
 <h3 class="pageTitle">
     <strong>Earning</strong>
 </h3>
@@ -53,7 +68,7 @@
                 <div class="form-group col-sm-5">
                     <label for="from">From</label>
                     <div class="input-group mb-3">
-                        <select class="form-control" ng-model="vm.model.from.year" ng-options="opt.label for opt in [{value: '2018', label: '2018'}]">
+                        <select class="form-control" ng-model="vm.model.from.year" ng-options="opt.label for opt in [{value: '2017', label: '2017'}, {value: '2018', label: '2018'}]">
                             <option value="">--Select Year--</option>
                         </select>
                         <select class="form-control" ng-model="vm.model.from.month" ng-options="opt.label for opt in [ {value: '1', label: 'January'},
@@ -75,7 +90,7 @@
                 <div class="form-group col-sm-5">
                     <label for="to">To</label>
                     <div class="input-group mb-3">
-                        <select class="form-control" ng-model="vm.model.to.year" ng-options="opt.label for opt in [{value: '2018', label: '2018'}]">
+                        <select class="form-control" ng-model="vm.model.to.year" ng-options="opt.label for opt in [{value: '2017', label: '2017'}, {value: '2018', label: '2018'}]">
                             <option value="">--Select Year--</option>
                         </select>
                         <select class="form-control" ng-model="vm.model.to.month" ng-options="opt.label for opt in [ {value: '1', label: 'January'},
@@ -95,11 +110,32 @@
                     </div>
                 </div>
                 <div class="text-left col-sm-2 pt-2">
-                    <button ng-click="vm.filter()" class="btn btn-success mt-4">Go</button>
+                    <button ng-click="vm.filter()" ng-disabled="vm.isFilterEnabled()" class="btn btn-success mt-4">Go</button>
                 </div>
             </div>
-            <canvas id="bar" class="chart chart-bar" chart-data="vm.data" chart-labels="vm.labels"> chart-series="series"
-            </canvas>
+            <div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th ng-repeat="month in vm.labels" scope="col">{{::month}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in vm.earnings">
+                            <th scope="row">{{data.year}}</th>
+                            <td ng-repeat="item in data.months">
+                                <span ng-if="item.cost == 0">
+                                    {{item.cost}}
+                                </span>
+                                <a ng-if="item.cost" data-toggle="modal" data-target="#viewEarning" ng-click="vm.viewEarning(item)" class="badge badge-secondary text-white cursor">{{item.cost}}</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--  <canvas id="bar" class="chart chart-bar" chart-data="vm.data" chart-labels="vm.labels"> chart-series="series"
+            </canvas> -->
         </div>
     </div>
 </section>
