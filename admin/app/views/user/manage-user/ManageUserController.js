@@ -63,5 +63,10 @@
             var userId = data.id;
             UserService.deleteUser(userId);
         }
+
+        vm.changeStatus = function (userId, isActive) {
+            let model = { id: userId, status: isActive };
+            UserService.changeStatus(model);
+        }
     }
 })();

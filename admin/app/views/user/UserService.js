@@ -2,15 +2,16 @@
     angular.module('jokehubApp.user')
         .factory('UserService', _UserService);
 
-    _UserService.$inject = ['Http', '$q'];
+    _UserService.$inject = ['Http', '$q', 'Notification'];
 
-    function _UserService(_http, $q) {
+    function _UserService(_http, $q, Notification) {
         return {
             getAllUser: _getUserUser,
             getUserDetails: _getUserDetails,
             updatePayments: _updatePayments,
             makePayment: _makePayment,
-            deleteUser: _deleteUser
+            deleteUser: _deleteUser,
+            changeStatus: _changeStatus
         }
 
         //////////////////////////////////////////////////
@@ -77,6 +78,12 @@
 
         function _makePayment(model) {
             return _http._post('/makepayments', model);
+        }
+
+        function _changeStatus(model) {
+            return _http._put('/user/status', model).then(function (res) {
+                Notification.notify('success', 'Success', res.data);
+            });
         }
 
         function _deleteUser(userId) {
