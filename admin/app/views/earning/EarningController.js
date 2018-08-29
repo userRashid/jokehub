@@ -78,9 +78,11 @@
                 if (isYearPresent == undefined) {
                     months.forEach(function (e) {
                         if (e.month == month) {
-                            let _cost = parseInt(_data[key][0].cost);
-                            e.cost += _cost;
-                            e.nids = e.nids.concat(_data[key][0].content);
+                            _data[key].forEach(function (i) {
+                                let _cost = parseInt(i.cost);
+                                e.cost = e.cost + _cost;
+                                e.nids = e.nids.concat(i.content);
+                            });
                         };
                     });
                     let yearData = { year: year, months: months };
@@ -90,9 +92,11 @@
                         if (e.year == year) {
                             e.months.forEach(function (e) {
                                 if (e.month == month) {
-                                    let _cost = parseInt(_data[key][0].cost);
-                                    e.cost += _cost;
-                                    e.nids = e.nids.concat(_data[key][0].content);
+                                    _data[key].forEach(function (i) {
+                                        let _cost = parseInt(i.cost);
+                                        e.cost = e.cost + _cost;
+                                        e.nids = e.nids.concat(i.content);
+                                    });
                                 };
                             });
                         };
