@@ -77,7 +77,9 @@
         }
 
         function _makePayment(model) {
-            return _http._post('makepayments', model);
+            return _http._post('makepayments', model).then(function () {
+                Notification.notify('success', 'Success', 'Payment successfull');
+            });
         }
 
         function _changeStatus(model) {

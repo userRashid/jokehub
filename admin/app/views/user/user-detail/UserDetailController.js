@@ -9,6 +9,19 @@
 
     function _UserDetailController(UserService, $stateParams) {
 
+        /////////////////////////////////////////////////////////////
+        //
+        /////////////////////////////////////////////////////////////
+
+        function removedSelected(ids, data) {
+            console.log('ids, data =>', ids, data);
+            return _.filter(data, function (item) {
+                return ids.indexOf(item.id) == -1;
+            });
+        }
+
+        /////////////////////////////////////////////////////////////
+
         var vm = this;
         var userId = $stateParams.userId;
 
@@ -58,7 +71,9 @@
 
         this.approvedPayment = function (data) {
             var model = { 'ids': vm.ids, 'cost': data, 'userId': userId };
-            UserService.updatePayments(model);
+            UserService.updatePayments(model).then(function () {
+                vm.approvedPaymentPending = removedSelected(vm.ids, vm.approvedPaymentPending);
+            });
         }
 
         this.selectAllMakePayment = function () {
@@ -89,7 +104,9 @@
 
         this.makePayment = function () {
             var model = { 'ids': vm.paymentsIds, 'mode': vm.paymentMode, 'note': vm.paymentNote, 'userId': userId, 'moneyPaid': vm.moneyPaid };
-            UserService.makePayment(model);
+            UserService.makePayment(model).then(function () {
+                vm.approvedAndPaid = removedSelected(vm.paymentsIds, vm.approvedAndPaid);
+            });
         }
     }
 })();
