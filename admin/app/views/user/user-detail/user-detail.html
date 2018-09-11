@@ -30,6 +30,49 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="viewContent" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="d-flex justify-content-between w-100">
+                    <div>
+                        <a ui-sref="jokehub.userDetail({userId:vm.viewData.userId})">{{vm.viewData.user}}</a>
+                    </div>
+                    <div>
+                        <b>{{vm.viewData.category}}</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div ng-if="vm.viewData.reason" class="alert alert-warning" role="alert">
+                    <strong>Reject Reason - </strong>{{vm.viewData.reason}}
+                </div>
+                <span ng-bind-html="vm.displayDescription(vm.viewData.description)"></span>
+            </div>
+            <div class="modal-footer">
+                <em class="float-left">
+                    {{vm.viewData.publishOn}}
+                </em>
+                <!-- <button type="button" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-chevron-right"></i>
+                    </button> -->
+                <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 3 || vm.selectedTab == 2" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)"
+                    class="btn btn-success btn-sm">
+                    <i class="fa fa-check"></i> Approve
+                </button>
+                <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 1 || vm.selectedTab == 2" type="button" data-dismiss="modal" ng-click="vm.changeStatus(vm.viewData.nid, false)"
+                    class="btn btn-danger btn-sm">
+                    <i class="fa fa-times"></i> Reject
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="approvedPayment" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -104,7 +147,9 @@
 <section class="mainContentWrapper">
     <ul class="nav nav-tabs" role="tablist" style="display: block">
         <li class="nav-item cursor" ng-click="vm.selectedTab = 1">
-            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Approved Payment Pending ({{vm.approvedPaymentPending.length}})</a>
+            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Approved Payment Pending
+                ({{vm.approvedPaymentPending.length}})
+            </a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 2">
             <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Approved And Paid ({{vm.approvedAndPaid.length}})</a>
@@ -198,7 +243,6 @@
                         </th>
                         <th style="border: 0px;">Status</th>
                         <th style="border: 0px;">Category</th>
-                        <th style="border: 0px;">Profile</th>
                         <th style="border: 0px;">Date Posted</th>
                         <th style="width: 150px; border: 0px;" class="text-right">Action</th>
                     </tr>
@@ -212,12 +256,10 @@
                             <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
                         </td>
                         <td>{{row.category}}</td>
-                        <td>
-                            <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
-                        </td>
                         <td>{{row.publishOn}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
+                                <i jh-privilege="ADMIN" ng-click="vm.view(row.jokes)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
                                 <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
                                 <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
                             </div>

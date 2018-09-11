@@ -102,6 +102,10 @@
             vm.paymentsIds = _temp;
         }
 
+        this.view = function (row) {
+            this.viewData = row;
+        }
+
         this.makePayment = function () {
             var model = { 'ids': vm.paymentsIds, 'mode': vm.paymentMode, 'note': vm.paymentNote, 'userId': userId, 'moneyPaid': vm.moneyPaid };
             UserService.makePayment(model).then(function () {

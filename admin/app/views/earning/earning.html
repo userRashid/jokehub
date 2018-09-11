@@ -22,7 +22,7 @@
             <div>
                 <div class="text-center border earning shadow">
                     <span class="re">
-                        {{vm.earning}}
+                        {{vm.earning.earning}}
                     </span>
                     <p class="pera bg-success text-white">
                         <i class="fa fa-inr"></i> Earning</p>
@@ -34,17 +34,17 @@
             <div class="mt-3">
                 <div class="text-center border earning shadow">
                     <span class="re">
-                        0
+                        {{vm.earning.approvedJokes}}
                     </span>
                     <p class="pera bg-warning text-dark">
-                        <i class="fa fa-file-text-o"></i> Approved Status</p>
+                        <i class="fa fa-file-text-o"></i> Approved Jokes</p>
                 </div>
                 <div class="border bg-light text-center earning-bottom shadow"></div>
             </div>
             <div class="mt-3">
                 <div class="text-center border earning shadow ">
                     <span class="re">
-                        0
+                        {{vm.earning.payments}}
                     </span>
                     <p class="pera bg-secondary text-white">
                         <i class="fa fa-inbox"></i> Paid</p>
@@ -54,7 +54,7 @@
             <div class="mt-2">
                 <div class="text-center border earning shadow">
                     <span class="re">
-                        0
+                        {{vm.earning.balance}}
                     </span>
                     <p class="pera bg-primary text-white">
                         <i class="fa fa-balance-scale"></i> Balance</p>

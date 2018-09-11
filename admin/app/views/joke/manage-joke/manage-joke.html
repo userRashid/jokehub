@@ -11,8 +11,8 @@
                 <div dl-form="addJoke" form-model="vm.updateJokeModel"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="vm.update()" data-dismiss="modal">Update</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="vm.update()" data-dismiss="modal">Update</button>
             </div>
         </div>
     </div>
@@ -30,16 +30,6 @@
                     <div>
                         <b>{{vm.viewData.category}}</b>
                     </div>
-                    <div>
-                        <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 3 || vm.selectedTab == 2" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)"
-                            class="btn btn-success btn-sm">
-                            <i class="fa fa-check"></i> Approve
-                        </button>
-                        <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 1 || vm.selectedTab == 2" type="button" data-dismiss="modal" ng-click="vm.changeStatus(vm.viewData.nid, false)"
-                            class="btn btn-danger btn-sm">
-                            <i class="fa fa-times"></i> Reject
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -50,15 +40,24 @@
                 <span ng-bind-html="vm.displayDescription(vm.viewData.description)"></span>
             </div>
             <div class="modal-footer">
-                <em>
+                <em class="float-left">
                     {{vm.viewData.publishOn}}
                 </em>
-                <button type="button" class="btn btn-secondary btn-sm">
+                <!-- <button type="button" class="btn btn-secondary btn-sm">
                     <i class="fa fa-chevron-left"></i>
                 </button>
                 <button type="button" class="btn btn-secondary btn-sm">
                     <i class="fa fa-chevron-right"></i>
+                </button> -->
+                <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 3 || vm.selectedTab == 2" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)"
+                    class="btn btn-success btn-sm">
+                    <i class="fa fa-check"></i> Approve
                 </button>
+                <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 1 || vm.selectedTab == 2" type="button" data-dismiss="modal" ng-click="vm.changeStatus(vm.viewData.nid, false)"
+                    class="btn btn-danger btn-sm">
+                    <i class="fa fa-times"></i> Reject
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
