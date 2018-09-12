@@ -27,6 +27,7 @@
                     $scope.paymentDetail = response.data;
                 });
             }
+
             OnInit();
             $scope.updateDetails = function () {
                 $scope.userDetailModel.getModel().then(function (model) {
@@ -53,21 +54,28 @@
                 , name: 'ProfileImage'
             };
 
-            $scope.isUpdateImage = false;
+            $scope.imageData.cancel = function () {
+                $scope.imageData.isUpdateImage = false;
+            };
 
-            $scope.updateImage = function () {
-                var _data = $scope.imageData.model;
-                var _name = $scope.imageData.name;
-                var _model = [{ data: _data, name: _name }];
-                UploadAPI._post('imageupdate/' + $scope.userProfile.imgId, _model, { "Content-Type": undefined }).then(function (_response) {
-                    $scope.isUpdateImage = false;
+            $scope.imageData.removeImage = function () {
+                Http._delete('imageupdate/' + $scope.userProfile.imgId).then(function (_response) {
+                    Notification.notify('success', 'Success', 'Image Removed Successfully');
                     OnInit();
                 });
             }
 
-            $scope.startImageUpload = function () {
-                $scope.isUpdateImage = true;
+            $scope.updateImage = function () {
+                var _data = $scope.imageData.model;
+                var _name = $scope.imageData.name;
+                var _model = [{data: _data, name: _name}];
+                UploadAPI._post('imageupdate/' + $scope.userProfile.imgId, _model, {"Content-Type": undefined}).then(function (_response) {
+                    $scope.imageData.isUpdateImage = false;
+                    Notification.notify('success', 'Success', 'Image Update Successfully');
+                    OnInit();
+                });
             }
+
             $scope.addTestimonial = function () {
                 $scope.addTestimonialModel.getModel().then(function (model) {
                     Http._post('testimonial/add', model).then(function (response) {

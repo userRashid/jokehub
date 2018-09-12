@@ -13,6 +13,7 @@
                 data: '=dlUpload'
             }
         }
+
         function controller($scope) {
             $scope.isPopupShow = true;
             $scope.myImage = '';
@@ -38,7 +39,7 @@
                     byteArrays.push(byteArray);
                 }
 
-                var blob = new Blob(byteArrays, { type: contentType });
+                var blob = new Blob(byteArrays, {type: contentType});
                 return blob;
             }
 
@@ -59,6 +60,7 @@
                 };
                 reader.readAsDataURL(file);
             };
+
             $timeout(function () {
                 var id = '#' + $scope.data.name;
                 angular.element(document.querySelector(id)).on('change', handleFileSelect);
@@ -69,6 +71,10 @@
                 $scope.myImage = '';
                 $scope.myCroppedImage = '';
                 if ($scope.data.imageCropped) $scope.data.imageCropped();
+            }
+
+            $scope.changeImageInit = function () {
+                $scope.data.isUpdateImage = true;
             }
         }
     }

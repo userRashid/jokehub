@@ -23,7 +23,11 @@
                             <i ng-if="userProfile.sex == 1" class="fa fa-male" aria-hidden="true"></i>
                             <i ng-if="userProfile.sex == 2" class="fa fa-female" aria-hidden="true"></i>
                         </h5>
-                        <i class="col-sm-1 fa fa-edit" ng-click="selectedDetailsTab = 3; editProfile()"></i>
+                        <span class="col-sm-1">
+                            <span class="cursor badge badge-warning">
+                                Edit <i class="fa fa-lg fa-edit" ng-click="selectedDetailsTab = 3; editProfile()"></i>
+                            </span>
+                        </span>
                     </div>
                     <a class="badge badge-primary" href="http://www.thejokehub.com/user/{{userProfile.profileUrl}}" target="_blank">
                         <i class="fa fa-link" aria-hidden="true"></i> http://www.thejokehub.com/user/{{userProfile.profileUrl}}</a>
@@ -62,7 +66,11 @@
                                 <b>{{paymentDetail.preferredPaymentMode == '2' ? 'Paytm' : 'Bank'}}</b>
                             </span>
                         </div>
-                        <i class="col-sm-2 fa fa-edit" ng-click="selectedDetailsTab = 4; editPaymentDetails()"></i>
+                        <span class="col-sm-1">
+                            <span class="cursor badge badge-warning">
+                                Edit <i class="fa fa-lg fa-edit" ng-click="selectedDetailsTab = 4; editPaymentDetails()"></i>
+                            </span>
+                        </span>
                     </div>
                     <div class="row mt-2">
                         <div class="col-sm-5">
@@ -146,8 +154,8 @@
         </div>
         <div class="col-sm-2 order-lg-1 text-center">
             <img src="http://thejokehub.com/profile_img/{{userProfile.userImage}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <div ng-click="startImageUpload()" data-dl-upload="imageData" class="mt-2"></div>
-            <button ng-show="isUpdateImage" class="btn btn-success" ng-click="updateImage()">Update Image</button>
+            <div data-dl-upload="imageData" class="mt-2"></div>
+            <button style="padding:2px 3px" ng-show="imageData.isUpdateImage" class="btn btn-sm btn-success" ng-click="updateImage()">Update Image</button>
         </div>
     </div>
 </div>
