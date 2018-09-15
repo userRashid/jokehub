@@ -35,8 +35,8 @@
             });
         }
 
-        function _changeStatus(nid, isForApprove, rejectReason) {
-            var model = { 'id': nid };
+        function _changeStatus(nids, isForApprove, rejectReason) {
+            var model = { 'ids': nids };
             if (isForApprove) {
                 model.status = 'approve';
             } else {

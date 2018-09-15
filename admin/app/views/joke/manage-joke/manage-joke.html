@@ -81,8 +81,8 @@
             <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Rejected ({{vm.rejectedCount}})</a>
         </li>
         <li jh-privilege="ADMIN" ng-if="vm.selectedTab === 2" style="float: right">
-            <button type="button" ng-disabled="!vm.isAllSelected" class="btn btn-success btn-sm">Approve All</button>
-            <button type="button" ng-disabled="!vm.isAllSelected" class="btn btn-danger btn-sm">Reject All</button>
+            <button type="button" ng-click="vm.approveAll()" ng-disabled="vm.isAllContentEnabled()" class="btn btn-success btn-sm">Approve All</button>
+            <button type="button" ng-click="vm.rejectAll()" ng-disabled="vm.isAllContentEnabled()" class="btn btn-danger btn-sm">Reject All</button>
         </li>
     </ul>
     <div ng-init="vm.selectedTab = 1" class="tab-content" id="myTabContent">
@@ -134,7 +134,7 @@
                 <tbody>
                     <tr ng-repeat="row in vm.pendingContent">
                         <td jh-privilege="ADMIN">
-                            <input type="checkbox" ng-click="vm.optionSelect()" ng-model="row.selected" aria-label="Checkbox for following text input">
+                            <input type="checkbox" ng-model="row.selected" aria-label="Checkbox for following text input">
                         </td>
                         <td>
                             <div>{{vm.stripHtml(row.description)}}</div>

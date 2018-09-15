@@ -13,20 +13,28 @@
         // Locals
         /////////////////////////////////////////////////////////////
 
-        function getContentStatus(data, status, categoreis) {
+        function getCategory(data, categoreis) {
             var temp = [];
             data.forEach(function (e) {
-                if (e.status === status) {
-                    var category = _.filter(categoreis, function (item) {
-                        return item.id === e.cid
-                    })[0];
-                    if (category != undefined) {
-                        e.category = category.name;
-                    }
-                    temp.push(e);
+                var category = _.filter(categoreis, function (item) {
+                    return item.id === e.cid
+                })[0];
+                if (category != undefined) {
+                    e.category = category.name;
                 }
+                temp.push(e);
             });
             return temp;
+        }
+
+        function getIds(_data) {
+            let _ids = [];
+            _.filter(_data, function (item) {
+                return item.selected;
+            }).forEach(function (item) {
+                _ids.push(item.nid);
+            });
+            return _ids;
         }
 
         /////////////////////////////////////////////////////////////
@@ -39,11 +47,13 @@
             CategoryService.getAllCategory().then(function (res) {
                 var categoreis = res.data;
                 JokeService.getAllJoke().then(function (response) {
-                    vm.approvedContent = getContentStatus(response.data, 'approve', categoreis);
+                    console.log('response =>', response);
+                    let _response = response.data;
+                    vm.approvedContent = getCategory(_response.approved, categoreis);
                     vm.approvedCount = vm.approvedContent.length;
-                    vm.pendingContent = getContentStatus(response.data, 'pending', categoreis);
+                    vm.pendingContent = getCategory(_response.pending, categoreis);
                     vm.pendingCount = vm.pendingContent.length;
-                    vm.rejectedContent = getContentStatus(response.data, 'reject', categoreis);
+                    vm.rejectedContent = getCategory(_response.reject, categoreis);
                     vm.rejectedCount = vm.rejectedContent.length;
                 });
             });
@@ -74,13 +84,26 @@
 
         this.changeStatus = function (nid, isForApprove) {
             if (isForApprove) {
-                JokeService.changeStatus(nid, isForApprove, null);
+                JokeService.changeStatus([nid], isForApprove, null);
             } else {
                 RejectReason.getReason({
-                    'id': nid,
+                    'id': [nid],
                     'data': vm.rejectReason
                 });
             }
+        }
+
+        this.approveAll = function () {
+            let ids = getIds(vm.pendingContent);
+            JokeService.changeStatus(ids, true, null);
+        }
+
+        this.rejectAll = function () {
+            let ids = getIds(vm.pendingContent);
+            RejectReason.getReason({
+                'id': ids,
+                'data': vm.rejectReason
+            });
         }
 
         this.stripHtml = function (html) {
@@ -99,8 +122,10 @@
 
         }
 
-        this.optionSelect = function () {
-            vm.isAllSelected = !vm.pendingContent.every(function (item) { return item.selected; })
+        this.isAllContentEnabled = function () {
+            return !_.some(vm.pendingContent, function (item) {
+                return item.selected;
+            });
         }
     }
 })();
