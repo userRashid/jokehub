@@ -27,7 +27,7 @@
                 Notification.notify('success', 'Success', ' Update Seccess');
             }, function (error) {
                 console.log('error', error);
-            });;
+            });
         }
 
         function _createRejectReason(data) {
