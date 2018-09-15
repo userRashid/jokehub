@@ -1213,6 +1213,10 @@
                         label: 'Reject Reason'
                         , name: 'RejectReason'
                         , type: 'dlText'
+                    }, {
+                        label: 'User Can Edit'
+                        , name: 'isEdit'
+                        , type: 'dlCheckbox'
                     }
                 ],
                 testimonial: [{

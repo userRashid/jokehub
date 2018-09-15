@@ -22,5 +22,6 @@ var KeyConstant = {
     'bankName': 'BankName',
     'bankAddress': 'BranchName',
     'paytmNumber': 'PaytmNumber',
-    'preferredPaymentMode': 'PreferredMode'
+    'preferredPaymentMode': 'PreferredMode',
+    'reason': 'RejectReason'
 };

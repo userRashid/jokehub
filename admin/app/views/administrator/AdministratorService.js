@@ -7,6 +7,7 @@
     function _AdministratorService(Http, Notification) {
         return {
             createRejectReason: _createRejectReason,
+            updateRejectReason: _updateRejectReason,
             getAllReasons: _getAllReasons,
             getAllTestimonial: _getAllTestimonial,
             updateTestimonial: _updateTestimonial,
@@ -32,6 +33,14 @@
         function _createRejectReason(data) {
             return Http._post('contentmanagement/addrejectreason', data).then(function (response) {
                 Notification.notify('success', 'Success', ' New Reject Reason added ');
+            }, function (error) {
+                console.log('error', error);
+            });
+        }
+
+        function _updateRejectReason(data) {
+            return Http._put('contentmanagement/updaterejectreason', data).then(function (response) {
+                Notification.notify('success', 'Success', ' Update Reason added ');
             }, function (error) {
                 console.log('error', error);
             });
