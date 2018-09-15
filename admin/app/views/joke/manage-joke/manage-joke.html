@@ -170,7 +170,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="row in vm.rejectedContent">
+                    <tr ng-class="{'bg-danger text-white' : !row.isEdit}" ng-repeat="row in vm.rejectedContent">
                         <td>
                             <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
                         </td>
@@ -183,7 +183,7 @@
                         <td style="position: relative;">
                             <div class="action-menu">
                                 <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
-                                <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
+                                <i ng-click="vm.edit(row)" ng-if="row.isEdit" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
                                 <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
                                 <i jh-privilege="ADMIN" title="Delete" class="fa fa-trash-o cursor"></i>
                             </div>
