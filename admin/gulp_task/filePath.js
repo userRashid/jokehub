@@ -25,7 +25,8 @@ exports.FilePath = function () {
             './node_modules/textangular/dist/textAngular-sanitize.min.js',
             './node_modules/textangular/dist/textAngular.min.js',
             './node_modules/textangular/dist/textAngularSetup.js',
-            './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js'
+            './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+            './node_modules/ng-table/bundles/ng-table.min.js'
         ];
     }
 
@@ -38,6 +39,7 @@ exports.FilePath = function () {
             './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css',
             './node_modules/textangular/dist/textAngular.css',
             './node_modules/trix/dist/trix.css',
+            './node_modules/ng-table/bundles/ng-table.min.css',
             './app/css/*.css',
             './app/**/*.scss'
         ];

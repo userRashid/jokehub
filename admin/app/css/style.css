@@ -603,3 +603,7 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
 .sign-up-info {
   background: #fff;
 }
+.ng-table th{
+  text-align: left!important;
+  border: 0!important;
+}

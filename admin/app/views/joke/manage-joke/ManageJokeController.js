@@ -5,9 +5,9 @@
         .module('jokehubApp.joke')
         .controller('ManageJokeController', _ManageJokeController);
 
-    _ManageJokeController.$inject = ['JokeService', '$sce', 'CategoryService', 'RejectReason', 'AdministratorService'];
+    _ManageJokeController.$inject = ['JokeService', '$sce', 'CategoryService', 'RejectReason', 'AdministratorService', 'NgTableParams'];
 
-    function _ManageJokeController(JokeService, $sce, CategoryService, RejectReason, AdministratorService) {
+    function _ManageJokeController(JokeService, $sce, CategoryService, RejectReason, AdministratorService, NgTableParams) {
 
         /////////////////////////////////////////////////////////////
         // Locals
@@ -55,6 +55,7 @@
                     vm.pendingCount = vm.pendingContent.length;
                     vm.rejectedContent = getCategory(_response.reject, categoreis);
                     vm.rejectedCount = vm.rejectedContent.length;
+                    vm.tableParams = new NgTableParams({}, { dataset: vm.approvedContent });
                 });
             });
             AdministratorService.getAllReasons().then(function (response) {
@@ -106,7 +107,7 @@
             });
         }
 
-        this.stripHtml = function (html) {
+        vm.stripHtml = function (html) {
             var tmp = document.createElement("DIV");
             tmp.innerHTML = html;
             return tmp.textContent || tmp.innerText || "";

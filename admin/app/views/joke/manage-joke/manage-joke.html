@@ -81,13 +81,36 @@
             <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Rejected ({{vm.rejectedCount}})</a>
         </li>
         <li jh-privilege="ADMIN" ng-if="vm.selectedTab === 2" style="float: right">
-            <button type="button" ng-click="vm.approveAll()" ng-disabled="vm.isAllContentEnabled()" class="btn btn-success btn-sm">Approve All</button>
-            <button type="button" ng-click="vm.rejectAll()" ng-disabled="vm.isAllContentEnabled()" class="btn btn-danger btn-sm">Reject All</button>
+            <button type="button" ng-click="vm.approveAll()" ng-disabled="vm.isAllContentEnabled()" class="btn btn-success btn-sm">Approve
+                All
+            </button>
+            <button type="button" ng-click="vm.rejectAll()" ng-disabled="vm.isAllContentEnabled()" class="btn btn-danger btn-sm">Reject
+                All
+            </button>
         </li>
     </ul>
     <div ng-init="vm.selectedTab = 1" class="tab-content" id="myTabContent">
         <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 1}" ng-show="vm.selectedTab === 1" role="tabpanel">
-            <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">
+            <table ng-table="vm.tableParams" class="table jokehub-action-menu" show-filter="false">
+                <tr ng-repeat="item in $data">
+                    <td title="'Joke'"  style="width:120px" class="'text-left'">
+                        <div class="wrap-text">{{vm.stripHtml(item.description)}}</div>
+                    </td>
+                    <td title="'Category'" sortable="'category'">
+                        {{item.category}}</td>
+                    <td title="'Publish on'" sortable="'publishOn'">
+                        {{item.publishOn}}</td>
+                    <td jh-privilege="ADMIN" title="'User'" sortable="'user'">
+                        <a ui-sref="jokehub.userDetail({userId:item.userId})">{{item.user}}</a></td>
+                    <td title="'Action'" style="position: relative;">
+                        <div class="action-menu">
+                            <i ng-click="vm.view(item)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
+                            <i jh-privilege="ADMIN" ng-click="vm.changeStatus(item.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!-- <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">
                 <thead>
                     <tr>
                         <th style="border: 0px;">Joke</th>
@@ -115,7 +138,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
         </div>
         <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 2}" ng-show="vm.selectedTab === 2" role="tabpanel">
             <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">

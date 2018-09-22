@@ -21,6 +21,7 @@
         'jokehubApp.profile',
         'jokehub.forgotPassword',
         'smart-table',
+        'ngTable',
         'ngAnimate',
         'toastr',
         'ngImgCrop',
