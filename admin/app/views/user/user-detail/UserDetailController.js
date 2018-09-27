@@ -5,9 +5,9 @@
         .module('jokehubApp.user')
         .controller('UserDetailController', _UserDetailController);
 
-    _UserDetailController.$inject = ['UserService', '$stateParams'];
+    _UserDetailController.$inject = ['UserService', '$stateParams', '$sce'];
 
-    function _UserDetailController(UserService, $stateParams) {
+    function _UserDetailController(UserService, $stateParams, $sce) {
 
         /////////////////////////////////////////////////////////////
         //
@@ -104,6 +104,10 @@
 
         this.view = function (row) {
             this.viewData = row;
+        }
+
+        this.displayDescription = function (html) {
+            return $sce.trustAsHtml(html);
         }
 
         this.makePayment = function () {

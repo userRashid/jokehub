@@ -1,54 +1,56 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
     <div class="container">
-        <a class="navbar-brand" href="/" style="width: 50px;">
-            <img class="w-100" src="app/images/logo.png" />
-        </a>
-        <div class="ml-auto my-2 my-lg-0">
-            <a href="#!/login" class="btn btn-primary text-white btn-sm my-2 my-sm-0">Log In to Existing Account</a>
+        <div class="d-flex justify-content-between w-100">
+            <div class="p-2">
+                <a class="navbar-brand" href="/" style="width: 50px;">
+                    <img class="w-100" src="app/images/logo.png" />
+                </a>
+            </div>
+            <div class="p-2">
+                <div class="col-8 col-sm-8 my-2 my-lg-0">
+                    <a href="#!/login" class="btn btn-primary text-white btn-sm my-2 my-sm-0">Log In to Existing Account</a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
-<div class="liquidHgt loginBG">
+<div class="liquidHgt loginBG" style="align-items:unset">
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
                 <div class="sign-up-info p-3">
-                    <h1 class="h3">Write Jokes and
+                    <h1 class="h4">Write Jokes and
                         <i>Get Paid. </i>
                     </h1>
                     <div class="mt-4">
                         <p>You heard it right. We pay for every approved JOKE you write and submit with us. Signup for account
                             today and start right away.</p>
                         <ul class="list-unstyled text-small">
-                            <li class="border-bottom pb-3 d-inline">
+                            <li class="pb-3">
                                 <i class="fa fa-check" aria-hidden="true"></i>
-                                <span>First 200 Jokes (Only Approved Jokes) Rs 1/Joke</span>
-                            </li>
-                            <li class="pt-4">
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                                <span>After 200 Jokes (Only Approved Jokes) Rs 2/Joke</span>
+                                <span>Every Approved Joke (Rs 1/Joke)</span>
                             </li>
                         </ul>
                         <div class="row">
-                            <div class="col-sm-3 col-xs-6 text-center">
+                            <div class="col-sm-3 mb-3 col-6 text-center">
                                 <div class="std-box text-primary border border-primary">
                                     <i class="fa fa-user-plus fa-4x" aria-hidden="true"></i>
                                     <h5>sign up</h5>
                                 </div>
                             </div>
-                            <div class="col-sm-3 col-xs-6 text-center">
+                            <div class="col-sm-3 mb-3 col-6 text-center">
                                 <div class="std-box text-success border border-success">
                                     <i class="fa fa-file-text fa-4x" aria-hidden="true"></i>
                                     <h5>Start Writing</h5>
                                 </div>
                             </div>
-                            <div class="col-sm-3 col-xs-6 text-center">
+                            <div class="col-sm-3 mb-3 col-6 text-center">
                                 <div class="std-box text-warning border border-warning">
                                     <i class="fa fa-sign-in fa-4x" aria-hidden="true"></i>
                                     <h5>Submit Status</h5>
                                 </div>
                             </div>
-                            <div class="col-sm-3 col-xs-6 text-center">
+                            <div class="col-sm-3 mb-3 col-6 text-center">
                                 <div class="std-box text-info border border-info">
                                     <i class="fa fa-money fa-4x" aria-hidden="true"></i>
                                     <h5>Get Paid</h5>
@@ -75,7 +77,8 @@
                             <a href="http://www.thejokehub.com/terms-conditions" id="terms-link" target="_blank" rel="nofollow">Terms</a>
                             and
                             <a href="http://www.thejokehub.com/terms-conditions" id="privacy-link" target="_blank" rel="nofollow">Data
-                                Policy</a>
+                                Policy
+                            </a>
                         </small>
                         <button class="btn btn-lg btn-primary btn-block loginButton mt-2" ng-click="vm.doSignup(signup)" type="submit">
                             <i ng-show="vm.isLoading" class="fa fa-spinner fa-pulse fa-1x fa-fw"></i> Signup

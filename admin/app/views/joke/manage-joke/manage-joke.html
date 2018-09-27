@@ -110,35 +110,6 @@
                     </td>
                 </tr>
             </table>
-            <!-- <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">
-                <thead>
-                    <tr>
-                        <th style="border: 0px;">Joke</th>
-                        <th style="border: 0px;">Category</th>
-                        <th style="border: 0px;">Publish on</th>
-                        <th style="border: 0px;" jh-privilege="ADMIN">User</th>
-                        <th style="width: 150px; border: 0px;" class="text-right">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="row in vm.approvedContent">
-                        <td>
-                            <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
-                        </td>
-                        <td>{{row.category}}</td>
-                        <td>{{row.publishOn}}</td>
-                        <td jh-privilege="ADMIN">
-                            <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
-                        </td>
-                        <td style="position: relative;">
-                            <div class="action-menu">
-                                <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                                <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> -->
         </div>
         <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 2}" ng-show="vm.selectedTab === 2" role="tabpanel">
             <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">

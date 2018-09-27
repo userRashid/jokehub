@@ -593,8 +593,8 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
 }
 
 .std-box {
-  height: 150px;
-  width: 150px;
+  height: 141px;
+  width: 141px;
   border-radius: 50%;
   text-align: center;
   padding: 24px 0 0 0;
