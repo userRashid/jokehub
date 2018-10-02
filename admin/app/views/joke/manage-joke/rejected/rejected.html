@@ -1,0 +1,36 @@
+<div class="tab-pane">
+    <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">
+        <thead>
+            <tr>
+                <th style="border: 0px;">Joke</th>
+                <th style="border: 0px;">Category</th>
+                <th style="border: 0px;">Reject Reason</th>
+                <th style="border: 0px;">Rejected on</th>
+                <th style="border: 0px;" jh-privilege="ADMIN">User</th>
+                <th style="width: 150px; border: 0px;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-class="{'bg-danger text-white' : !row.isEdit}" ng-repeat="row in vm.rejectedContent">
+                <td>
+                    <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
+                </td>
+                <td>{{row.category}}</td>
+                <td>{{row.reason}}</td>
+                <td>{{row.publishOn}}</td>
+                <td jh-privilege="ADMIN">
+                    <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
+                </td>
+                <td style="position: relative;">
+                    <div class="action-menu">
+                        <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
+                        <i ng-click="vm.edit(row)" ng-if="row.isEdit" title="Edit" data-toggle="modal" data-target="#editContent"
+                            class="fa fa-pencil-square cursor"></i>
+                        <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
+                        <i jh-privilege="ADMIN" title="Delete" class="fa fa-trash-o cursor"></i>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

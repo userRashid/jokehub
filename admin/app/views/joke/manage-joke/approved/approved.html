@@ -1,0 +1,88 @@
+<div class="modal fade" id="editContent" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="filer">Edit Joke</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div dl-form="addJoke" form-model="vm.updateJokeModel"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="vm.update()" data-dismiss="modal">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Model Popup -->
+
+<div class="modal fade" id="viewContent" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="d-flex justify-content-between w-100">
+                    <div>
+                        <a ui-sref="jokehub.userDetail({userId:vm.viewData.userId})">{{vm.viewData.user}}</a>
+                    </div>
+                    <div>
+                        <b>{{vm.viewData.category}}</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div ng-if="vm.viewData.reason" class="alert alert-warning" role="alert">
+                    <strong>Reject Reason - </strong>{{vm.viewData.reason}}
+                </div>
+                <span ng-bind-html="vm.displayDescription(vm.viewData.description)"></span>
+            </div>
+            <div class="modal-footer">
+                <em class="float-left">
+                    {{vm.viewData.publishOn}}
+                </em>
+                <!-- <button type="button" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-chevron-right"></i>
+                    </button> -->
+                <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 3 || vm.selectedTab == 2" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)"
+                    class="btn btn-success btn-sm">
+                    <i class="fa fa-check"></i> Approve
+                </button>
+                <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 1 || vm.selectedTab == 2" type="button"
+                    data-dismiss="modal" ng-click="vm.changeStatus(vm.viewData.nid, false)" class="btn btn-danger btn-sm">
+                    <i class="fa fa-times"></i> Reject
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-init="vm.selectedTab = 1" class="tab-content" id="myTabContent">
+    <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 1}" ng-show="vm.selectedTab === 1" role="tabpanel">
+        <table ng-table="vm.tableParams" class="table jokehub-action-menu" show-filter="false">
+            <tr ng-repeat="item in $data">
+                <td title="'Joke'" style="width:120px" class="'text-left'">
+                    <div class="wrap-text">{{vm.stripHtml(item.description)}}</div>
+                </td>
+                <td title="'Category'" sortable="'category'">
+                    {{item.category}}</td>
+                <td title="'Publish on'" sortable="'publishOn'">
+                    {{item.publishOn}}</td>
+                <td jh-privilege="ADMIN" title="'User'" sortable="'user'">
+                    <a ui-sref="jokehub.userDetail({userId:item.userId})">{{item.user}}</a></td>
+                <td title="'Action'" style="position: relative;">
+                    <div class="action-menu">
+                        <i ng-click="vm.view(item)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
+                        <i jh-privilege="ADMIN" ng-click="vm.changeStatus(item.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

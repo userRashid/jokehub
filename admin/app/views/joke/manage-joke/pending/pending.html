@@ -1,0 +1,41 @@
+<div class="tab-pane">
+    <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">
+        <thead>
+            <tr>
+                <th jh-privilege="ADMIN" style="border: 0px;">
+                    <input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.isAllSelected" aria-label="Checkbox for following text input">
+                </th>
+                <th style="border: 0px;">Joke</th>
+                <th style="border: 0px; width: 150px;">Category</th>
+                <th style="border: 0px; width: 140px;">Posted on</th>
+                <th style="border: 0px; width: 100px;" jh-privilege="ADMIN">User</th>
+                <th style="width: 150px; border: 0px;" class="text-right">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in vm.pendingContent">
+                <td jh-privilege="ADMIN">
+                    <input type="checkbox" ng-model="row.selected" aria-label="Checkbox for following text input">
+                </td>
+                <td>
+                    <div>{{vm.stripHtml(row.description)}}</div>
+                </td>
+                <td>{{row.category}}</td>
+                <td>{{row.postedOn}}</td>
+                <td jh-privilege="ADMIN">
+                    <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
+                </td>
+                <td style="position: relative;">
+                    <div class="action-menu">
+                        <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
+                        <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
+                        <i jh-privilege="ADMIN" ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent"
+                            class="fa fa-eye cursor"></i>
+                        <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
+                        <i title="Delete" class="fa fa-trash-o cursor"></i>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

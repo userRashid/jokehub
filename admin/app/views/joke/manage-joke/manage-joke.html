@@ -1,86 +1,19 @@
-<div class="modal fade" id="editContent" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title" id="filer">Edit Joke</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div dl-form="addJoke" form-model="vm.updateJokeModel"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-sm btn-primary" ng-click="vm.update()" data-dismiss="modal">Update</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Model Popup -->
-
-<div class="modal fade" id="viewContent" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="d-flex justify-content-between w-100">
-                    <div>
-                        <a ui-sref="jokehub.userDetail({userId:vm.viewData.userId})">{{vm.viewData.user}}</a>
-                    </div>
-                    <div>
-                        <b>{{vm.viewData.category}}</b>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-body">
-                <div ng-if="vm.viewData.reason" class="alert alert-warning" role="alert">
-                    <strong>Reject Reason - </strong>{{vm.viewData.reason}}
-                </div>
-                <span ng-bind-html="vm.displayDescription(vm.viewData.description)"></span>
-            </div>
-            <div class="modal-footer">
-                <em class="float-left">
-                    {{vm.viewData.publishOn}}
-                </em>
-                <!-- <button type="button" class="btn btn-secondary btn-sm">
-                    <i class="fa fa-chevron-left"></i>
-                </button>
-                <button type="button" class="btn btn-secondary btn-sm">
-                    <i class="fa fa-chevron-right"></i>
-                </button> -->
-                <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 3 || vm.selectedTab == 2" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)"
-                    class="btn btn-success btn-sm">
-                    <i class="fa fa-check"></i> Approve
-                </button>
-                <button jh-privilege="ADMIN" ng-if="vm.selectedTab == 1 || vm.selectedTab == 2" type="button" data-dismiss="modal" ng-click="vm.changeStatus(vm.viewData.nid, false)"
-                    class="btn btn-danger btn-sm">
-                    <i class="fa fa-times"></i> Reject
-                </button>
-                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- End Model Popup -->
-
 <h3 class="pageTitle">
     <span class="fontWght400">Manage</span>
     <strong>Jokes</strong>
 </h3>
 <section class="mainContentWrapper">
     <ul class="nav nav-tabs" id="myTab" role="tablist" style="display: block">
-        <li class="nav-item cursor" ng-click="vm.selectedTab = 1">
-            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Approved ({{vm.approvedCount}})</a>
+        <li class="nav-item cursor">
+            <a ui-sref="jokehub.manageJoke.approved" class="nav-link text-success">Approved</a>
         </li>
-        <li class="nav-item cursor" ng-click="vm.selectedTab = 2">
-            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Pending ({{vm.pendingCount}})</a>
+        <li class="nav-item cursor">
+            <a ui-sref="jokehub.manageJoke.pending" class="nav-link text-primary">Pending</a>
         </li>
-        <li class="nav-item cursor" ng-click="vm.selectedTab = 3">
-            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Rejected ({{vm.rejectedCount}})</a>
+        <li class="nav-item cursor">
+            <a ui-sref="jokehub.manageJoke.rejected" class="nav-link text-danger">Rejected</a>
         </li>
-        <li jh-privilege="ADMIN" ng-if="vm.selectedTab === 2" style="float: right">
+        <li jh-privilege="ADMIN" style="float: right">
             <button type="button" ng-click="vm.approveAll()" ng-disabled="vm.isAllContentEnabled()" class="btn btn-success btn-sm">Approve
                 All
             </button>
@@ -89,103 +22,5 @@
             </button>
         </li>
     </ul>
-    <div ng-init="vm.selectedTab = 1" class="tab-content" id="myTabContent">
-        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 1}" ng-show="vm.selectedTab === 1" role="tabpanel">
-            <table ng-table="vm.tableParams" class="table jokehub-action-menu" show-filter="false">
-                <tr ng-repeat="item in $data">
-                    <td title="'Joke'"  style="width:120px" class="'text-left'">
-                        <div class="wrap-text">{{vm.stripHtml(item.description)}}</div>
-                    </td>
-                    <td title="'Category'" sortable="'category'">
-                        {{item.category}}</td>
-                    <td title="'Publish on'" sortable="'publishOn'">
-                        {{item.publishOn}}</td>
-                    <td jh-privilege="ADMIN" title="'User'" sortable="'user'">
-                        <a ui-sref="jokehub.userDetail({userId:item.userId})">{{item.user}}</a></td>
-                    <td title="'Action'" style="position: relative;">
-                        <div class="action-menu">
-                            <i ng-click="vm.view(item)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                            <i jh-privilege="ADMIN" ng-click="vm.changeStatus(item.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 2}" ng-show="vm.selectedTab === 2" role="tabpanel">
-            <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">
-                <thead>
-                    <tr>
-                        <th jh-privilege="ADMIN" style="border: 0px;">
-                            <input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.isAllSelected" aria-label="Checkbox for following text input">
-                        </th>
-                        <th style="border: 0px;">Joke</th>
-                        <th style="border: 0px; width: 150px;">Category</th>
-                        <th style="border: 0px; width: 140px;">Posted on</th>
-                        <th style="border: 0px; width: 100px;" jh-privilege="ADMIN">User</th>
-                        <th style="width: 150px; border: 0px;" class="text-right">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="row in vm.pendingContent">
-                        <td jh-privilege="ADMIN">
-                            <input type="checkbox" ng-model="row.selected" aria-label="Checkbox for following text input">
-                        </td>
-                        <td>
-                            <div>{{vm.stripHtml(row.description)}}</div>
-                        </td>
-                        <td>{{row.category}}</td>
-                        <td>{{row.postedOn}}</td>
-                        <td jh-privilege="ADMIN">
-                            <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
-                        </td>
-                        <td style="position: relative;">
-                            <div class="action-menu">
-                                <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
-                                <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
-                                <i jh-privilege="ADMIN" ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                                <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
-                                <i title="Delete" class="fa fa-trash-o cursor"></i>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="tab-pane fade" ng-class="{'show active': vm.selectedTab === 3}" ng-show="vm.selectedTab === 3" role="tabpanel">
-            <table st-table="vm.jokes" class="table table-striped jokehub-action-menu">
-                <thead>
-                    <tr>
-                        <th style="border: 0px;">Joke</th>
-                        <th style="border: 0px;">Category</th>
-                        <th style="border: 0px;">Reject Reason</th>
-                        <th style="border: 0px;">Rejected on</th>
-                        <th style="border: 0px;" jh-privilege="ADMIN">User</th>
-                        <th style="width: 150px; border: 0px;">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-class="{'bg-danger text-white' : !row.isEdit}" ng-repeat="row in vm.rejectedContent">
-                        <td>
-                            <div class="wrap-text">{{vm.stripHtml(row.description)}}</div>
-                        </td>
-                        <td>{{row.category}}</td>
-                        <td>{{row.reason}}</td>
-                        <td>{{row.publishOn}}</td>
-                        <td jh-privilege="ADMIN">
-                            <a ui-sref="jokehub.userDetail({userId:row.userId})">{{row.user}}</a>
-                        </td>
-                        <td style="position: relative;">
-                            <div class="action-menu">
-                                <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
-                                <i ng-click="vm.edit(row)" ng-if="row.isEdit" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
-                                <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                                <i jh-privilege="ADMIN" title="Delete" class="fa fa-trash-o cursor"></i>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
+    <div ui-view="managejoke" id="managejoke"></div>
 </section>
