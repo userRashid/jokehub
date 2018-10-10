@@ -33,6 +33,7 @@
                 vm.pendingStatus = response.pendingStatus;
                 vm.rejectedStatus = response.rejectedStatus;
                 vm.payments = response.payments;
+                vm.accountDetail = response.accountDetail;
                 vm.finallyPaid = [];
             });
         }

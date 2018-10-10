@@ -5,9 +5,9 @@
         .module('jokehubApp.joke')
         .controller('ManageJokeController', _ManageJokeController);
 
-    _ManageJokeController.$inject = ['JokeService', '$sce', 'CategoryService', 'RejectReason', 'AdministratorService', 'NgTableParams'];
+    _ManageJokeController.$inject = ['JokeService', '$sce', 'CategoryService', 'RejectReason', 'AdministratorService', 'NgTableParams', '$state'];
 
-    function _ManageJokeController(JokeService, $sce, CategoryService, RejectReason, AdministratorService, NgTableParams) {
+    function _ManageJokeController(JokeService, $sce, CategoryService, RejectReason, AdministratorService, NgTableParams, $state) {
 
         /////////////////////////////////////////////////////////////
         // Locals
@@ -40,6 +40,7 @@
         /////////////////////////////////////////////////////////////
 
         var vm = this;
+        vm._state = $state;
 
         onInit();
 

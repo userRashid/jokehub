@@ -54,7 +54,8 @@
                 _http._get('usercontent/all/' + id),
                 _http._get('category/all'),
                 _http._get('payments/' + id),
-                _http._get('paymentdetails/' + id)
+                _http._get('paymentdetails/' + id),
+                _http._get('useraccountdetail/' + id)
             ];
             var _q = $q.defer();
             var _temp = {};
@@ -67,6 +68,7 @@
                 _temp['rejectedStatus'] = getContentStatus(content, 'reject', false);
                 _temp['user'] = user;
                 _temp['payments'] = response[4].data;
+                _temp['accountDetail'] = response[5].data;
                 _q.resolve(_temp);
             })
             return _q.promise;
