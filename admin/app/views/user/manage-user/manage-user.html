@@ -12,10 +12,12 @@
                     <div class="col-sm-4">
                         <i class="fa fa-envelope-o" aria-hidden="true"></i> {{vm.viewData.email}}</div>
                     <div class="col-sm-4 text-right">
-                        <button ng-if="vm.selectedTab != 1" type="button" ng-click="vm.changeStatus(vm.viewData.id, true)" class="btn btn-success btn-sm">
+                        <button ng-if="vm.selectedTab != 1" type="button" ng-click="vm.changeStatus(vm.viewData.id, true)"
+                            class="btn btn-success btn-sm">
                             <i class="fa fa-check"></i> Activate
                         </button>
-                        <button ng-if="vm.selectedTab != 2" type="button" ng-click="vm.changeStatus(vm.viewData.id, false)" class="btn btn-danger btn-sm">
+                        <button ng-if="vm.selectedTab != 2" type="button" ng-click="vm.changeStatus(vm.viewData.id, false)"
+                            class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i> De-Activate
                         </button>
                     </div>
@@ -57,7 +59,8 @@
                     <i class="fa fa-eye" aria-hidden="true"></i>
                 </div>
                 <div class="col-sm-3">
-                    <img src="http://thejokehub.com/profile_img/{{vm.viewData.userImage}}" alt="{{vm.viewData.userName}}" class="img-thumbnail">
+                    <img src="http://www.thejokehub.com/profile_img/{{vm.viewData.userImage}}" alt="{{vm.viewData.userName}}"
+                        class="img-thumbnail">
                 </div>
             </div>
             <div class="modal-footer">
@@ -78,16 +81,20 @@
 <section class="mainContentWrapper">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item cursor" ng-click="vm.selectedTab = 1">
-            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Active Users ({{vm.activeUsersCount}})</a>
+            <a class="nav-link active text-success font-weight-bold" data-toggle="tab" role="tab">Active Users
+                ({{vm.activeUsersCount}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 2">
-            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Inactive Users ({{vm.inActiveUsersCount}})</a>
+            <a class="nav-link text-primary font-weight-bold" data-toggle="tab" role="tab">Inactive Users
+                ({{vm.inActiveUsersCount}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 3">
-            <a class="nav-link text-secondary font-weight-bold" data-toggle="tab" role="tab">Register Pending Users ({{vm.registerPendingUsersCount}})</a>
+            <a class="nav-link text-secondary font-weight-bold" data-toggle="tab" role="tab">Register Pending Users
+                ({{vm.registerPendingUsersCount}})</a>
         </li>
         <li class="nav-item cursor" ng-click="vm.selectedTab = 4">
-            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Deleted Users ({{vm.deletedUsersCount}})</a>
+            <a class="nav-link text-danger font-weight-bold" data-toggle="tab" role="tab">Deleted Users
+                ({{vm.deletedUsersCount}})</a>
         </li>
     </ul>
     <div ng-init="vm.selectedTab = 1" class="tab-content" id="myTabContent">
@@ -108,8 +115,9 @@
                 <tbody>
                     <tr ng-repeat="user in vm.activeUsers">
                         <td>
-                            <a ui-sref="jokehub.userDetail({userId:user.id})">{{user.userName}} ({{user.dob | ageFilter}})</a>
-                            <br/>
+                            <a ui-sref="jokehub.userDetail({userId:user.id})">{{user.userName}} ({{user.dob |
+                                ageFilter}})</a>
+                            <br />
                             <small>{{user.sex | ageSex}}</small>
                         </td>
                         <td>{{user.created}}</td>
@@ -120,7 +128,8 @@
                         <td>{{user.payment}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
-                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
+                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser"
+                                    class="fa fa-info-circle cursor"></i>
                                 <i title="In Active" ng-click="vm.changeStatus(user.id, false)" class="fa fa-ban cursor"></i>
                                 <i title="Delete" ng-click="vm.deleteUser(user)" class="fa fa-trash-o cursor"></i>
                             </div>
@@ -158,7 +167,8 @@
                         <td>{{user.payment}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
-                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
+                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser"
+                                    class="fa fa-info-circle cursor"></i>
                                 <i title="Active" ng-click="vm.changeStatus(user.id, true)" class="fa fa-check cursor"></i>
                                 <i title="Delete" class="fa fa-trash-o cursor"></i>
                             </div>
@@ -196,7 +206,8 @@
                         <td>{{user.payment}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
-                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
+                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser"
+                                    class="fa fa-info-circle cursor"></i>
                                 <i title="Details" class="fa fa-folder-open cursor"></i>
                                 <i title="Active" ng-click="vm.changeStatus(user.id, true)" class="fa fa-check cursor"></i>
                             </div>
@@ -233,7 +244,8 @@
                         <td>{{user.payment}}</td>
                         <td style="position: relative;">
                             <div class="action-menu">
-                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser" class="fa fa-info-circle cursor"></i>
+                                <i title="View" ng-click="vm.viewUser(user)" data-toggle="modal" data-target="#viewUser"
+                                    class="fa fa-info-circle cursor"></i>
                                 <i title="Active" ng-click="vm.changeStatus(user.id, true)" class="fa fa-check cursor"></i>
                             </div>
                         </td>

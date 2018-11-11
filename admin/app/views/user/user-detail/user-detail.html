@@ -146,8 +146,38 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="viewProfile" tabindex="-1" role="dialog" aria-labelledby="filer" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            Mode : <span class="badge badge-pill badge-{{vm.accountDetail.paymentMode === '2' ? 'success' : 'warning' }}">
+                                <b>{{vm.accountDetail.paymentMode == '2' ? 'Paytm' : 'Bank'}}</b>
+                            </span>
+                            <div ng-if="vm.paymentMode.value == 1">{{vm.accountDetail.paytm}}</div>
+                            <div ng-if="vm.paymentMode.value == 2">Bank</div>
+                        </div>
+                        <div>
+                            {{vm.accountDetail.paytm}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h3 class="pageTitle row">
-    <strong class="col-sm-8">{{vm.userDetails.userName}}</strong>
+    <strong class="col-sm-8">
+        {{vm.userDetails.userName}}
+        <i class="fa fa-external-link cursor" aria-hidden="true" title="Profile" data-toggle="modal" data-target="#viewProfile"></i>
+    </strong>
     <div class="col-sm-4 text-right">
         <button ng-show="vm.selectedTab === 1" data-toggle="modal" ng-click="vm.selectForApprovedPayment()" data-target="#approvedPayment"
             ng-disabled="vm.isAllApprovedPaymentEnabled()" type="button" class="btn btn-success btn-sm">Approved
