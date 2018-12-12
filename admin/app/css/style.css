@@ -461,6 +461,14 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
   padding: 5px 10px;
 }
 
+@media (min-width: 576px) {
+  .card-columns {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+  }
+}
+
 .circle-tile {
   margin-bottom: 15px;
   text-align: center;
@@ -603,7 +611,8 @@ ul.header__sideNav li:hover>a, ul.header__sideNav li>a.nav-link.active {
 .sign-up-info {
   background: #fff;
 }
-.ng-table th{
+
+.ng-table th {
   text-align: left!important;
   border: 0!important;
 }

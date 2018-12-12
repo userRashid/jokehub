@@ -28,10 +28,12 @@
                         <em>http://www.thejokehub.com/category/{{vm.viewData.alias}}</em>
                     </div>
                     <div>
-                        <button ng-if="vm.viewData.isActive == 0" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)" class="btn btn-success btn-sm">
+                        <button ng-if="vm.viewData.isActive == 0" type="button" ng-click="vm.changeStatus(vm.viewData.nid, true)"
+                            class="btn btn-success btn-sm">
                             <i class="fa fa-check"></i> Publish
                         </button>
-                        <button ng-if="vm.viewData.isActive == 1" type="button" ng-click="vm.changeStatus(vm.viewData.nid, false)" class="btn btn-danger btn-sm">
+                        <button ng-if="vm.viewData.isActive == 1" type="button" ng-click="vm.changeStatus(vm.viewData.nid, false)"
+                            class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i> Unpublish
                         </button>
                     </div>
@@ -114,40 +116,39 @@
     <strong>Category</strong>
 </h3>
 <section class="mainContentWrapper">
-    <table st-table="vm.categoreis" class="table table-striped jokehub-action-menu">
-        <thead>
-            <tr>
-                <th>Category Name</th>
-                <th>Total Status</th>
-                <th>Approved Status</th>
-                <th>Pending Status</th>
-                <th>Rejected Status</th>
-                <th>Is Publish</th>
-                <th class="text-right" style="width: 150px;">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="row in vm.categoreis">
-
-                <td>{{row.name}}</td>
-                <td>{{row.totalJokes}}</td>
-                <td>{{row.approved}}</td>
-                <td>{{row.pending}}</td>
-                <td>{{row.reject}}</td>
-                <td>
-                    <span class="badge badge-pill badge-{{row.isActive === '1' ? 'success' : 'warning' }}">
-                        {{row.isActive === '1' ? 'Publish' : 'Unpublish' }}
+    <div class="card-columns">
+        <div class="card" ng-repeat="category in vm.categoreis">
+            <img class="card-img-top" src="http://www.thejokehub.com/images/{{category.categoryImage}}" alt="{{category.name}}">
+            <div class="card-img-overlay">
+                <span class="badge badge-pill badge-{{category.isActive === '1' ? 'success' : 'warning' }}">
+                    {{category.isActive === '1' ? 'Publish' : 'Unpublish' }}
+                </span>
+                <h5 class="card-title">{{category.name}}</h5>
+                <div>
+                    <span class="badge badge-secondary">
+                        Total
+                        <span class="badge badge-light">{{category.totalJokes}}</span>
                     </span>
-                </td>
-                <td style="position: relative;">
-                    <div class="action-menu">
-                        <i ng-click="vm.modifyStatus(row)" class="fa fa-cloud-upload cursor"></i>
-                        <i ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
-                        <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
-                        <i class="fa fa-trash-o cursor"></i>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    <span class="badge badge-success">
+                        Approved
+                        <span class="badge badge-light">{{category.approved}}</span>
+                    </span>
+                    <span class="badge badge-primary">
+                        Pending
+                        <span class="badge badge-light">{{category.pending}}</span>
+                    </span>
+                    <span class="badge badge-warning">
+                        Reject
+                        <span class="badge badge-light">{{category.reject}}</span>
+                    </span>
+                </div>
+                <div>
+                    <i ng-click="vm.modifyStatus(category)" class="fa fa-cloud-upload cursor"></i>
+                    <i ng-click="vm.view(category)" title="View" data-toggle="modal" data-target="#viewContent" class="fa fa-eye cursor"></i>
+                    <i ng-click="vm.edit(category)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
+                    <i class="fa fa-trash-o cursor"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

@@ -154,14 +154,16 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div>
-                            Mode : <span class="badge badge-pill badge-{{vm.accountDetail.paymentMode === '2' ? 'success' : 'warning' }}">
+                            <span class="badge badge-pill badge-{{vm.accountDetail.paymentMode === '2' ? 'success' : 'warning' }}">
                                 <b>{{vm.accountDetail.paymentMode == '2' ? 'Paytm' : 'Bank'}}</b>
                             </span>
                             <div ng-if="vm.paymentMode.value == 1">{{vm.accountDetail.paytm}}</div>
                             <div ng-if="vm.paymentMode.value == 2">Bank</div>
                         </div>
                         <div>
-                            {{vm.accountDetail.paytm}}
+                            <a href="tel:{{vm.accountDetail.paytm}}">
+                                <i class="fa fa-2x fa-phone-square" aria-hidden="true"></i>
+                            </a>{{vm.accountDetail.paytm}}
                         </div>
                     </div>
                 </div>
