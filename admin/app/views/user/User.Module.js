@@ -20,6 +20,14 @@
                     controller: 'UserDetailController as vm'
                 }
             }
+        }).state('jokehub.userView', {
+            url: '/manage-user/:userId/view',
+            views: {
+                'content@jokehub': {
+                    templateUrl: 'app/views/user/user-detail/user-detail.html',
+                    controller: 'UserDetailController as vm'
+                }
+            }
         });
     };
 })();

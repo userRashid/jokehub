@@ -157,8 +157,14 @@
                             <span class="badge badge-pill badge-{{vm.accountDetail.paymentMode === '2' ? 'success' : 'warning' }}">
                                 <b>{{vm.accountDetail.paymentMode == '2' ? 'Paytm' : 'Bank'}}</b>
                             </span>
-                            <div ng-if="vm.paymentMode.value == 1">{{vm.accountDetail.paytm}}</div>
-                            <div ng-if="vm.paymentMode.value == 2">Bank</div>
+                            <div ng-if="vm.accountDetail.paymentMode == '1'">
+                                Name : {{vm.accountDetail.name}}<br />
+                                Account Number : {{vm.accountDetail.accountNumber}}<br />
+                                IFSC : {{vm.accountDetail.ifscCode}}<br />
+                                Bank Name : {{vm.accountDetail.bankName}}<br />
+                                Address : {{vm.accountDetail.bankAddress}}<br />
+                            </div>
+                            <div ng-if="vm.accountDetail.paymentMode == '2'">{{vm.accountDetail}}</div>
                         </div>
                         <div>
                             <a href="tel:{{vm.accountDetail.paytm}}">
