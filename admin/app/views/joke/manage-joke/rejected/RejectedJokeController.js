@@ -47,7 +47,6 @@
             CategoryService.getAllCategory().then(function (res) {
                 var categoreis = res.data;
                 JokeService.getAllJoke().then(function (response) {
-                    console.log('response =>', response);
                     let _response = response.data;
                     vm.approvedContent = getCategory(_response.approved, categoreis);
                     vm.approvedCount = vm.approvedContent.length;

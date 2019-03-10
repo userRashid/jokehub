@@ -48,7 +48,6 @@
             CategoryService.getAllCategory().then(function (res) {
                 var categoreis = res.data;
                 JokeService.getAllJoke().then(function (response) {
-                    console.log('response =>', response);
                     let _response = response.data;
                     vm.approvedContent = getCategory(_response.approved, categoreis);
                     vm.approvedCount = vm.approvedContent.length;
@@ -64,37 +63,6 @@
             });
         }
 
-        this.edit = function (data) {
-            this.editData = data;
-            vm.updateJokeModel.setModel(data);
-        }
-
-        this.update = function () {
-            vm.updateJokeModel.getModel().then(function (model) {
-                var nid = vm.editData.nid;
-                JokeService.updateJoke(nid, model);
-            });
-        }
-
-        this.modifyStatus = function (row) {
-            JokeService.modifyStatus(row);
-        }
-
-        this.view = function (row) {
-            this.viewData = row;
-        }
-
-        this.changeStatus = function (nid, isForApprove) {
-            if (isForApprove) {
-                JokeService.changeStatus([nid], isForApprove, null);
-            } else {
-                RejectReason.getReason({
-                    'id': [nid],
-                    'data': vm.rejectReason
-                });
-            }
-        }
-
         this.approveAll = function () {
             let ids = getIds(vm.pendingContent);
             JokeService.changeStatus(ids, true, null);
@@ -106,22 +74,6 @@
                 'id': ids,
                 'data': vm.rejectReason
             });
-        }
-
-        vm.stripHtml = function (html) {
-            var tmp = document.createElement("DIV");
-            tmp.innerHTML = html;
-            return tmp.textContent || tmp.innerText || "";
-        }
-
-        this.displayDescription = function (html) {
-            return $sce.trustAsHtml(html);
-        }
-
-        this.selectAll = function () {
-            var selectStatus = !vm.isAllSelected;
-            angular.forEach(vm.pendingContent, function (item) { item.selected = selectStatus; });
-
         }
 
         this.isAllContentEnabled = function () {

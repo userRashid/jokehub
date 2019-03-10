@@ -5,19 +5,24 @@
 <section class="mainContentWrapper">
     <ul class="nav nav-tabs" id="myTab" role="tablist" style="display: block">
         <li class="nav-item cursor">
-            <a ng-class="{ active: vm._state.includes('jokehub.manageJoke.approved') }" ui-sref="jokehub.manageJoke.approved" class="nav-link text-success">Approved ({{vm.approvedCount}})</a>
+            <a ng-class="{ active: vm._state.includes('jokehub.manageJoke.approved') }"
+                ui-sref="jokehub.manageJoke.approved" class="nav-link text-success">Approved ({{vm.approvedCount}})</a>
         </li>
         <li class="nav-item cursor">
-            <a ng-class="{ active: vm._state.includes('jokehub.manageJoke.pending') }" ui-sref="jokehub.manageJoke.pending" class="nav-link text-primary">Pending ({{vm.pendingCount}})</a>
+            <a ng-class="{ active: vm._state.includes('jokehub.manageJoke.pending') }"
+                ui-sref="jokehub.manageJoke.pending" class="nav-link text-primary">Pending ({{vm.pendingCount}})</a>
         </li>
         <li class="nav-item cursor">
-            <a ng-class="{ active: vm._state.includes('jokehub.manageJoke.rejected') }" ui-sref="jokehub.manageJoke.rejected" class="nav-link text-danger">Rejected ({{vm.rejectedCount}})</a>
+            <a ng-class="{ active: vm._state.includes('jokehub.manageJoke.rejected') }"
+                ui-sref="jokehub.manageJoke.rejected" class="nav-link text-danger">Rejected ({{vm.rejectedCount}})</a>
         </li>
         <li jh-privilege="ADMIN" style="float: right">
-            <button type="button" ng-click="vm.approveAll()" ng-disabled="vm.isAllContentEnabled()" class="btn btn-success btn-sm">Approve
+            <button type="button" ng-click="vm.approveAll()" ng-disabled="vm.isAllContentEnabled()"
+                class="btn btn-success btn-sm">Approve
                 All
             </button>
-            <button type="button" ng-click="vm.rejectAll()" ng-disabled="vm.isAllContentEnabled()" class="btn btn-danger btn-sm">Reject
+            <button type="button" ng-click="vm.rejectAll()" ng-disabled="vm.isAllContentEnabled()"
+                class="btn btn-danger btn-sm">Reject
                 All
             </button>
         </li>

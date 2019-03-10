@@ -62,11 +62,6 @@
             });
         }
 
-        this.edit = function (data) {
-            this.editData = data;
-            vm.updateJokeModel.setModel(data);
-        }
-
         this.update = function () {
             vm.updateJokeModel.getModel().then(function (model) {
                 var nid = vm.editData.nid;
