@@ -12,7 +12,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-sm btn-primary" ng-click="vm.update()" data-dismiss="modal">Update</button>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="vm.update()"
+                    data-dismiss="modal">Update</button>
             </div>
         </div>
     </div>
@@ -37,7 +38,10 @@
                     <strong>Reject Reason - </strong>{{vm.viewData.reason}}
                 </div>
                 <span ng-bind-html="vm.displayDescription(vm.viewData.description)"></span>
+                <div id="joke-image" style="width:250px; display:none"
+                    ng-bind-html="vm.displayDescription(vm.viewData.description)"></div>
             </div>
+            <!-- <img id="_link" /> -->
             <div class="modal-footer">
                 <em class="float-left">
                     {{vm.viewData.publishOn}}
@@ -48,11 +52,15 @@
                     <button type="button" class="btn btn-secondary btn-sm">
                         <i class="fa fa-chevron-right"></i>
                     </button> -->
-                <button jh-privilege="ADMIN" type="button" ng-click="vm.changeStatus(vm.viewData, true)" class="btn btn-success btn-sm">
+                <canvas id="myCanvas" width="350" style="border:1px solid #d3d3d3;">
+                    Your browser does not support the HTML5 canvas tag.
+                </canvas>
+                <button jh-privilege="ADMIN" type="button" ng-click="vm.changeStatus(vm.viewData, true)"
+                    class="btn btn-success btn-sm">
                     <i class="fa fa-check"></i> Approve
                 </button>
-                <button jh-privilege="ADMIN" type="button" data-dismiss="modal" ng-click="vm.changeStatus(vm.viewData, false)"
-                    class="btn btn-danger btn-sm">
+                <button jh-privilege="ADMIN" type="button" data-dismiss="modal"
+                    ng-click="vm.changeStatus(vm.viewData, false)" class="btn btn-danger btn-sm">
                     <i class="fa fa-times"></i> Reject
                 </button>
                 <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
@@ -65,7 +73,8 @@
         <thead>
             <tr>
                 <th jh-privilege="ADMIN" style="border: 0px;">
-                    <input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.isAllSelected" aria-label="Checkbox for following text input">
+                    <input type="checkbox" ng-click="vm.selectAll()" ng-model="vm.isAllSelected"
+                        aria-label="Checkbox for following text input">
                 </th>
                 <th style="border: 0px;">Joke</th>
                 <th style="border: 0px; width: 150px;">Category</th>
@@ -89,11 +98,14 @@
                 </td>
                 <td style="position: relative;">
                     <div class="action-menu">
-                        <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve" class="fa fa-check cursor"></i>
-                        <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent" class="fa fa-pencil-square cursor"></i>
-                        <i jh-privilege="ADMIN" ng-click="vm.view(row)" title="View" data-toggle="modal" data-target="#viewContent"
-                            class="fa fa-eye cursor"></i>
-                        <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, false)" title="Reject" class="fa fa-ban cursor"></i>
+                        <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, true)" title="Approve"
+                            class="fa fa-check cursor"></i>
+                        <i ng-click="vm.edit(row)" title="Edit" data-toggle="modal" data-target="#editContent"
+                            class="fa fa-pencil-square cursor"></i>
+                        <i jh-privilege="ADMIN" ng-click="vm.view(row)" title="View" data-toggle="modal"
+                            data-target="#viewContent" class="fa fa-eye cursor"></i>
+                        <i jh-privilege="ADMIN" ng-click="vm.changeStatus(row.nid, false)" title="Reject"
+                            class="fa fa-ban cursor"></i>
                         <i title="Delete" class="fa fa-trash-o cursor"></i>
                     </div>
                 </td>

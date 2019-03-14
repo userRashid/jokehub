@@ -26,7 +26,8 @@ exports.FilePath = function () {
             './node_modules/textangular/dist/textAngular.min.js',
             './node_modules/textangular/dist/textAngularSetup.js',
             './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
-            './node_modules/ng-table/bundles/ng-table.min.js'
+            './node_modules/ng-table/bundles/ng-table.min.js',
+            './node_modules/node-vibrant/dist/vibrant.js'
         ];
     }
 
