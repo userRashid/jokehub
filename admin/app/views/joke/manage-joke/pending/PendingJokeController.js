@@ -36,14 +36,17 @@
       });
       return _ids;
     }
-
-    function CreateImage(_data) {
+    function CreateImage(_data, _canvas, callback) {
       let imagePath = '../jokes-images/background/';
       let items = [imagePath + '2.png', imagePath + '1.png', imagePath + '3.png', imagePath + '4.png'];
       let img_src = items[Math.floor(Math.random() * items.length)];
+
       let img = document.createElement('img');
       let DOM_URL = window.URL || window.webkitURL || window;
       let _img = new Image();
+      _img.crossOrigin = "anonymous";
+
+      let ctx = _canvas.getContext("2d");
       img.setAttribute('src', img_src);
       img.setAttribute('crossOrigin', '');
       img.addEventListener('load', function () {
@@ -57,33 +60,27 @@
               }
             }
           }
-          let _canvas = document.getElementById("myCanvas");
           _canvas.height = _height + 20;
+          ctx.drawImage(img, 0, 0);
           let data = '<svg id="svg1" xmlns="http://www.w3.org/2000/svg" version="1.1">' +
             '<foreignObject width="100%" height="100%">' +
             '<div xmlns="http://www.w3.org/1999/xhtml" style="font-size:18px; padding:10px; color:' + color + '">' + _data + '</div>' +
             '</foreignObject>' +
             '</svg>';
           let svg = new Blob([data], { type: 'image/svg+xml;charset=utf-8' });
+
           let url = DOM_URL.createObjectURL(svg);
           _img.onload = function () {
-            let ctx = _canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
-            ctx.height = _height;
-            ctx.drawImage(_img, 0, 0);
             DOM_URL.revokeObjectURL(url);
+            ctx.drawImage(this, 0, 0);
+            callback(this);
           }
-          _img.src = url;
 
-          // let __img = document.getElementById('_link');
-          // __img.src = _canvas.toDataURL();
-          // console.log('_img', _img);
-          // console.log('_dataImage', _canvas, _canvas.toDataURL());
-          // let _link = document.createElement('a');
-          // _link.href = _canvas.toDataURL();
-          // _link.download = "mypainting.png"
-          // _link.click();
-
+          function buildSvgImageUrl(svg) {
+            let b64 = btoa(unescape(encodeURIComponent(svg)));//window.btoa(svg);
+            return "data:image/svg+xml;base64," + b64;
+          }
+          _img.src = buildSvgImageUrl(data);
         });
       });
     };
@@ -91,7 +88,8 @@
     /////////////////////////////////////////////////////////////
 
     var vm = this;
-
+    vm.canCreateImage = false;
+    vm.imageData = null;
     onInit();
 
     function onInit() {
@@ -111,6 +109,7 @@
       AdministratorService.getAllReasons().then(function (response) {
         vm.rejectReason = response.data;
       });
+
     }
 
     this.edit = function (data) {
@@ -135,18 +134,31 @@
 
     this.changeStatus = function (viewData, isForApprove) {
       let nid = viewData.nid;
-      let description = viewData.description;
-      let _string = '<div style="margin-bottom: 10px; padding: 10px 0;">' + description + '</div>';
-      let _o = _string.replace(new RegExp("<br>", 'g'), "<br />");
-      CreateImage(_o);
-      /* if (isForApprove) {
+      if (this.changeStatus && isForApprove) {
+        let model = {};
+        model.nid = nid;
+        model.imageData = vm.imageData;
+        JokeService.uploadJokeImage(model);
+      }
+      if (isForApprove) {
         JokeService.changeStatus([nid], isForApprove, null);
       } else {
         RejectReason.getReason({
           'id': [nid],
           'data': vm.rejectReason
         });
-      } */
+      }
+    }
+
+    this.createImage = function (viewData) {
+      let _canvas = document.getElementById("myCanvas");
+      let description = viewData.description;
+      let _string = '<div style="margin-bottom: 10px; padding: 10px 0;">' + description + '</div>';
+      let _o = _string.replace(new RegExp("<br>", 'g', '&nbsp;'), "<br />");
+      _o = _o.replace(/\&nbsp;/g, '');
+      CreateImage(_o, _canvas, function () {
+        vm.imageData = _canvas.toDataURL();
+      });
     }
 
     this.approveAll = function () {

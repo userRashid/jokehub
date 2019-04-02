@@ -10,7 +10,8 @@
             getAllJoke: _getAllJoke,
             updateJoke: _updateJoke,
             modifyStatus: _modifyStatus,
-            changeStatus: _changeStatus
+            changeStatus: _changeStatus,
+            uploadJokeImage: _uploadJokeImage
         }
 
         function _createJoke(model) {
@@ -54,6 +55,10 @@
 
         function _updateJoke(nid, model) {
             Http._put('content/' + nid, model);
+        }
+
+        function _uploadJokeImage(model) {
+            Http._post('contentimage', model);
         }
     }
 })();
