@@ -153,7 +153,7 @@
     this.createImage = function (viewData) {
       let _canvas = document.getElementById("myCanvas");
       let description = viewData.description;
-      let _string = '<div style="margin-bottom: 10px; padding: 10px 0;">' + description + '</div>';
+      let _string = '<div style="padding: 10px 0 20px;">' + description + '</div>';
       let _o = _string.replace(new RegExp("<br>", 'g', '&nbsp;'), "<br />");
       _o = _o.replace(/\&nbsp;/g, '');
       CreateImage(_o, _canvas, function () {
