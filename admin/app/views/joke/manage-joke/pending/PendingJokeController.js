@@ -14,9 +14,9 @@
     /////////////////////////////////////////////////////////////
 
     function getCategory(data, categoreis) {
-      var temp = [];
+      let temp = [];
       data.forEach(function (e) {
-        var category = _.filter(categoreis, function (item) {
+        let category = _.filter(categoreis, function (item) {
           return item.id === e.cid
         })[0];
         if (category != undefined) {
@@ -36,7 +36,8 @@
       });
       return _ids;
     }
-    function CreateImage(_data, _canvas, callback) {
+
+    function CreateImage(_data, _canvas, _colors, callback) {
       let imagePath = '../jokes-images/background/';
       let items = [imagePath + '2.png', imagePath + '1.png', imagePath + '3.png', imagePath + '4.png'];
       let img_src = items[Math.floor(Math.random() * items.length)];
@@ -77,7 +78,7 @@
           }
 
           function buildSvgImageUrl(svg) {
-            let b64 = btoa(unescape(encodeURIComponent(svg)));//window.btoa(svg);
+            let b64 = btoa(unescape(encodeURIComponent(svg)));
             return "data:image/svg+xml;base64," + b64;
           }
           _img.src = buildSvgImageUrl(data);
@@ -85,16 +86,36 @@
       });
     };
 
+    function getColors() {
+      let color = null;
+      let rgb = ['255', '0', '0'];
+      let r = Math.round(Math.random() * 255);
+      let g = Math.round(Math.random() * 255);
+      let b = Math.round(Math.random() * 255);
+      rgb[0] = r;
+      rgb[1] = g;
+      rgb[2] = b;
+      let c = 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+      let o = Math.round(((parseInt(rgb[0]) * 299) + (parseInt(rgb[1]) * 587) + (parseInt(rgb[2]) * 114)) / 1000);
+      if (o > 125) {
+        color = '#000000';
+      } else {
+        color = '#ffffff';
+      }
+
+      return { bg: c, color: color };
+    }
+
     /////////////////////////////////////////////////////////////
 
-    var vm = this;
+    let vm = this;
     vm.canCreateImage = false;
     vm.imageData = null;
     onInit();
 
     function onInit() {
       CategoryService.getAllCategory().then(function (res) {
-        var categoreis = res.data;
+        let categoreis = res.data;
         JokeService.getAllJoke().then(function (response) {
           let _response = response.data;
           vm.approvedContent = getCategory(_response.approved, categoreis);
@@ -119,7 +140,7 @@
 
     this.update = function () {
       vm.updateJokeModel.getModel().then(function (model) {
-        var nid = vm.editData.nid;
+        let nid = vm.editData.nid;
         JokeService.updateJoke(nid, model);
       });
     }
@@ -151,12 +172,13 @@
     }
 
     this.createImage = function (viewData) {
+      let _colors = getColors();
       let _canvas = document.getElementById("myCanvas");
       let description = viewData.description;
       let _string = '<div style="padding: 10px 0 20px;">' + description + '</div>';
       let _o = _string.replace(new RegExp("<br>", 'g', '&nbsp;'), "<br />");
       _o = _o.replace(/\&nbsp;/g, '');
-      CreateImage(_o, _canvas, function () {
+      CreateImage(_o, _canvas, _colors, function () {
         vm.imageData = _canvas.toDataURL();
       });
     }
@@ -175,7 +197,7 @@
     }
 
     vm.stripHtml = function (html) {
-      var tmp = document.createElement("DIV");
+      let tmp = document.createElement("DIV");
       tmp.innerHTML = html;
       return tmp.textContent || tmp.innerText || "";
     }
@@ -185,7 +207,7 @@
     }
 
     this.selectAll = function () {
-      var selectStatus = !vm.isAllSelected;
+      let selectStatus = !vm.isAllSelected;
       angular.forEach(vm.pendingContent, function (item) { item.selected = selectStatus; });
 
     }
