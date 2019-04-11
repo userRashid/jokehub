@@ -37,7 +37,7 @@
       return _ids;
     }
 
-    function CreateImage(_data, _canvas, _colors, callback) {
+    function CreateImage(_data, _canvas, _colors, _fontSize, _height, callback) {
       let imagePath = '../jokes-images/background/';
       let items = [imagePath + '2.png', imagePath + '1.png', imagePath + '3.png', imagePath + '4.png'];
       let img_src = items[Math.floor(Math.random() * items.length)];
@@ -51,21 +51,20 @@
       img.setAttribute('src', img_src);
       img.setAttribute('crossOrigin', '');
       img.addEventListener('load', function () {
-        let _height = $('#joke-image').height();
         Vibrant.from(img).getPalette().then((swatches) => {
-          let color = '';
-          for (let swatch in swatches) {
+          let color = '#000000';
+          /* for (let swatch in swatches) {
             if (swatches.hasOwnProperty(swatch) && swatches[swatch]) {
               if (swatch === 'DarkVibrant') {
                 color = swatches[swatch].getHex();
               }
             }
-          }
+          } */
           _canvas.height = _height + 20;
           ctx.drawImage(img, 0, 0);
           let data = '<svg id="svg1" xmlns="http://www.w3.org/2000/svg" version="1.1">' +
             '<foreignObject width="100%" height="100%">' +
-            '<div xmlns="http://www.w3.org/1999/xhtml" style="font-size:18px; padding:10px; color:' + color + '">' + _data + '</div>' +
+            '<div xmlns="http://www.w3.org/1999/xhtml" style="font-size:' + _fontSize + 'px; padding:10px; color:' + color + '">' + _data + '</div>' +
             '</foreignObject>' +
             '</svg>';
           let svg = new Blob([data], { type: 'image/svg+xml;charset=utf-8' });
@@ -110,7 +109,6 @@
 
     let vm = this;
     vm.canCreateImage = false;
-    vm.imageData = null;
     onInit();
 
     function onInit() {
@@ -173,13 +171,20 @@
 
     this.createImage = function (viewData) {
       let _colors = getColors();
-      let _canvas = document.getElementById("myCanvas");
+      let _smallCanvas = document.getElementById("smallImage");
+      let _bigCanvas = document.getElementById("bigImage");
       let description = viewData.description;
       let _string = '<div style="padding: 10px 0 20px;">' + description + '</div>';
       let _o = _string.replace(new RegExp("<br>", 'g', '&nbsp;'), "<br />");
       _o = _o.replace(/\&nbsp;/g, '');
-      CreateImage(_o, _canvas, _colors, function () {
-        vm.imageData = _canvas.toDataURL();
+      vm.imageData = {};
+      let _small_height = $('#joke-image-small').height();
+      let _big_height = $('#joke-image-big').height();
+      CreateImage(_o, _smallCanvas, _colors, 18, _small_height, function () {
+        vm.imageData.smallImage = _smallCanvas.toDataURL();
+      });
+      CreateImage(_o, _bigCanvas, _colors, 30, _big_height, function () {
+        vm.imageData.bigImage = _bigCanvas.toDataURL();
       });
     }
 

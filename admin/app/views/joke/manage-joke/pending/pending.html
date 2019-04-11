@@ -47,13 +47,18 @@
                     <strong>Reject Reason - </strong>{{vm.viewData.reason}}
                 </div>
                 <span ng-bind-html="vm.displayDescription(vm.viewData.description)"></span>
-                <div id="joke-image" style="width:250px; display:none"
+                <div id="joke-image-small" style="width:250px; display:none"
+                    ng-bind-html="vm.displayDescription(vm.viewData.description)"></div>
+                <div id="joke-image-big" style="width:650px; font-size:30px; display:none"
                     ng-bind-html="vm.displayDescription(vm.viewData.description)"></div>
             </div>
             <div ng-if="vm.canCreateImage">
                 <div class="px-3 row" jh-privilege="ADMIN">
                     <div class="col-8 text-right">
-                        <canvas id="myCanvas" width="350" style="border:1px solid #d3d3d3;">
+                        <canvas id="smallImage" width="350" style="border:1px solid #d3d3d3;">
+                            Your browser does not support the HTML5 canvas tag.
+                        </canvas>
+                        <canvas id="bigImage" width="700" style="border:1px solid #d3d3d3;">
                             Your browser does not support the HTML5 canvas tag.
                         </canvas>
                     </div>
